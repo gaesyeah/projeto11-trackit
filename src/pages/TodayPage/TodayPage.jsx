@@ -3,7 +3,7 @@ import { PageBody } from "../../style/PageBody";
 const TodayPage = () => {
     return (
         <PageBody>
-            TodayPage
+            <div>TodayPage</div>
         </PageBody>
     );
 };

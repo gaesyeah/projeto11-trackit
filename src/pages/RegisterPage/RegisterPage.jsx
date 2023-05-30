@@ -16,10 +16,10 @@ const RegisterPage = () => {
         <SignBody>
             <Logo />
             <form onSubmit={register}>
-                <input type="email" placeholder="email"></input>
-                <input type="password" placeholder="senha"></input>
-                <input type="text" placeholder="nome"></input>
-                <input type="text" placeholder="foto"></input>
+                <input type="email" placeholder="email" required></input>
+                <input type="password" placeholder="senha" required></input>
+                <input type="text" placeholder="nome" required></input>
+                <input type="text" placeholder="foto" required></input>
                 <button type="submit">Cadastrar</button>
             </form>
             <p onClick={() => navigate('/')}>Já tem uma conta? Faça login!</p>

@@ -16,8 +16,8 @@ const LoginPage = () => {
         <SignBody>
             <Logo />
             <form onSubmit={login}>
-                <input type="email" placeholder="email"></input>
-                <input type="password" placeholder="senha"></input>
+                <input type="email" placeholder="email" required></input>
+                <input type="password" placeholder="senha" required></input>
                 <button type="submit">Entrar</button>
             </form>
             <p onClick={() => navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</p>

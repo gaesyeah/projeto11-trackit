@@ -13,21 +13,16 @@ const App = () => {
 
     return (
         <>
-        {pathname !== '/' && pathname !== '/cadastro'
-            && <NavBar />
-        }
-
-        <Routes>
-            <Route path='/' element={<LoginPage />}/>
-            <Route path='/cadastro' element={<RegisterPage />}/>
-            <Route path='/habitos' element={<HabitsPage />}/>
-            <Route path='/hoje' element={<TodayPage />}/>
-            <Route path='/historico' element={<HistoryPage />}/>
-        </Routes>
-        
-        {pathname !== '/' && pathname !== '/cadastro'
-            && <Footer />
-        }
+            {pathname !== '/' && pathname !== '/cadastro'
+                && <><Footer /> <NavBar /></>
+            }
+            <Routes>
+                <Route path='/' element={<LoginPage />} />
+                <Route path='/cadastro' element={<RegisterPage />} />
+                <Route path='/habitos' element={<HabitsPage />} />
+                <Route path='/hoje' element={<TodayPage />} />
+                <Route path='/historico' element={<HistoryPage />} />
+            </Routes>
         </>
     );
 };

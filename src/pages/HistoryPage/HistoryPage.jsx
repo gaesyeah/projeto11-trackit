@@ -3,7 +3,7 @@ import { PageBody } from "../../style/PageBody";
 const HistoryPage = () => {
     return (
         <PageBody>
-            HistoryPage
+            <div>HistoryPage</div>
         </PageBody>
     );
 };

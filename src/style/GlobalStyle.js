@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
+        color: #666666;
         &::placeholder{
             color: #DBDBDB;
         }
