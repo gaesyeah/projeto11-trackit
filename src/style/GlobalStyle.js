@@ -5,10 +5,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         user-select: none;
     }
-    h2{
-        margin-top: 30px;
-        padding-left: 9px;
-    }
     form{
         display: flex;
         flex-direction: column;
@@ -43,7 +39,8 @@ const GlobalStyle = createGlobalStyle`
         color: #FFFFFF;
     }
     h2{
-        margin-left: 17px;
+        margin-top: 30px;
+        margin-left: -155px;
         font-size: 23px;
         line-height: 29px;
         color: #126BA5;

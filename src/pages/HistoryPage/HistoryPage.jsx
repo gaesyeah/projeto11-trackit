@@ -15,10 +15,16 @@ const HistoryPage = () => {
 export default HistoryPage;
 
 const HistoryBeta = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    h2{
+        margin-left: -240px;
+    }
     p{
-        margin-top: 17px;
-        margin-left: 25px;
-        padding-right: 25px;
+        margin: 17px;
+        padding-right: 17px;
         font-size: 18px;
         line-height: 22px;
         color: #666666;

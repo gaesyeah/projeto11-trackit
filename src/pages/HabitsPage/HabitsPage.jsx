@@ -36,8 +36,14 @@ const HabitsPage = () => {
 
     const createHabit = (e) => {
         e.preventDefault();
-        
-        setHabitDays([]);
+
+        if (habitDays.length === 0){
+            alert('Você precisa selecionar pelo menos um dia da semana!');
+        } else {
+            setHabitDays([]);
+            setHabitInput('');
+            setShowCreation(false);
+        }
     }
 
     return (

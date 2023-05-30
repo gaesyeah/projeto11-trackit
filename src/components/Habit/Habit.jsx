@@ -4,7 +4,9 @@ const Habit = ({createdHabit, weekDays}) => {
     const {id, name, days} = createdHabit;
 
     const deleteHabit = (idHabit) => {
-        console.log(idHabit)
+        if (confirm('Você realmente deseja apagar esse hábito? Não tem volta.')){
+            console.log('apagado');
+        }
     }
 
     return (
