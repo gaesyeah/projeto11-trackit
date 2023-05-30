@@ -6,13 +6,6 @@ export const SignBody = styled.div`
     align-items: center;
     height: 100vh;
     background: #FFFFFF;
-    div{
-        margin-top: 68px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
     h1{
         font-family: 'Playball', cursive;
         font-size: 69px;

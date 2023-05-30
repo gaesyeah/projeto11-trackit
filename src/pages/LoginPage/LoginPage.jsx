@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
 import { SignBody } from "../../style/SignBody";
-import logo from "./../../assets/logo.png";
 
 const LoginPage = () => {
 
@@ -14,10 +14,7 @@ const LoginPage = () => {
 
     return (
         <SignBody>
-            <div>
-                <img src={logo} alt="logo"/>
-                <h1>TrackIt</h1>
-            </div>
+            <Logo />
             <form onSubmit={login}>
                 <input type="email" placeholder="email"></input>
                 <input type="password" placeholder="senha"></input>
