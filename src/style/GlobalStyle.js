@@ -2,11 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     *{
-        /* font-family: 'Lexend Deca', sans-serif;
-        font-family: 'Playball', cursive; */
-
         box-sizing: border-box;
         user-select: none;
+    }
+    h2{
+        margin-top: 30px;
+        padding-left: 9px;
     }
     form{
         display: flex;
@@ -40,6 +41,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: 21px;
         line-height: 26px;
         color: #FFFFFF;
+    }
+    h2{
+        margin-left: 17px;
+        font-size: 23px;
+        line-height: 29px;
+        color: #126BA5;
     }
 `;
 export default GlobalStyle;

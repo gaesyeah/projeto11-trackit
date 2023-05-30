@@ -3,17 +3,16 @@ import { Trash3 } from "styled-icons/bootstrap";
 import { PlusSquare } from "styled-icons/evaicons-solid";
 
 export const TopBar = styled.div`
+    h2{
+        margin-top: unset;
+        margin-left: 17px;
+        padding-left: unset;
+    }
     width: 375px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 17px 0px -10px 0px;
-    h2{
-        margin-left: 17px;
-        font-size: 23px;
-        line-height: 29px;
-        color: #126BA5;
-    }
 `;
 export const NoHabits = styled.p`
     margin-top: 27px;
@@ -60,7 +59,7 @@ export const ConfirmButtons = styled.div`
             color: #52B6FF;
         }
     }
-`
+`;
 export const WeekDayButtons = styled.div`
     margin-left: -69px;
     display: flex;
@@ -71,7 +70,7 @@ export const MyHabits = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-`
+`;
 export const MyHabit = styled.div`
     position: relative;
     width: 340px;
@@ -109,7 +108,7 @@ export const PlusIcon = styled(PlusSquare)`
     width: 54px;
     color: #52B6FF;
     margin-right: 10px;
-`
+`;
 export const TrashIcon = styled(Trash3)`
     cursor: pointer;
     position: absolute;
