@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { PlusSquare } from "styled-icons/evaicons-solid";
+import Habit from "../../components/Habit/Habit";
+import WeekDay from "../../components/WeekDay/Weekday";
 import { PageBody } from "../../style/PageBody";
+import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
 const HabitsPage = () => {
 
@@ -15,16 +16,28 @@ const HabitsPage = () => {
         { id: 7, day: 'S' },
     ];
 
+    const [habitInput, setHabitInput] = useState('');
     const [showCreation, setShowCreation] = useState(false);
     const [habitDays, setHabitDays] = useState([]);
-    console.log(habitDays);
-
-    const chooseDays = (id) => {
-        if (!habitDays.includes(id)) {
-            setHabitDays([...habitDays, id]);
-        } else {
-            setHabitDays([...habitDays.filter(dayId => dayId !== id)]);
+    
+    const HABITS = [
+        {
+            id: 1,
+            name: "Nome do hábito",
+            days: [1, 3, 5]
+        },
+        {
+            id: 2,
+            name: "Nome do hábito 2",
+            days: [1, 3, 4, 6]
         }
+    ]
+    const [createdHabits, setCreatedHabits] = useState([...HABITS]);
+
+    const createHabit = (e) => {
+        e.preventDefault();
+        
+        setHabitDays([]);
     }
 
     return (
@@ -35,114 +48,46 @@ const HabitsPage = () => {
             </TopBar>
             {showCreation 
                 &&
-                <AddHabitBox>
-                    <input 
+                <AddHabitBox onSubmit={createHabit}>
+                    <input
+                        onChange={e => setHabitInput(e.target.value)}
+                        value={habitInput}
                         type="text" 
                         placeholder="nome do hábito" 
                         required 
                     />
                     <WeekDayButtons>
-                        {weekDays.map(({ id, day }) =>
-                            <button 
-                                onClick={() => chooseDays(id)}
-                                key={id} 
-                                type="button"
-                            >{day}</button>
+                        {weekDays.map((days) => 
+                            <WeekDay 
+                                key ={days.id} 
+                                days={days} 
+                                habitDays={habitDays} 
+                                setHabitDays={setHabitDays}
+                            />
                         )}
                     </WeekDayButtons>
                     <ConfirmButtons>
                         <button onClick={() => setShowCreation(false)}type="button">Cancelar</button>
                         <button type="submit">Salvar</button>
                     </ConfirmButtons>
-                </AddHabitBox>
+                </AddHabitBox>}
+
+            {createdHabits.length === 0
+                ?
+                <NoHabits>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</NoHabits>
+                :
+                <MyHabits>
+                    {createdHabits.map((createdHabit) => 
+                        <Habit 
+                            key={createdHabit.id} 
+                            createdHabit={createdHabit} 
+                            weekDays={weekDays}
+                        />
+                    )}
+                </MyHabits>
             }
-            <NoHabits>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</NoHabits>
         </PageBody>
     );
 };
 
 export default HabitsPage;
-
-const TopBar = styled.div`
-    width: 375px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 17px 0px -10px 0px;
-    h2{
-        margin-left: 17px;
-        font-size: 23px;
-        line-height: 29px;
-        color: #126BA5;
-    }
-`;
-const NoHabits = styled.p`
-    margin-top: 27px;
-    font-size: 18px;
-    line-height: 22px;
-    color: #666666;
-    width: 338px;
-`;
-const AddHabitBox = styled.form`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 22px;
-    width: 340px;
-    min-height: 180px;
-    background: #FFFFFF;
-    border-radius: 5px;
-    input{
-        margin-top: 18px;
-        width: 303px;
-        height: 45px;
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        font-size: 20px;
-        line-height: 25px;
-    }
-`;
-const ConfirmButtons = styled.div`
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    column-gap: 14px;
-    margin: 0 16px 15px 0;
-    button{
-        font-size: 16px;
-        line-height: 20px;
-        width: 84px;
-        height: 34px;
-        &:nth-child(1){
-            background-color: #FFFFFF;
-            color: #52B6FF;
-        }
-    }
-`
-const WeekDayButtons = styled.div`
-    margin-left: -69px;
-    display: flex;
-    column-gap: 4px;
-    button{
-        width: 30px;
-        height: 30px;
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        font-size: 20px;
-        line-height: 25px;
-        color: #DBDBDB;
-
-        /* background: #CFCFCF;
-        color: #FFFFFF; */
-    }
-`;
-const PlusIcon = styled(PlusSquare)`
-    cursor: pointer;
-    width: 54px;
-    color: #52B6FF;
-    margin-right: 10px;
-`
