@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+import { InfoContext } from "../../App";
 import { NavContainer } from "./style";
 
 const Footer = () => {
 
     const navigate = useNavigate();
+
+    console.log(useContext(InfoContext));
 
     return (
         <NavContainer>

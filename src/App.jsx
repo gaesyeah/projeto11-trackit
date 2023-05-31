@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
@@ -7,12 +8,16 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 
+export const InfoContext = createContext();
+
 const App = () => {
 
     const { pathname } = useLocation();
 
+    const [bearerToken, setBearerToken] = useState(null);
+
     return (
-        <>
+        <InfoContext.Provider value={[bearerToken, setBearerToken]}>
             {pathname !== '/' && pathname !== '/cadastro'
                 && <><Footer /> <NavBar /></>
             }
@@ -23,7 +28,7 @@ const App = () => {
                 <Route path='/hoje' element={<TodayPage />} />
                 <Route path='/historico' element={<HistoryPage />} />
             </Routes>
-        </>
+        </InfoContext.Provider>
     );
 };
 
