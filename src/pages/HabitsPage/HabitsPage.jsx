@@ -111,6 +111,7 @@ const HabitsPage = ({habitosData, setHabitosData}) => {
                             key={createdHabit.id} 
                             createdHabit={createdHabit} 
                             weekDays={weekDays}
+                            setHabitosData={setHabitosData}
                         />
                     )}
                 </MyHabits>
