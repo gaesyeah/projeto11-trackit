@@ -20,7 +20,13 @@ export const Habit = styled.div`
         color: #666666;
     }
     span{
-        color:#8FC549;
+        color:${({done, current, highest}) => 
+            (current > highest && current > 0) 
+            ? 
+            '#8FC549' 
+            : 
+            (!done) ? '#666666' : '#8FC549'
+        };
     }
 `;
 export const TodayCheck = styled(CheckSquareFill)`

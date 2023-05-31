@@ -34,7 +34,7 @@ const TodayHabit = ({habit, setHojeData}) => {
     }
 
     return ( 
-        <Habit done={done}>
+        <Habit done={done} current={currentSequence} highest={highestSequence}>
             <h3>{name}</h3>
             <p>Sequência atual: <span>{currentSequence} dia{currentSequence !== 1 && 's'}</span></p>
             <p>Seu recorde: {highestSequence} dia{highestSequence !== 1 && 's'}</p>
