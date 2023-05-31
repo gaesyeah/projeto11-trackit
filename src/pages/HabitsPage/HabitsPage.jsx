@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";

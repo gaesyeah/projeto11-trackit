@@ -23,7 +23,8 @@ const App = () => {
         }
     }
 
-    //criei como null pois essa informação sera a primeira a ser renderizada após o login, assim utilizei isso para implementar um loading corretamente
+    //criei como null para utilizar os loadings de maneira correta, para caso as requisições retornem um array vazio
+    //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState(null);
     useEffect(() => {

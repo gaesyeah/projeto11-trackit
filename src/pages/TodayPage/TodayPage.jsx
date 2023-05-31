@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
