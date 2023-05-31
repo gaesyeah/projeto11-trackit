@@ -8,13 +8,14 @@ const TodayHabit = ({habit, setHojeData}) => {
     const { id, name, done, currentSequence, highestSequence } = habit;
 
     const {config} = useContext(DataContext);
+    console.log(config);
 
     const reCheckHabit = (idHabit, isChecked) => {
         if (!isChecked){
 
             console.log(idHabit, 'foi marcado');
 
-            axios.post(`${URL}/habits/${idHabit}/check`, config)
+            axios.post(`${URL}/habits/${idHabit}/check`, [], config)
             .then(() => {
                 axios.get(`${URL}/habits/today`, config)
                 .then(({data}) => setHojeData(data))
