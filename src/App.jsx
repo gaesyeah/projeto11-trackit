@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { URL } from "./constants";
@@ -15,6 +15,8 @@ const App = () => {
 
     const { pathname } = useLocation();
 
+    const navigate = useNavigate();
+
     const [loginData, setLoginData] = useState({});
     const {token, image} = loginData;
     const config = {
@@ -28,11 +30,15 @@ const App = () => {
     const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState(null);
     useEffect(() => {
+        //navega direto para a rota /hoje caso tenha uma config previa no localStorage
+        if (localStorage.getItem('config')){
+            navigate('/hoje');
+        }
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
         if (Object.keys(loginData).length > 0){
             //localStorage para manter o usuario logado:
-            localStorage.setItem('image', image);
             localStorage.setItem('config',JSON.stringify(config));
+            localStorage.setItem('image', image);
         }
     }, [loginData]);
 

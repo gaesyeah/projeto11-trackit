@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
@@ -60,15 +60,16 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
         }
     }
 
-    if (habitosData === null){
-        
+    useEffect(() => {
         axios.get(`${URL}/habits`, config)
         .then(({data}) => {setHabitosData(data)})
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
         });
+    }, [config]);
 
+    if (habitosData === null){
         return (
             <NullLoading>
                 <img src={loadingGif} alt='reloading'/>
