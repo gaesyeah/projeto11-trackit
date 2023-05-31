@@ -23,7 +23,7 @@ const HistoryBeta = styled.div`
         margin-left: -240px;
     }
     p{
-        margin: 17px;
+        margin-top: 17px;
         padding-right: 17px;
         font-size: 18px;
         line-height: 22px;

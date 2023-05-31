@@ -9,16 +9,14 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    console.log(useContext(DataContext));
+    const {todayProgress} = useContext(DataContext);
 
     return (
         <NavContainer>
             <p onClick={() => navigate('/habitos')}>Hábitos</p>
             <div onClick={() => navigate('/hoje')}>
                 <CircularProgressbar
-
-                    //alterar esse valor para o retorno da função todayProgress, declarada no App
-                    value={40}
+                    value={isNaN(todayProgress()) ? 0 : todayProgress()}
                     text='Hoje'
                     background
                     backgroundPadding={6}

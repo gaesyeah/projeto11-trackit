@@ -23,8 +23,9 @@ const GlobalStyle = createGlobalStyle`
         line-height: 25px;
         color: #666666;
         &:disabled{
+            cursor: default;
             opacity: 0.5;
-            background: #F2F2F2; 
+            background: #F2F2F2;
         }
         &::placeholder{
             color: #DBDBDB;

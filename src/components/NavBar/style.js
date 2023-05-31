@@ -20,6 +20,7 @@ export const FooterContainer = styled.footer`
         color: #FFFFFF;
     }
     img{
+        width: 51px;
         height: 51px;
         border-radius: 100%;
         margin-right: 10px;
