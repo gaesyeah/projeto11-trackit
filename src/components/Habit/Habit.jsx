@@ -25,8 +25,8 @@ const Habit = ({createdHabit, weekDays, setHabitosData}) => {
                 const {details, message} = response.data;
                 console.log(`${!details ? '' : details}\n${message}`);
             });
-        }
-    }
+        };
+    };
 
     return (
         <MyHabit key={id}>

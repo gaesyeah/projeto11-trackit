@@ -30,7 +30,12 @@ const App = () => {
     useEffect(() => {
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
         if (Object.keys(loginData).length > 0){
-            
+
+            //localStorage para manter o usuario logado:
+            localStorage.setItem('image', image);
+            localStorage.setItem('config',JSON.stringify(config));
+            //-------------------------------------------
+
             axios.get(`${URL}/habits/today`, config)
             .then(({data}) => setHojeData(data))
             .catch(({response}) => {
@@ -54,12 +59,12 @@ const App = () => {
         } else {
             return;
         }
-    }
+    }    
 
     return (
-        <DataContext.Provider value={{todayProgress, config}}>
+        <DataContext.Provider value={{todayProgress, config: JSON.parse(localStorage.getItem('config'))}}>
             {pathname !== '/' && pathname !== '/cadastro' 
-                && <><Footer/><NavBar image={image}/></>
+                && <><Footer/><NavBar image={localStorage.getItem('image')}/></>
             }
             <Routes>
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />

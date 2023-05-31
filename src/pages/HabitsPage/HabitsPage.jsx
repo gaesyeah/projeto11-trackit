@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
@@ -58,6 +58,19 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
             });
         }
     }
+
+    //adicionei isso para caso o usuario dê f5(localStorage), já que fiz as requisições no App para deixar a experiencia do usuario melhor com os carregamentos
+    useEffect(() => {
+        if (habitosData.length === 0){
+
+            axios.get(`${URL}/habits`, config)
+            .then(({data}) => {setHabitosData(data)})
+            .catch(({response}) => {
+                const {details, message} = response.data;
+                console.log(`${!details ? '' : details}\n${message}`);
+            });
+        };
+    }, []);
 
     return (
         <PageBody>
