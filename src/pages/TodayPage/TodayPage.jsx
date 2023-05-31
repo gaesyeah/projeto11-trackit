@@ -5,9 +5,9 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
-import { PageBody } from "../../style/PageBody";
+import { NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
-import { Loading, Progress, TodayHabitsBox } from "./styled";
+import { Progress, TodayHabitsBox } from "./styled";
 
 const TodayPage = ({hojeData, setHojeData}) => {
 
@@ -15,20 +15,17 @@ const TodayPage = ({hojeData, setHojeData}) => {
 
     if (hojeData === null){
 
-        //adicionei isso para caso o usuario dê f5(localStorage), já que fiz as requisições no App para deixar a experiencia do usuario melhor com os carregamentos
-        useEffect(() => {
-            axios.get(`${URL}/habits/today`, config)
-            .then(({data}) => setHojeData(data))
-            .catch(({response}) => {
-                const {details, message} = response.data;
-                console.log(`${!details ? '' : details}\n${message}`);
-            });
-        }, []);
+        axios.get(`${URL}/habits/today`, config)
+        .then(({data}) => setHojeData(data))
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
 
         return (
-            <Loading>
+            <NullLoading>
                 <img src={loadingGif} alt='reloading'/>
-            </Loading>
+            </NullLoading>
         );
     } else {
         return (

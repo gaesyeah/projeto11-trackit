@@ -26,12 +26,3 @@ export const TodayHabitsBox = styled.div`
     row-gap: 10px;
     padding-bottom: 34px;
 `;
-export const Loading = styled.div`
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-        width: 150px;
-    }
-`;

@@ -5,7 +5,8 @@ import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDay from "../../components/WeekDay/Weekday";
 import { URL, weekDays } from "../../constants";
-import { PageBody } from "../../style/PageBody";
+import { NullLoading, PageBody } from "../../style/PageBody";
+import loadingGif from "./../../assets/loadingGif.gif";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
 const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
@@ -59,19 +60,21 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
         }
     }
 
-    //adicionei isso para caso o usuario dê f5(localStorage), já que fiz as requisições no App para deixar a experiencia do usuario melhor com os carregamentos
-    useEffect(() => {
-        if (habitosData.length === 0){
+    if (habitosData === null){
+        
+        axios.get(`${URL}/habits`, config)
+        .then(({data}) => {setHabitosData(data)})
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
 
-            axios.get(`${URL}/habits`, config)
-            .then(({data}) => {setHabitosData(data)})
-            .catch(({response}) => {
-                const {details, message} = response.data;
-                console.log(`${!details ? '' : details}\n${message}`);
-            });
-        };
-    }, []);
-
+        return (
+            <NullLoading>
+                <img src={loadingGif} alt='reloading'/>
+            </NullLoading>
+        );
+    }
     return (
         <PageBody>
             <TopBar>

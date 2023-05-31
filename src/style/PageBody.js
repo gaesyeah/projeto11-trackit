@@ -10,3 +10,13 @@ export const PageBody = styled.div`
     padding: 70px 0 70px 0;
     font-family: 'Lexend Deca', sans-serif;
 `;
+
+export const NullLoading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 150px;
+    }
+`;

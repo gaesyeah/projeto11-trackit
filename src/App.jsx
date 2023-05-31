@@ -25,31 +25,13 @@ const App = () => {
 
     //criei como null pois essa informação sera a primeira a ser renderizada após o login, assim utilizei isso para implementar um loading corretamente
     const [hojeData, setHojeData] = useState(null);
-    const [habitosData, setHabitosData] = useState([]);
-    //fiz essas requisições no App para a página nao precisar ficar recarregando sempre que o usuario trocar de rota
+    const [habitosData, setHabitosData] = useState(null);
     useEffect(() => {
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
         if (Object.keys(loginData).length > 0){
-
             //localStorage para manter o usuario logado:
             localStorage.setItem('image', image);
             localStorage.setItem('config',JSON.stringify(config));
-            //-------------------------------------------
-
-            axios.get(`${URL}/habits/today`, config)
-            .then(({data}) => setHojeData(data))
-            .catch(({response}) => {
-                const {details, message} = response.data;
-                console.log(`${!details ? '' : details}\n${message}`);
-            });
-
-            axios.get(`${URL}/habits`, config)
-            .then(({data}) => setHabitosData(data))
-            .catch(({response}) => {
-                const {details, message} = response.data;
-                console.log(`${!details ? '' : details}\n${message}`);
-            });
-            
         }
     }, [loginData]);
 
