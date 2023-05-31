@@ -11,29 +11,26 @@ const TodayHabit = ({habit, setHojeData}) => {
     console.log(config);
 
     const reCheckHabit = (idHabit, isChecked) => {
-        if (!isChecked){
+        let pathname;
+        if (!isChecked) {
+            pathname = 'check';
+        }else {
+            pathname = 'uncheck';
+        }
 
-            console.log(idHabit, 'foi marcado');
-
-            axios.post(`${URL}/habits/${idHabit}/check`, [], config)
-            .then(() => {
-                axios.get(`${URL}/habits/today`, config)
-                .then(({data}) => setHojeData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                });
-            })
+        axios.post(`${URL}/habits/${idHabit}/${pathname}`, [], config)
+        .then(() => {
+            axios.get(`${URL}/habits/today`, config)
+            .then(({data}) => setHojeData(data))
             .catch(({response}) => {
                 const {details, message} = response.data;
                 console.log(`${!details ? '' : details}\n${message}`);
             });
-
-        } else {
-
-            console.log(idHabit, 'foi desmarcado');
-            
-        }
+        })
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
     }
 
     return ( 

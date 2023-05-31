@@ -15,6 +15,7 @@ export const Progress = styled.div`
         color: #BABABA;
     }
     span{
+        margin-left: ${({today}) => today < 100 ? '-40px' : '-32px'};
         color: #8FC549;
     }
 `;

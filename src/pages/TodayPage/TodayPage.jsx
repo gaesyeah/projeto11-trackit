@@ -23,12 +23,12 @@ const TodayPage = ({hojeData, setHojeData}) => {
 
     return (
         <PageBody>
-            <Progress>
+            <Progress today={todayProgress()}>
                 <h2>{dayjs().locale('pt-br').format('dddd, D/M')}</h2>
                 <p>
                     {todayProgress() > 0
                         ?
-                        <span>${todayProgress()}% dos hábitos concluídos</span>
+                        <span>{todayProgress()}% dos hábitos concluídos</span>
                         :
                         'Nenhum hábito concluído ainda'
                     }
