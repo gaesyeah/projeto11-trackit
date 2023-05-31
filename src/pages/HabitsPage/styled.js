@@ -70,6 +70,7 @@ export const MyHabits = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    padding-bottom: 34px;
 `;
 export const MyHabit = styled.div`
     position: relative;

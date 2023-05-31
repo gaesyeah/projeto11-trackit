@@ -14,8 +14,8 @@ const TodayHabit = ({habit}) => {
     return ( 
         <Habit done={done}>
             <h3>{name}</h3>
-            <p>Sequência atual: <span>{currentSequence} dia{currentSequence > 1 && 's'}</span></p>
-            <p>Seu recorde: {highestSequence} dia{highestSequence > 1 && 's'}</p>
+            <p>Sequência atual: <span>{currentSequence} dia{currentSequence !== 1 && 's'}</span></p>
+            <p>Seu recorde: {highestSequence} dia{highestSequence !== 1 && 's'}</p>
             <TodayCheck
                 done={done}
                 onClick={() => reCheckHabit(id, done)}

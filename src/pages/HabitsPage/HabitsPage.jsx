@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
@@ -8,7 +8,7 @@ import { URL, weekDays } from "../../constants";
 import { PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
-const HabitsPage = () => {
+const HabitsPage = ({habitosData, setHabitosData}) => {
 
     const {config} = useContext(DataContext);
 
@@ -16,20 +16,6 @@ const HabitsPage = () => {
     const [habitInput, setHabitInput] = useState('');
     const [showCreation, setShowCreation] = useState(false);
     const [habitDays, setHabitDays] = useState([]);
-    
-    const HABITS = [
-        {
-            id: 1,
-            name: "Nome do hábito",
-            days: [1, 3, 5]
-        },
-        {
-            id: 2,
-            name: "Nome do hábito 2",
-            days: [1, 3, 4, 6]
-        }
-    ]
-    const [createdHabits, setCreatedHabits] = useState([...HABITS]);
 
     const createHabit = (e) => {
         e.preventDefault();
@@ -47,6 +33,13 @@ const HabitsPage = () => {
                 setShowCreation(false);
 
                 setLoading(false);
+                //----------------
+                axios.get(`${URL}/habits`, config)
+                .then(({data}) => setHabitosData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                });
             })
             .catch(({response}) => {
                 const {details, message} = response.data;
@@ -108,12 +101,12 @@ const HabitsPage = () => {
                     </ConfirmButtons>
                 </AddHabitBox>}
 
-            {createdHabits.length === 0
+            {habitosData.length === 0
                 ?
                 <NoHabits>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</NoHabits>
                 :
                 <MyHabits>
-                    {createdHabits.map((createdHabit) => 
+                    {habitosData.map((createdHabit) => 
                         <Habit 
                             key={createdHabit.id} 
                             createdHabit={createdHabit} 

@@ -24,6 +24,7 @@ const App = () => {
     }
 
     const [hojeData, setHojeData] = useState([]);
+    const [habitosData, setHabitosData] = useState([]);
     useEffect(() => {
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
         if (Object.keys(loginData).length > 0){
@@ -34,6 +35,14 @@ const App = () => {
                 const {details, message} = response.data;
                 alert(`${!details ? '' : details}\n${message}`);
             });
+
+            axios.get(`${URL}/habits`, config)
+            .then(({data}) => setHabitosData(data))
+            .catch(({response}) => {
+                const {details, message} = response.data;
+                console.log(`${!details ? '' : details}\n${message}`);
+            });
+            
         }
     }, [loginData]);
 
@@ -49,7 +58,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
                 <Route path='/cadastro' element={<RegisterPage />} />
-                <Route path='/habitos' element={<HabitsPage />} />
+                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData}/>} />
                 <Route path='/hoje' element={<TodayPage hojeData={hojeData}/>} />
                 <Route path='/historico' element={<HistoryPage />} />
             </Routes>
