@@ -1,13 +1,37 @@
+import axios from "axios";
+import { useContext } from "react";
+import { DataContext } from "../../App";
+import { URL } from "../../constants";
 import { Habit, TodayCheck } from "./style";
 
-const TodayHabit = ({habit}) => {
+const TodayHabit = ({habit, setHojeData}) => {
     const { id, name, done, currentSequence, highestSequence } = habit;
+
+    const {config} = useContext(DataContext);
 
     const reCheckHabit = (idHabit, isChecked) => {
         if (!isChecked){
+
             console.log(idHabit, 'foi marcado');
+
+            axios.post(`${URL}/habits/${idHabit}/check`, config)
+            .then(() => {
+                axios.get(`${URL}/habits/today`, config)
+                .then(({data}) => setHojeData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                });
+            })
+            .catch(({response}) => {
+                const {details, message} = response.data;
+                console.log(`${!details ? '' : details}\n${message}`);
+            });
+
         } else {
+
             console.log(idHabit, 'foi desmarcado');
+            
         }
     }
 

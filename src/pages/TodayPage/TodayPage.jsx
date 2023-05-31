@@ -26,7 +26,7 @@ const TodayPage = ({hojeData, setHojeData}) => {
             <Progress>
                 <h2>{dayjs().locale('pt-br').format('dddd, D/M')}</h2>
                 <p>
-                    {hojeData > 0
+                    {todayProgress() > 0
                         ?
                         <span>${todayProgress()}% dos hábitos concluídos</span>
                         :
@@ -36,7 +36,11 @@ const TodayPage = ({hojeData, setHojeData}) => {
             </Progress>
             <TodayHabitsBox>
                 {hojeData.map((habit) => 
-                    <TodayHabit key={habit.id} habit={habit}/>
+                    <TodayHabit
+                        setHojeData={setHojeData}
+                        key={habit.id} 
+                        habit={habit}
+                    />
                 )}
             </TodayHabitsBox>
         </PageBody>
