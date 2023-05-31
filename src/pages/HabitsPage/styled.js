@@ -100,7 +100,7 @@ export const MyHabitDay = styled.button`
     background: ${({days, day}) => days.includes(day) ? '#CFCFCF' : '#FFFFFF'};
     color: ${({days, day}) => days.includes(day) ? '#FFFFFF' : '#DBDBDB'};
     &:disabled{
-        cursor: default;
+        opacity: 1;
     }
 `;
 export const PlusIcon = styled(PlusSquare)`

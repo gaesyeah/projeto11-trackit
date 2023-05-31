@@ -22,12 +22,19 @@ const GlobalStyle = createGlobalStyle`
         font-size: 20px;
         line-height: 25px;
         color: #666666;
+        &:disabled{
+            opacity: 0.5;
+            background: #F2F2F2; 
+        }
         &::placeholder{
             color: #DBDBDB;
         }
     }
     button{
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 303px;
         height: 45px;
         border-radius: 5px;
@@ -37,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 21px;
         line-height: 26px;
         color: #FFFFFF;
+        &:disabled{
+            cursor: default;
+            opacity: 0.5;
+        }
     }
     h2{
         margin-top: 30px;

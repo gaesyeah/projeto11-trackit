@@ -37,7 +37,7 @@ const TodayPage = () => {
             <Progress>
                 <h2>{dayjs().locale('pt-br').format('dddd, D/M')}</h2>
                 
-                //caso o retorno da função todayProgress, declarada no app seja maior que zero, sera renderizado uma tag p em verde com o progresso em %
+                {/* caso o retorno da função todayProgress, declarada no app seja maior que zero, sera renderizado uma tag p em verde com o progresso em % */}
                 <p>Nenhum hábito concluído ainda</p>
             </Progress>
             <TodayHabitsBox>

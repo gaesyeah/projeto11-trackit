@@ -22,7 +22,7 @@ const App = () => {
     }, [loginData]);
 
     const todayProgress = () => {
-        return Math.trunc((hojeData.filter((habit) => habit.done).length / hojeData.length) * 100)
+        return Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100)
     }
 
     return (
