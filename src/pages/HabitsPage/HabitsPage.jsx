@@ -1,21 +1,18 @@
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
+import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDay from "../../components/WeekDay/Weekday";
+import { URL, weekDays } from "../../constants";
 import { PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
 const HabitsPage = () => {
 
-    const weekDays = [
-        { id: 1, day: 'D' },
-        { id: 2, day: 'S' },
-        { id: 3, day: 'T' },
-        { id: 4, day: 'Q' },
-        { id: 5, day: 'Q' },
-        { id: 6, day: 'S' },
-        { id: 7, day: 'S' },
-    ];
+    const {config} = useContext(DataContext);
 
+    const [loading, setLoading] = useState(false);
     const [habitInput, setHabitInput] = useState('');
     const [showCreation, setShowCreation] = useState(false);
     const [habitDays, setHabitDays] = useState([]);
@@ -40,9 +37,23 @@ const HabitsPage = () => {
         if (habitDays.length === 0){
             alert('Você precisa selecionar pelo menos um dia da semana!');
         } else {
-            setHabitDays([]);
-            setHabitInput('');
-            setShowCreation(false);
+
+            setLoading(true);
+
+            axios.post(`${URL}/habits`, {name: habitInput, days: habitDays}, config)
+            .then(() => {
+                setHabitDays([]);
+                setHabitInput('');
+                setShowCreation(false);
+
+                setLoading(false);
+            })
+            .catch(({response}) => {
+                const {details, message} = response.data;
+                alert(`${!details ? '' : details}\n${message}`);
+
+                setLoading(false);
+            });
         }
     }
 
@@ -56,6 +67,7 @@ const HabitsPage = () => {
                 &&
                 <AddHabitBox onSubmit={createHabit}>
                     <input
+                        disabled={loading}
                         onChange={e => setHabitInput(e.target.value)}
                         value={habitInput}
                         type="text" 
@@ -64,17 +76,35 @@ const HabitsPage = () => {
                     />
                     <WeekDayButtons>
                         {weekDays.map((days) => 
-                            <WeekDay 
-                                key ={days.id} 
+                            <WeekDay
+                                key={days.id} 
                                 days={days} 
                                 habitDays={habitDays} 
                                 setHabitDays={setHabitDays}
+                                loading={loading}
                             />
                         )}
                     </WeekDayButtons>
                     <ConfirmButtons>
-                        <button onClick={() => setShowCreation(false)}type="button">Cancelar</button>
-                        <button type="submit">Salvar</button>
+                        <button
+                            disabled={loading}
+                            onClick={() => setShowCreation(false)}
+                            type="button"
+                        >Cancelar</button>
+                        <button
+                            disabled={loading}
+                            type="submit"
+                        >{!loading && 'Salvar'}
+                        <ThreeDots 
+                            height="45" 
+                            width="45" 
+                            radius="9"
+                            color="#FFFFFF" 
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={loading}
+                        /></button>
                     </ConfirmButtons>
                 </AddHabitBox>}
 

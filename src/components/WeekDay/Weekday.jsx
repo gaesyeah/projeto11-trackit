@@ -1,6 +1,6 @@
 import { MyHabitDay } from "../../pages/HabitsPage/styled";
 
-const WeekDay = ({days, habitDays, setHabitDays}) => {
+const WeekDay = ({days, habitDays, setHabitDays, loading}) => {
     const {id, day} = days;
 
     const chooseDays = (id) => {
@@ -12,7 +12,8 @@ const WeekDay = ({days, habitDays, setHabitDays}) => {
     }
 
     return (
-        <MyHabitDay day={id} days={habitDays} 
+        <MyHabitDay day={id} days={habitDays}
+            disabled={loading}
             onClick={() => chooseDays(id)}
             type="button"
         >{day}</MyHabitDay>
