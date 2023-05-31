@@ -32,13 +32,12 @@ const TodayPage = () => {
     ];
     const [todayHabits, setTodayHabits] = useState(...[TODAYHABITS]);
 
-    //retorna a % das tarefas do dia concluidas
-    console.log(Math.trunc((todayHabits.filter((habit) => habit.done).length / todayHabits.length) * 100));
-
     return (
         <PageBody>
             <Progress>
                 <h2>{dayjs().locale('pt-br').format('dddd, D/M')}</h2>
+                
+                //caso o retorno da função todayProgress, declarada no app seja maior que zero, sera renderizado uma tag p em verde com o progresso em %
                 <p>Nenhum hábito concluído ainda</p>
             </Progress>
             <TodayHabitsBox>

@@ -2,20 +2,22 @@ import { useContext } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
-import { InfoContext } from "../../App";
+import { DataContext } from "../../App";
 import { NavContainer } from "./style";
 
 const Footer = () => {
 
     const navigate = useNavigate();
 
-    console.log(useContext(InfoContext));
+    console.log(useContext(DataContext));
 
     return (
         <NavContainer>
             <p onClick={() => navigate('/habitos')}>Hábitos</p>
             <div onClick={() => navigate('/hoje')}>
                 <CircularProgressbar
+
+                    //alterar esse valor para o retorno da função todayProgress, declarada no App
                     value={40}
                     text='Hoje'
                     background
