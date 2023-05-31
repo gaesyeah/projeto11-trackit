@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageBody = styled.div`
-    overflow-y: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;

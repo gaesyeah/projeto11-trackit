@@ -8,7 +8,6 @@ const TodayHabit = ({habit, setHojeData}) => {
     const { id, name, done, currentSequence, highestSequence } = habit;
 
     const {config} = useContext(DataContext);
-    console.log(config);
 
     const reCheckHabit = (idHabit, isChecked) => {
         let pathname;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
@@ -8,7 +8,7 @@ import { URL, weekDays } from "../../constants";
 import { PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
-const HabitsPage = ({habitosData, setHabitosData}) => {
+const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
 
     const {config} = useContext(DataContext);
 
@@ -35,7 +35,16 @@ const HabitsPage = ({habitosData, setHabitosData}) => {
                 setLoading(false);
                 //----------------
                 axios.get(`${URL}/habits`, config)
-                .then(({data}) => setHabitosData(data))
+                .then(({data}) => {
+                    setHabitosData(data);
+
+                    axios.get(`${URL}/habits/today`, config)
+                    .then(({data}) => setHojeData(data))
+                    .catch(({response}) => {
+                        const {details, message} = response.data;
+                        console.log(`${!details ? '' : details}\n${message}`);
+                    });
+                })
                 .catch(({response}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);

@@ -23,8 +23,10 @@ const App = () => {
         }
     }
 
-    const [hojeData, setHojeData] = useState([]);
+    //criei como null pois essa informação sera a primeira a ser renderizada após o login, assim utilizei isso para implementar um loading corretamente
+    const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState([]);
+    //fiz essas requisições no App para a página nao precisar ficar recarregando sempre que o usuario trocar de rota
     useEffect(() => {
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
         if (Object.keys(loginData).length > 0){
@@ -47,7 +49,11 @@ const App = () => {
     }, [loginData]);
 
     const todayProgress = () => {
-        return Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
+        if (hojeData !== null){
+            return Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
+        } else {
+            return;
+        }
     }
 
     return (
@@ -58,7 +64,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
                 <Route path='/cadastro' element={<RegisterPage />} />
-                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData}/>} />
+                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData} setHojeData={setHojeData}/>} />
                 <Route path='/hoje' element={<TodayPage hojeData={hojeData} setHojeData={setHojeData}/>} />
                 <Route path='/historico' element={<HistoryPage />} />
             </Routes>
