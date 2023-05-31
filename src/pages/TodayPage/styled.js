@@ -23,4 +23,5 @@ export const TodayHabitsBox = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    padding-bottom: 34px;
 `;

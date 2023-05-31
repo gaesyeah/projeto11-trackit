@@ -1,14 +1,25 @@
+import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
+import { URL } from "../../constants";
 import { PageBody } from "../../style/PageBody";
 import { Progress, TodayHabitsBox } from "./styled";
 
-const TodayPage = ({hojeData}) => {
+const TodayPage = ({hojeData, setHojeData}) => {
 
-    const {todayProgress} = useContext(DataContext);
+    const {config, todayProgress} = useContext(DataContext);
+
+    useEffect(() => {
+        axios.get(`${URL}/habits/today`, config)
+        .then(({data}) => setHojeData(data))
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
+    }, [])
 
     return (
         <PageBody>

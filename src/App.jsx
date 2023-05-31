@@ -33,7 +33,7 @@ const App = () => {
             .then(({data}) => setHojeData(data))
             .catch(({response}) => {
                 const {details, message} = response.data;
-                alert(`${!details ? '' : details}\n${message}`);
+                console.log(`${!details ? '' : details}\n${message}`);
             });
 
             axios.get(`${URL}/habits`, config)
@@ -59,7 +59,7 @@ const App = () => {
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
                 <Route path='/cadastro' element={<RegisterPage />} />
                 <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData}/>} />
-                <Route path='/hoje' element={<TodayPage hojeData={hojeData}/>} />
+                <Route path='/hoje' element={<TodayPage hojeData={hojeData} setHojeData={setHojeData}/>} />
                 <Route path='/historico' element={<HistoryPage />} />
             </Routes>
         </DataContext.Provider>
