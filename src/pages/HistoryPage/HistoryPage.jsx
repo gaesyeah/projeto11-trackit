@@ -1,17 +1,45 @@
+import axios from "axios";
+import { useContext, useEffect } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import styled from "styled-components";
-import { PageBody } from "../../style/PageBody";
+import { DataContext } from "../../App";
+import { URL } from "../../constants";
+import { NullLoading, PageBody } from "../../style/PageBody";
+import loadingGif from "./../../assets/loadingGif.gif";
 
-const HistoryPage = () => {
-    return (
-        <PageBody>
-            <HistoryBeta>
-                <h2>Histórico</h2>
-                <StyledCalendar />
-            </HistoryBeta>
-        </PageBody>
-    );
+const HistoryPage = ({historicoData, setHistoricoData}) => {
+
+    const {config} = useContext(DataContext);
+
+    useEffect(() => {
+        axios.get(`${URL}/habits/history/daily`, config)
+        .then(({data}) => {
+            console.log(data);
+            setHistoricoData(data)
+        })
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
+    }, [config]);
+
+    if (historicoData === null) {
+        return (
+            <NullLoading>
+                <img src={loadingGif} alt='reloading'/>
+            </NullLoading>
+        );
+    } else {
+        return (
+            <PageBody>
+                <HistoryBeta>
+                    <h2>Histórico</h2>
+                    <StyledCalendar />
+                </HistoryBeta>
+            </PageBody>
+        );
+    };
 };
 
 export default HistoryPage;

@@ -22,6 +22,7 @@ const App = () => {
     //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState(null);
+    const [historicoData, setHistoricoData] = useState(null);
     useEffect(() => {
         const {token, image} = loginData;
         const config = {
@@ -30,7 +31,7 @@ const App = () => {
             }
         }
         //navega direto para a rota /hoje caso tenha uma config previa no localStorage
-        if (localStorage.getItem('config') && pathname === '/'){
+        if (localStorage.getItem('config')){
             navigate('/hoje');
         }
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
@@ -59,7 +60,7 @@ const App = () => {
                 <Route path='/cadastro' element={<RegisterPage />} />
                 <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData} setHojeData={setHojeData}/>} />
                 <Route path='/hoje' element={<TodayPage hojeData={hojeData} setHojeData={setHojeData}/>} />
-                <Route path='/historico' element={<HistoryPage />} />
+                <Route path='/historico' element={<HistoryPage historicoData={historicoData} setHistoricoData={setHistoricoData} />} />
             </Routes>
         </DataContext.Provider>
     );
