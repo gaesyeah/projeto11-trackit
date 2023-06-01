@@ -13,6 +13,7 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
         //vai iterar uma vez para cada dia
         historicoData.forEach(({day, habits}) => {
             //vai iterar uma vez para cada habito desse dia
+            //e será verificado se o tamanho do array filtrado com done=true, é igual ao do array inteiro
             if ((habits.filter(({done}) => done).length) === habits.map(({done}) => done).length) {
                 allDone.push(day);
             } else {
