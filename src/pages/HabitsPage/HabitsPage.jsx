@@ -39,16 +39,14 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
                 setLoading(false);
                 //----------------
                 axios.get(`${URL}/habits`, config)
-                .then(({data}) => {
-                    setHabitosData(data);
-
-                    axios.get(`${URL}/habits/today`, config)
-                    .then(({data}) => setHojeData(data))
-                    .catch(({response}) => {
-                        const {details, message} = response.data;
-                        console.log(`${!details ? '' : details}\n${message}`);
-                    });
-                })
+                .then(({data}) => setHabitosData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                });
+                //----------------
+                axios.get(`${URL}/habits/today`, config)
+                .then(({data}) => setHojeData(data))
                 .catch(({response}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);
