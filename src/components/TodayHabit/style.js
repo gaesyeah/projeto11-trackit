@@ -40,6 +40,15 @@ export const Habit = styled.div`
             (!done) ? '#666666' : '#8FC549'
         };
     }
+
+    h1{
+        margin-left: 14px;
+        font-size: 13px;
+        line-height: 16px;
+        span {
+            color: ${({done}) => !done ? '#f24d4d' : '#5cba5c'};
+        }
+    }
 `;
 export const TodayCheck = styled(CheckSquareFill)`
     cursor: ${({loading}) => loading ? 'default' : 'pointer'};
