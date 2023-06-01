@@ -44,11 +44,12 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
             <PageBody>
                 <H2Formater>
                     <h2>Histórico</h2>
-                    <h1>Em breve você poderá ver o histórico dos seus hábitos aqui!</h1>
                 </H2Formater>
-                {/* <HistoryBeta>
-                    <StyledCalendar locale="pt-BR"/>
-                </HistoryBeta> */}
+                <HistoryBeta>
+                    <StyledCalendar 
+                        locale="pt-BR"
+                    />
+                </HistoryBeta>
             </PageBody>
         );
     };
