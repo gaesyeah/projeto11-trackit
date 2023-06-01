@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import { URL } from "../../constants";
 import { SignBody } from "../../style/SignBody";
@@ -85,7 +85,7 @@ const RegisterPage = () => {
                     visible={loading}
                 /></button>
             </form>
-            <p onClick={() => navigate('/')}>Já tem uma conta? Faça login!</p>
+            <Link to='/'>Já tem uma conta? Faça login!</Link>
         </SignBody>
     );
 };

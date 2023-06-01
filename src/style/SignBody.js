@@ -18,13 +18,11 @@ export const SignBody = styled.div`
     img{
         width: 155px;
     }
-    p{
-        cursor: pointer;
+    a{
         margin-top: 25px;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 14px;
         line-height: 17px;
-        text-decoration-line: underline;
         color: #52B6FF;
     }
 `;
