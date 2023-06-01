@@ -45,7 +45,7 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
                 if (view === 'month'){
                     //esse if não permite que classes sejam aplicadas para o dia atual
                     if (!(date.toDateString() === new Date().toDateString())) {
-                    //aqui é onde é retornado as classe especificas para os dias criados pelo daysjs
+                    //aqui é onde é retornado as classes especificas para os dias criados pelo daysjs
                         if (allDoneDaysjs.some(d => d.isSame(date, 'day'))){
                             return 'classAllDone';
                         }
