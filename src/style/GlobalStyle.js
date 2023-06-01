@@ -3,8 +3,11 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     body{
         background-color: #E5E5E5;
+        display: flex;
+        justify-content: center;
     }
     *{
+        overflow-x: 0;
         box-sizing: border-box;
         user-select: none;
     }
@@ -55,7 +58,6 @@ const GlobalStyle = createGlobalStyle`
     }
     h2{
         margin-top: 30px;
-        margin-left: -155px;
         font-size: 23px;
         line-height: 29px;
         color: #126BA5;

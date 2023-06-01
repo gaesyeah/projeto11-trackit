@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SignBody = styled.div`
+    width: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

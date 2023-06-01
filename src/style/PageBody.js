@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageBody = styled.div`
-    overflow-x: hidden;
+    width: 340px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,3 +20,8 @@ export const NullLoading = styled.div`
         width: 150px;
     }
 `;
+
+export const H2Formater = styled.div`
+    width: 340px;
+    text-align: start;
+`

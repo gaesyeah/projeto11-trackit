@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const NavContainer = styled.header`
+export const FooterContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     z-index: 1;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 70px;
     background: #FFFFFF;

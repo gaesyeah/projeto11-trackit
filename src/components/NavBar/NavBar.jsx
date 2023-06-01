@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { FooterContainer } from "./style";
+import { NavContainer } from "./style";
 
 const NavBar = ({image}) => {
 
     const navigate = useNavigate();
 
     return (
-        <FooterContainer>
+        <NavContainer>
             <p onClick={() => navigate('/')}>TrackIt</p>
             <img src={image} alt='userImg' />
-        </FooterContainer>
+        </NavContainer>
     );
 };
 

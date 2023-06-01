@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
-import { NullLoading, PageBody } from "../../style/PageBody";
+import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { Progress, TodayHabitsBox } from "./styled";
 
@@ -40,16 +40,18 @@ const TodayPage = ({hojeData, setHojeData}) => {
 
         return (
             <PageBody>
-                <Progress today={todayProgress()}>
-                    <h2>{date.charAt(0).toUpperCase() + date.slice(1)}</h2>
-                    <p>
-                        {todayProgress() > 0
-                            ?
-                            <span>{todayProgress()}% dos hábitos concluídos</span>
-                            :
-                            'Nenhum hábito concluído ainda'
-                        }
-                    </p>
+                <Progress>
+                    <H2Formater>
+                        <h2>{date.charAt(0).toUpperCase() + date.slice(1)}</h2>
+                        <p>
+                            {todayProgress() > 0
+                                ?
+                                <span>{todayProgress()}% dos hábitos concluídos</span>
+                                :
+                                'Nenhum hábito concluído ainda'
+                            }
+                        </p>
+                    </H2Formater>
                 </Progress>
                 <TodayHabitsBox>
                     {hojeData.map((habit) => 

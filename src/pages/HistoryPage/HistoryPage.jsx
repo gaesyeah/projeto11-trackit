@@ -5,8 +5,9 @@ import 'react-calendar/dist/Calendar.css';
 import styled from "styled-components";
 import { DataContext } from "../../App";
 import { URL } from "../../constants";
-import { NullLoading, PageBody } from "../../style/PageBody";
+import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
+import { HistoryBeta } from "./styled";
 
 const HistoryPage = ({historicoData, setHistoricoData}) => {
 
@@ -36,8 +37,10 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
     } else {
         return (
             <PageBody>
-                <HistoryBeta>
+                <H2Formater>
                     <h2>Histórico</h2>
+                </H2Formater>
+                <HistoryBeta>
                     <StyledCalendar locale="pt-BR"/>
                 </HistoryBeta>
             </PageBody>
@@ -47,15 +50,6 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
 
 export default HistoryPage;
 
-const HistoryBeta = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    h2{
-        margin-left: -240px;
-    }
-`;
 const StyledCalendar = styled(Calendar)`
     .react-calendar__navigation__label {
         height: 58px;
@@ -73,4 +67,4 @@ const StyledCalendar = styled(Calendar)`
     button{
         color: #52B6FF;
     }
-`
+`;
