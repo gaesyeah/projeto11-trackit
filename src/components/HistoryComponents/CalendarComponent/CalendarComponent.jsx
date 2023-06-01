@@ -9,7 +9,7 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
     const allDone = [];
     const notAllDone = [];
     //faz push nos arrays vazios acima dos dias em que todos os habitos do dia foram/não foram concluidos, respectivamente
-    const each = () => {
+    const returnDone = () => {
         //vai iterar uma vez para cada dia
         historicoData.forEach(({day, habits}) => {
             //vai iterar uma vez para cada habito desse dia
@@ -20,7 +20,7 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
             }
         })
     }
-    each();
+    returnDone();
 
     //função para converter os dias para o formato americano
     const enDayConvert = (date) => {
@@ -61,12 +61,10 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
             }}
 
             onClickDay={(value) => {
-                //constante para guardar o dia clicado
-                const clickedDate = dayjs(value).format('DD/MM/YYYY');
-                //constante para guardar o dia atual
-                const currendDate = dayjs().format('DD/MM/YYYY')
-                
                 const selectedHabits = [];
+                //constantes para guardar o dia clicado e o dia atual, respectivamente
+                const clickedDate = dayjs(value).format('DD/MM/YYYY');
+                const currendDate = dayjs().format('DD/MM/YYYY')
                 //entra no if somente se o dia clicado e o dia atual forem diferentes
                 if (clickedDate !== currendDate) {
                     //acha dentro do array do historico o dia igual ao dia clicado
