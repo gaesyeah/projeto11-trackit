@@ -21,7 +21,7 @@ export const Habit = styled.div`
     }
     span{
         color:${({done, current, highest}) => 
-            (current > highest && current > 0) 
+            (current === highest && current > 0) 
             ? 
             '#8FC549' 
             : 
