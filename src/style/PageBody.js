@@ -24,4 +24,9 @@ export const NullLoading = styled.div`
 export const H2Formater = styled.div`
     width: 340px;
     text-align: start;
+    h1{
+        font-size: 18px;
+        line-height: 22px;
+        color: #666666;
+    }
 `
