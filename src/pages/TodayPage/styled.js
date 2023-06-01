@@ -4,9 +4,8 @@ export const Progress = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    p{
-        font-size: 18px;
-        line-height: 22px;
+    h1{
+        margin-top: 0;
         color: #BABABA;
     }
     span{

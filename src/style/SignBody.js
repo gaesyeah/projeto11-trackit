@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const SignBody = styled.div`
+    padding: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 2200px;
-    height: 100vh;
     background: #FFFFFF;
     h1{
         font-family: 'Playball', cursive;

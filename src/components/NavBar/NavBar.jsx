@@ -7,7 +7,7 @@ const NavBar = ({image}) => {
 
     return (
         <NavContainer>
-            <p onClick={() => navigate('/')}>TrackIt</p>
+            <h3 onClick={() => navigate('/')}>TrackIt</h3>
             <img src={image} alt='userImg' />
         </NavContainer>
     );

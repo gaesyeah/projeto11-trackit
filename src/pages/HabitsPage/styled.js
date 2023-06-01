@@ -14,11 +14,8 @@ export const TopBar = styled.div`
     align-items: center;
     margin: 17px 0px -10px 0px;
 `;
-export const NoHabits = styled.p`
+export const NoHabits = styled.h1`
     margin-top: 27px;
-    font-size: 18px;
-    line-height: 22px;
-    color: #666666;
     width: 338px;
 `;
 export const AddHabitBox = styled.form`

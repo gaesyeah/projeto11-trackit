@@ -9,6 +9,11 @@ export const PageBody = styled.div`
     background: #E5E5E5;
     padding: 70px 0 70px 0;
     font-family: 'Lexend Deca', sans-serif;
+    h1{
+        font-size: 18px;
+        line-height: 22px;
+        color: #666666;
+    }
 `;
 
 export const NullLoading = styled.div`
@@ -26,8 +31,5 @@ export const H2Formater = styled.div`
     text-align: start;
     h1{
         margin-top: 17px;
-        font-size: 18px;
-        line-height: 22px;
-        color: #666666;
     }
 `
