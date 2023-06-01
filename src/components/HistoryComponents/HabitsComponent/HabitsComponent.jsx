@@ -7,14 +7,14 @@ const HabitsComponent = ({habit}) => {
     return (
         <Habit>
             <h3>{name}</h3>
-            <h1><span>
+            <h2>
                 {!done 
                     ? 
                     'Não foi concluído'
                     :
                     'Foi concluído'
                 }
-            </span></h1>
+            </h2>
             {!done 
                 ? 
                 <HabitNotChecked/> 
