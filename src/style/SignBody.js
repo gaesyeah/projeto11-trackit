@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SignBody = styled.div`
-    padding: 100vh;
+    padding: 0 100vh 0 100vh;
     height: 100vh;
     display: flex;
     flex-direction: column;
