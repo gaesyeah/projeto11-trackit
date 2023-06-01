@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
@@ -13,14 +13,20 @@ const TodayPage = ({hojeData, setHojeData}) => {
 
     const {config, todayProgress} = useContext(DataContext);
 
+    const [reRender, setReRender] = useState(false);
     useEffect(() => {
+
         axios.get(`${URL}/habits/today`, config)
-        .then(({data}) => setHojeData(data))
+        .then(({data}) => {
+            setHojeData(data);
+
+            setReRender(true);
+        })
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
         });
-    }, [config]);
+    }, [reRender]);
 
     if (hojeData === null){
         return (

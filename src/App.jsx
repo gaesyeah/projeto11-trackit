@@ -1,9 +1,7 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-import { URL } from "./constants";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import LoginPage from "./pages/LoginPage/LoginPage";

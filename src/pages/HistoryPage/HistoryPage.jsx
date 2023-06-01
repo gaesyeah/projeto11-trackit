@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import styled from "styled-components";
@@ -12,17 +12,20 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
 
     const {config} = useContext(DataContext);
 
+    const [reRender, setReRender] = useState(false);
     useEffect(() => {
         axios.get(`${URL}/habits/history/daily`, config)
         .then(({data}) => {
             console.log(data);
-            setHistoricoData(data)
+            setHistoricoData(data);
+
+            setReRender(true);
         })
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
         });
-    }, [config]);
+    }, [reRender]);
 
     if (historicoData === null) {
         return (
@@ -35,7 +38,7 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
             <PageBody>
                 <HistoryBeta>
                     <h2>Histórico</h2>
-                    <StyledCalendar />
+                    <StyledCalendar locale="pt-BR"/>
                 </HistoryBeta>
             </PageBody>
         );
@@ -54,6 +57,12 @@ const HistoryBeta = styled.div`
     }
 `;
 const StyledCalendar = styled(Calendar)`
+    .react-calendar__navigation__label {
+        height: 58px;
+        margin-top: 4px;
+        line-height: 19px;
+        color: #126BA5;
+    }
     box-sizing: content-box;
     width: 335px;
     margin-top: 11px;

@@ -60,14 +60,19 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
         }
     }
 
+    const [reRender, setReRender] = useState(false);
     useEffect(() => {
         axios.get(`${URL}/habits`, config)
-        .then(({data}) => {setHabitosData(data)})
+        .then(({data}) => {
+            setHabitosData(data);
+
+            setReRender(true);
+        })
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
         });
-    }, [config]);
+    }, [reRender]);
 
     if (habitosData === null){
         return (
