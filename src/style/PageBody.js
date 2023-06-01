@@ -9,6 +9,12 @@ export const PageBody = styled.div`
     background: #E5E5E5;
     padding: 70px 0 70px 0;
     font-family: 'Lexend Deca', sans-serif;
+    h2{
+        margin-top: 30px;
+        font-size: 23px;
+        line-height: 29px;
+        color: #126BA5;
+    }
     h1{
         font-size: 18px;
         line-height: 22px;

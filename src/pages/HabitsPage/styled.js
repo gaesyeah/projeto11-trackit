@@ -6,7 +6,6 @@ export const TopBar = styled.div`
     h2{
         margin-top: unset;
         margin-left: 17px;
-        padding-left: unset;
     }
     width: 375px;
     display: flex;

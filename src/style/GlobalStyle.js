@@ -56,11 +56,5 @@ const GlobalStyle = createGlobalStyle`
             opacity: 0.5;
         }
     }
-    h2{
-        margin-top: 30px;
-        font-size: 23px;
-        line-height: 29px;
-        color: #126BA5;
-    }
 `;
 export default GlobalStyle;
