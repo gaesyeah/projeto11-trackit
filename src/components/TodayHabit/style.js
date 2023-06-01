@@ -19,6 +19,18 @@ export const Habit = styled.div`
         line-height: 16px;
         color: #666666;
     }
+    div{
+        position: absolute;
+        margin: 13px;
+        right: 0;
+        top: 0;
+        img{
+            margin: -15px;
+            position: absolute;
+            width: 100px;
+            opacity: 0.8;
+        }
+    }
     span{
         color:${({done, current, highest}) => 
             (current === highest && current > 0) 
@@ -30,11 +42,8 @@ export const Habit = styled.div`
     }
 `;
 export const TodayCheck = styled(CheckSquareFill)`
+    cursor: ${({loading}) => loading ? 'default' : 'pointer'};
+    opacity: ${({loading}) => loading ? '0.7' : '1'};
     color: ${({done}) => !done ? '#EBEBEB' : '#8FC549'};
-    margin: 13px;
-    right: 0;
-    top: 0;
-    position: absolute;
-    cursor: pointer;
     width: 69px;
 `

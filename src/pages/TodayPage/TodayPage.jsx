@@ -36,7 +36,7 @@ const TodayPage = ({hojeData, setHojeData}) => {
         );
     } else {
         
-        const date = dayjs().locale('pt-br').format('dddd, D/M');
+        const date = dayjs().locale('pt-br').format('dddd, DD/MM');
 
         return (
             <PageBody>
