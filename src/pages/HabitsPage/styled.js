@@ -4,10 +4,9 @@ import { PlusSquare } from "styled-icons/evaicons-solid";
 
 export const TopBar = styled.div`
     h2{
-        margin-top: unset;
-        margin-left: 17px;
+        margin-top: 0px;
     }
-    width: 375px;
+    width: 340px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,7 +103,7 @@ export const PlusIcon = styled(PlusSquare)`
     cursor: pointer;
     width: 54px;
     color: #52B6FF;
-    margin-right: 10px;
+    margin-right: -8px;
 `;
 export const TrashIcon = styled(Trash3)`
     cursor: pointer;
