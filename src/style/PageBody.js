@@ -10,7 +10,6 @@ export const PageBody = styled.div`
     padding: 70px 0 70px 0;
     font-family: 'Lexend Deca', sans-serif;
     h2{
-        margin-top: 30px;
         font-size: 23px;
         line-height: 29px;
         color: #126BA5;
@@ -33,6 +32,7 @@ export const NullLoading = styled.div`
 `;
 
 export const H2Formater = styled.div`
+    margin-top: 30px;
     width: 340px;
     text-align: start;
     h1{

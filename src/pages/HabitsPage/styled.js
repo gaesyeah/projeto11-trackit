@@ -3,9 +3,6 @@ import { Trash3 } from "styled-icons/bootstrap";
 import { PlusSquare } from "styled-icons/evaicons-solid";
 
 export const TopBar = styled.div`
-    h2{
-        margin-top: 0px;
-    }
     width: 340px;
     display: flex;
     justify-content: space-between;
