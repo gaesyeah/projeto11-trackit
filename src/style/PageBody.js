@@ -38,4 +38,9 @@ export const H2Formater = styled.div`
     h1{
         margin-top: 17px;
     }
+    p{
+        margin-top: 17px;
+        font-size: 18px;
+        color: #666666;
+    }
 `

@@ -48,14 +48,19 @@ const TodayPage = ({hojeData, setHojeData}) => {
                 <Progress>
                     <H2Formater>
                         <h2>{date.charAt(0).toUpperCase() + date.slice(1)}</h2>
-                        <h1>
-                            {todayProgress() > 0
-                                ?
-                                <span>{todayProgress()}% dos hábitos concluídos</span>
-                                :
-                                'Nenhum hábito concluído ainda'
-                            }
-                        </h1>
+                        {hojeData.length === 0 
+                            ?
+                            <p>Não há nenhum hábito para hoje</p>
+                            :
+                            <h1>
+                                {todayProgress() > 0
+                                    ?
+                                    <span>{todayProgress()}% dos hábitos concluídos</span>
+                                    :
+                                    'Nenhum hábito concluído ainda'
+                                }
+                            </h1>
+                        }
                     </H2Formater>
                 </Progress>
                 <TodayHabitsBox>
