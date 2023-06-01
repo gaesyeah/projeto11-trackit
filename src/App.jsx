@@ -30,7 +30,7 @@ const App = () => {
             }
         }
         //navega direto para a rota /hoje caso tenha uma config previa no localStorage
-        if (localStorage.getItem('config')){
+        if (localStorage.getItem('config') && pathname === '/'){
             navigate('/hoje');
         }
         //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
