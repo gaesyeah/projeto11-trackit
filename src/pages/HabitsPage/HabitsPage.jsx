@@ -138,6 +138,7 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
                             createdHabit={createdHabit} 
                             weekDays={weekDays}
                             setHabitosData={setHabitosData}
+                            setHojeData={setHojeData}
                         />
                     )}
                 </MyHabits>

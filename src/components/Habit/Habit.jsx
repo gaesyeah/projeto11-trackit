@@ -4,7 +4,7 @@ import { DataContext } from "../../App";
 import { URL } from "../../constants";
 import { MyHabit, MyHabitDay, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 
-const Habit = ({createdHabit, weekDays, setHabitosData}) => {
+const Habit = ({createdHabit, weekDays, setHabitosData, setHojeData}) => {
     const {id, name, days} = createdHabit;
 
     const {config} = useContext(DataContext);
@@ -14,8 +14,16 @@ const Habit = ({createdHabit, weekDays, setHabitosData}) => {
             
             axios.delete(`${URL}/habits/${idHabit}`, config)
             .then(() => {
+
                 axios.get(`${URL}/habits`, config)
                 .then(({data}) => setHabitosData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                });
+
+                axios.get(`${URL}/habits/today`, config)
+                .then(({data}) => setHojeData(data))
                 .catch(({response}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);

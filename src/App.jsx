@@ -18,18 +18,17 @@ const App = () => {
     const navigate = useNavigate();
 
     const [loginData, setLoginData] = useState({});
-    const {token, image} = loginData;
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
-
     //criei como null para utilizar os loadings de maneira correta, para caso as requisições retornem um array vazio
     //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState(null);
     useEffect(() => {
+        const {token, image} = loginData;
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
         //navega direto para a rota /hoje caso tenha uma config previa no localStorage
         if (localStorage.getItem('config')){
             navigate('/hoje');

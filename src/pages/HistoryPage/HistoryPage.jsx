@@ -1,3 +1,5 @@
+import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 import styled from "styled-components";
 import { PageBody } from "../../style/PageBody";
 
@@ -6,7 +8,7 @@ const HistoryPage = () => {
         <PageBody>
             <HistoryBeta>
                 <h2>Histórico</h2>
-                <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>
+                <StyledCalendar />
             </HistoryBeta>
         </PageBody>
     );
@@ -22,11 +24,16 @@ const HistoryBeta = styled.div`
     h2{
         margin-left: -240px;
     }
-    p{
-        margin-top: 17px;
-        padding-right: 17px;
-        font-size: 18px;
-        line-height: 22px;
-        color: #666666;
-    }
 `;
+const StyledCalendar = styled(Calendar)`
+    box-sizing: content-box;
+    width: 335px;
+    margin-top: 11px;
+    border-radius: 6px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #52B6FF;
+    button{
+        color: #52B6FF;
+    }
+`

@@ -29,10 +29,13 @@ const TodayPage = ({hojeData, setHojeData}) => {
             </NullLoading>
         );
     } else {
+        
+        const date = dayjs().locale('pt-br').format('dddd, D/M');
+
         return (
             <PageBody>
                 <Progress today={todayProgress()}>
-                    <h2>{dayjs().locale('pt-br').format('dddd, D/M')}</h2>
+                    <h2>{date.charAt(0).toUpperCase() + date.slice(1)}</h2>
                     <p>
                         {todayProgress() > 0
                             ?
