@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDay from "../../components/WeekDay/Weekday";
@@ -12,6 +13,8 @@ import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, Week
 const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
 
     const {config} = useContext(DataContext);
+
+    const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
     const [habitInput, setHabitInput] = useState('');
@@ -71,6 +74,8 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            navigate('/');
         });
     }, [reRender]);
 

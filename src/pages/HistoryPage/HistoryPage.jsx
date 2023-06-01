@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { DataContext } from "../../App";
 import { URL } from "../../constants";
@@ -12,6 +13,8 @@ import { HistoryBeta } from "./styled";
 const HistoryPage = ({historicoData, setHistoricoData}) => {
 
     const {config} = useContext(DataContext);
+
+    const navigate = useNavigate();
 
     const [reRender, setReRender] = useState(false);
     useEffect(() => {
@@ -25,6 +28,8 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            navigate('/');
         });
     }, [reRender]);
 

@@ -2,6 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
@@ -12,6 +13,8 @@ import { Progress, TodayHabitsBox } from "./styled";
 const TodayPage = ({hojeData, setHojeData}) => {
 
     const {config, todayProgress} = useContext(DataContext);
+
+    const navigate = useNavigate();
 
     const [reRender, setReRender] = useState(false);
     useEffect(() => {
@@ -25,6 +28,8 @@ const TodayPage = ({hojeData, setHojeData}) => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            navigate('/');
         });
     }, [reRender]);
 

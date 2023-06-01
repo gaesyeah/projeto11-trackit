@@ -16,28 +16,28 @@ const App = () => {
     const navigate = useNavigate();
 
     const [loginData, setLoginData] = useState({});
+    const {token, image} = loginData;
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     //criei como null para utilizar os loadings de maneira correta, para caso as requisições retornem um array vazio
     //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
     const [habitosData, setHabitosData] = useState(null);
     const [historicoData, setHistoricoData] = useState(null);
     useEffect(() => {
-        const {token, image} = loginData;
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
         //navega direto para a rota /hoje caso tenha uma config previa no localStorage
         if (localStorage.getItem('config')){
             navigate('/hoje');
-        }
-        //vai vai entrar nesse if somente quando o loginData for definido, lá na rota /
-        if (Object.keys(loginData).length > 0){
-            //localStorage para manter o usuario logado:
-            localStorage.setItem('config',JSON.stringify(config));
+        };
+        /*redefine novamente as keys no localStorage caso o loginData já tenha sido "setado" na rota /login
+        para não permitir que os valores no localStorage sejam redefinidos para undefined*/
+        if (Object.keys(loginData).length > 0) {
+            localStorage.setItem('config', JSON.stringify(config));
             localStorage.setItem('image', image);
-        }
+        };
     }, [loginData]);
 
     const todayProgress = () => {
@@ -46,12 +46,14 @@ const App = () => {
         } else {
             return;
         }
-    }    
+    }
 
+    const storedConfig = localStorage.getItem('config');
+    const storedImage = localStorage.getItem('image');
     return (
-        <DataContext.Provider value={{todayProgress, config: JSON.parse(localStorage.getItem('config'))}}>
+        <DataContext.Provider value={{todayProgress, config: storedConfig ? JSON.parse(storedConfig) : config}}>
             {pathname !== '/' && pathname !== '/cadastro' 
-                && <><Footer/><NavBar image={localStorage.getItem('image')}/></>
+                && <><Footer/><NavBar image={storedImage ? storedImage : image}/></>
             }
             <Routes>
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
