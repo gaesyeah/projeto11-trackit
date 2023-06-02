@@ -85,6 +85,8 @@ const CalendarComponent = ({setClickedHabits}) => {
                     } else {
                         setClickedHabits([]);
                     }
+                } else {
+                    setClickedHabits([]);
                 }
             }}
         />
