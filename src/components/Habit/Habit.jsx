@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useContext } from "react";
 import { DataContext } from "../../App";
-import { URL } from "../../constants";
+import { URL, weekDays } from "../../constants";
 import { MyHabit, MyHabitDay, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 
-const Habit = ({createdHabit, weekDays, setHabitosData, setHojeData}) => {
+const Habit = ({createdHabit}) => {
     const {id, name, days} = createdHabit;
 
-    const {config} = useContext(DataContext);
+    const {config, setHabitosData, setHojeData} = useContext(DataContext);
 
     const deleteHabit = (idHabit) => {
         if (confirm('Você realmente deseja apagar esse hábito?')){

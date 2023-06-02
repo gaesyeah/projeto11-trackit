@@ -5,10 +5,10 @@ import { URL } from "../../constants";
 import reCheckGif from "./../../assets/reCheckGif.gif";
 import { Habit, TodayCheck } from "./style";
 
-const TodayHabit = ({habit, setHojeData}) => {
+const TodayHabit = ({habit}) => {
     const { id, name, done, currentSequence, highestSequence } = habit;
 
-    const {config} = useContext(DataContext);
+    const {config, setHojeData} = useContext(DataContext);
 
     const [loading, setLoading] = useState(false);
 

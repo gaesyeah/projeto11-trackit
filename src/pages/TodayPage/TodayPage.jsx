@@ -10,9 +10,9 @@ import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { Progress, TodayHabitsBox } from "./styled";
 
-const TodayPage = ({hojeData, setHojeData}) => {
+const TodayPage = ({hojeData}) => {
 
-    const {config, todayProgress} = useContext(DataContext);
+    const {config, todayProgress, setHojeData} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -66,7 +66,6 @@ const TodayPage = ({hojeData, setHojeData}) => {
                 <TodayHabitsBox>
                     {hojeData.map((habit) => 
                         <TodayHabit
-                            setHojeData={setHojeData}
                             key={habit.id} 
                             habit={habit}
                         />

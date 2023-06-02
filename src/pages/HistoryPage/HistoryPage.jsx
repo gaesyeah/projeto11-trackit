@@ -10,14 +10,11 @@ import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { MyHabits } from "../HabitsPage/styled";
 import loadingGif from "./../../assets/loadingGif.gif";
 
-const HistoryPage = ({historicoData, setHistoricoData}) => {
+const HistoryPage = () => {
 
-    const {config} = useContext(DataContext);
+    const {config, clickedHabits, historicoData, setHistoricoData} = useContext(DataContext);
 
     const navigate = useNavigate();
-
-    //variavel de estado para renderizar os habitos no onClickDay (o calendario esta no componente CalendarComponent)
-    const [clickedHabits, setClickedHabits] = useState([]);
 
     const [reRender, setReRender] = useState(false);
     useEffect(() => {
@@ -47,11 +44,15 @@ const HistoryPage = ({historicoData, setHistoricoData}) => {
                 <H2Formater>
                     <h2>Histórico</h2>
                 </H2Formater>
-                <CalendarComponent historicoData={historicoData} setClickedHabits={setClickedHabits}/>
+                <CalendarComponent/>
                 <MyHabits>
                     {clickedHabits.map((habit) => 
                         <HabitsComponent habit={habit} key={habit.name} />
                     )}
+                {clickedHabits.length === 0 
+                    &&
+                    <p>Clique em um dos dias marcados para ver os habitos concluidos no mesmo</p>
+                }
                 </MyHabits>
             </PageBody>
         );

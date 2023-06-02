@@ -10,9 +10,9 @@ import { NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
-const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
+const HabitsPage = ({habitosData}) => {
 
-    const {config} = useContext(DataContext);
+    const {config, setHabitosData, setHojeData} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -144,9 +144,6 @@ const HabitsPage = ({habitosData, setHabitosData, setHojeData}) => {
                         <Habit 
                             key={createdHabit.id} 
                             createdHabit={createdHabit} 
-                            weekDays={weekDays}
-                            setHabitosData={setHabitosData}
-                            setHojeData={setHojeData}
                         />
                     )}
                 </MyHabits>

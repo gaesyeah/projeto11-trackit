@@ -22,6 +22,9 @@ const App = () => {
             Authorization: `Bearer ${token}`
         }
     }
+    //variavel de estado para renderizar os habitos no onClickDay (o calendario esta no componente CalendarComponent)
+    //criei no app para os habitos se manterem renderizados ao trocar de rota
+    const [clickedHabits, setClickedHabits] = useState([]);
     //criei como null para utilizar os loadings de maneira correta, para caso as requisições retornem um array vazio
     //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
@@ -51,17 +54,29 @@ const App = () => {
     const storedConfig = localStorage.getItem('config');
     const storedImage = localStorage.getItem('image');
     return (
-        <DataContext.Provider value={{todayProgress, config: storedConfig ? JSON.parse(storedConfig) : config}}>
+        <DataContext.Provider 
+            value={{
+                config: !storedConfig ? config : JSON.parse(storedConfig),
+                clickedHabits, setClickedHabits, 
+                setHojeData, setHojeData,
+                setHabitosData,
+                historicoData, setHistoricoData,
+                todayProgress
+            }}
+        >
+
             {pathname !== '/' && pathname !== '/cadastro' 
                 && <><Footer/><NavBar image={storedImage ? storedImage : image}/></>
             }
+            
             <Routes>
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
                 <Route path='/cadastro' element={<RegisterPage />} />
-                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} setHabitosData={setHabitosData} setHojeData={setHojeData}/>} />
-                <Route path='/hoje' element={<TodayPage hojeData={hojeData} setHojeData={setHojeData}/>} />
-                <Route path='/historico' element={<HistoryPage historicoData={historicoData} setHistoricoData={setHistoricoData} />} />
+                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} />} />
+                <Route path='/hoje' element={<TodayPage hojeData={hojeData}/>} />
+                <Route path='/historico' element={<HistoryPage />} />
             </Routes>
+            
         </DataContext.Provider>
     );
 };

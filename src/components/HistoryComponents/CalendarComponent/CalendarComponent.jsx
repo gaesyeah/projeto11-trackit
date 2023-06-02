@@ -1,8 +1,12 @@
 import dayjs from "dayjs";
+import { useContext } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
+import { DataContext } from "../../../App";
 
-const CalendarComponent = ({historicoData, setClickedHabits}) => {
+const CalendarComponent = () => {
+
+    const {historicoData, setClickedHabits} = useContext(DataContext);
 
     //criação dos dias usando o daysjs para personalizar o calendario
     //----------------------------------------------------------------
@@ -79,9 +83,11 @@ const CalendarComponent = ({historicoData, setClickedHabits}) => {
                             selectedHabits[i] = {name, done};
                         })
                     }
-                }
                 //finalmente seta a variavel de estado para renderizar os habitos
                 setClickedHabits(selectedHabits);
+                } else{
+                setClickedHabits([]);
+                }
             }}
         />
     );
