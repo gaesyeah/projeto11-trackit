@@ -8,6 +8,7 @@ export const PageBody = styled.div`
     width: 100vw;
     height: 100vh;
     background: #E5E5E5;
+    padding: 70px 0 70px 0;
     font-family: 'Lexend Deca', sans-serif;
     h2{
         font-size: 23px;
