@@ -1,6 +1,6 @@
 import { MyHabitDay } from "../../../pages/HabitsPage/styled";
 
-const MyHabitDayComponent = ({weekDay, days}) => {
+const MyHabitComponent = ({weekDay, days}) => {
 
     const {id, day} = weekDay;
 
@@ -14,4 +14,4 @@ const MyHabitDayComponent = ({weekDay, days}) => {
     );
 }
 
-export default MyHabitDayComponent;
+export default MyHabitComponent;

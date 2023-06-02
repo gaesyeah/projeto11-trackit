@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { DataContext } from "../../App";
 import { URL, weekDays } from "../../constants";
 import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
-import MyHabitDayComponent from "./MyHabitDayComponent/MyHabitDayComponent";
+import MyHabitComponent from "./MyHabitComponent/MyHabitComponent";
 
 const Habit = ({createdHabit}) => {
     const {id, name, days} = createdHabit;
@@ -52,7 +52,7 @@ const Habit = ({createdHabit}) => {
             <TrashIcon onClick={() => deleteHabit(id)} />
             <MyHabitDays>
                 {weekDays.map(weekDay =>
-                    <MyHabitDayComponent key={weekDay.id} days={days} weekDay={weekDay}/>
+                    <MyHabitComponent key={weekDay.id} days={days} weekDay={weekDay}/>
                 )}
             </MyHabitDays>
         </MyHabit>
