@@ -72,7 +72,7 @@ const CalendarComponent = ({setClickedHabits}) => {
                 if (clickedDate !== currendDate) {
                     //acha dentro do array do historico o dia igual ao dia clicado
                     const selectedDate = historicoData.find(({ day }) => day === clickedDate);
-
+                    //entra no if somente se o dia clicado for verde ou vermelho(está no historicoData)
                     if (selectedDate !== undefined) {
                         const {habits} = selectedDate;
                         /*itera o array habits para popular o array selectedHabits com o 
