@@ -5,9 +5,16 @@ const NavBar = ({image}) => {
 
     const navigate = useNavigate();
 
+    const logOut = () => {
+        localStorage.removeItem('config');
+        localStorage.removeItem('image');
+
+        navigate('/');
+    }
+
     return (
         <NavContainer data-test="header">
-            <h3 onClick={() => navigate('/')}>TrackIt</h3>
+            <h3 onClick={logOut}>TrackIt</h3>
             <img 
                 src={image} 
                 alt='userImg'
