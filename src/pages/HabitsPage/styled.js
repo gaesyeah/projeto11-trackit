@@ -63,12 +63,6 @@ export const MyHabits = styled.div`
     flex-direction: column;
     row-gap: 10px;
     padding-bottom: 34px;
-    p{
-        padding-left: 3px;
-        font-size: 18px;
-        line-height: 22px;
-        color: #666666;
-    }
 `;
 export const MyHabit = styled.div`
     position: relative;

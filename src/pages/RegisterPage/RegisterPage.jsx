@@ -64,7 +64,7 @@ const RegisterPage = () => {
                 <input
                     disabled={loading}
                     type="text" 
-                    placeholder="foto" 
+                    placeholder="foto(link)" 
                     required
                     value={registerInputs.image}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['image']: e.target.value}))}

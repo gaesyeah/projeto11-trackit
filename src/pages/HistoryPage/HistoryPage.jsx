@@ -9,6 +9,7 @@ import { URL } from "../../constants";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { MyHabits } from "../HabitsPage/styled";
 import loadingGif from "./../../assets/loadingGif.gif";
+import { StyledP } from "./styled";
 
 const HistoryPage = () => {
 
@@ -49,10 +50,17 @@ const HistoryPage = () => {
                     {clickedHabits.map((habit) => 
                         <HabitsComponent habit={habit} key={habit.name} />
                     )}
-                {clickedHabits.length === 0 
-                    &&
-                    <p>Clique em um dos dias marcados para ver os habitos concluidos no mesmo</p>
-                }
+                <StyledP>
+                    {/* menor ou igual a 1 porque o dia atual é desconsiderado */}
+                    {historicoData.length <= 1 
+                        ?
+                        'Seu historico está atualmente vazio Crie hábitos e/ou aguarde um dia'
+                        :
+                        clickedHabits.length === 0 
+                        &&
+                        `Clique em um dos dias marcados em ${<span>vermelho</span>} ou ${<span>verde</span>} para ver os habitos concluidos do mesmo`
+                    }
+                </StyledP>
                 </MyHabits>
             </PageBody>
         );

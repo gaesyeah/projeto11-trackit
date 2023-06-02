@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import { DataContext } from "../../../App";
@@ -10,22 +10,21 @@ const CalendarComponent = () => {
 
     //criação dos dias usando o daysjs para personalizar o calendario
     //----------------------------------------------------------------
-    const allDone = [];
-    const notAllDone = [];
+    const [allDone, setAllDone] = useState([]);
+    const [notAllDone, setNotAllDone] = useState([]);
     //faz push nos arrays vazios acima dos dias em que todos os habitos do dia foram/não foram concluidos, respectivamente
-    const returnDone = () => {
+    useEffect(() => {
         //vai iterar uma vez para cada dia
         historicoData.forEach(({day, habits}) => {
             //vai iterar uma vez para cada habito desse dia
             //e será verificado se o tamanho do array filtrado com done=true, é igual ao do array inteiro
             if ((habits.filter(({done}) => done).length) === habits.map(({done}) => done).length) {
-                allDone.push(day);
+                setAllDone([...allDone, day]);
             } else {
-                notAllDone.push(day);
+                setNotAllDone([...notAllDone, day]);
             }
         })
-    }
-    returnDone();
+    }, [])
 
     //função para converter os dias para o formato americano
     const enDayConvert = (date) => {
@@ -82,11 +81,11 @@ const CalendarComponent = () => {
                         habits.forEach(({name, done}, i) => {
                             selectedHabits[i] = {name, done};
                         })
+                        //finalmente seta a variavel de estado para renderizar os habitos
+                        setClickedHabits(selectedHabits);
+                    } else {
+                        setClickedHabits([]);
                     }
-                //finalmente seta a variavel de estado para renderizar os habitos
-                setClickedHabits(selectedHabits);
-                } else{
-                setClickedHabits([]);
                 }
             }}
         />
