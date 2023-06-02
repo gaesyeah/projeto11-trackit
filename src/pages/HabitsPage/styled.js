@@ -93,7 +93,7 @@ export const MyHabitDay = styled.button`
     background: ${({days, day}) => days.includes(day) ? '#CFCFCF' : '#FFFFFF'};
     color: ${({days, day}) => days.includes(day) ? '#FFFFFF' : '#DBDBDB'};
     &:disabled{
-        opacity: 1;
+        opacity: ${({falsebutton}) => falsebutton ? '1' : '0.5' };
     }
 `;
 export const PlusIcon = styled(PlusSquare)`

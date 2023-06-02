@@ -6,6 +6,7 @@ const MyHabitComponent = ({weekDay, days}) => {
 
     return (
         <MyHabitDay
+            falsebutton={true}
             disabled
             days={days}
             day={id}
