@@ -5,7 +5,6 @@ const GlobalStyle = createGlobalStyle`
         color-scheme: light only;
     }
     body{
-        background-color: #E5E5E5;
         display: flex;
         justify-content: center;
     }
