@@ -54,7 +54,7 @@ const App = () => {
         <DataContext.Provider 
             value={{
                 config: !storedConfig ? config : JSON.parse(storedConfig),
-                setHojeData, setHojeData,
+                setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData,
                 todayProgress

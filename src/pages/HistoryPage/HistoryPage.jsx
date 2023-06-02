@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
 import 'react-calendar/dist/Calendar.css';
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { DataContext } from "../../App";
 import CalendarComponent from "../../components/HistoryComponents/CalendarComponent/CalendarComponent";
 import HabitsComponent from "../../components/HistoryComponents/HabitsComponent/HabitsComponent";
@@ -54,7 +55,6 @@ const HistoryPage = () => {
                         <HabitsComponent habit={habit} key={habit.name} />
                     )}
                 <StyledP>
-                    {/* menor ou igual a 1 porque o dia atual é desconsiderado */}
                     {(historicoData.length === 1 && historicoData.some(({day}) => day == dayjs().format("DD/MM/YYYY"))) || historicoData.length === 0
                         ?
                         <>Seu historico está atualmente vazio Crie hábitos e/ou aguarde um dia'</>
