@@ -13,7 +13,7 @@ const Footer = () => {
 
     return (
         <FooterContainer>
-            <Link to='/habitos' >Hábitos</Link>
+            <Link to='/habitos'>Hábitos</Link>
             <div onClick={() => navigate('/hoje')}>
                 <CircularProgressbar
                     value={isNaN(todayProgress()) ? 0 : todayProgress()}

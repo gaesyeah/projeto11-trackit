@@ -18,6 +18,20 @@ export const Habit = styled.div`
         font-size: 13px;
         line-height: 16px;
         color: #666666;
+        span{
+            color:${({done, current, highest}) => 
+                (current === highest && current > 0) 
+                ? 
+                '#8FC549' 
+                : 
+                (!done) ? '#666666' : '#8FC549'
+            };
+            &:last-child{
+                span{
+                    color:${({highest, current}) => highest === current ? '#8FC549' : '#666666'};
+                }
+            }
+        }
     }
     div{
         position: absolute;
@@ -30,15 +44,6 @@ export const Habit = styled.div`
             width: 100px;
             opacity: 0.8;
         }
-    }
-    span{
-        color:${({done, current, highest}) => 
-            (current === highest && current > 0) 
-            ? 
-            '#8FC549' 
-            : 
-            (!done) ? '#666666' : '#8FC549'
-        };
     }
 
     h2{
