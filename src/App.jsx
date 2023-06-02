@@ -62,7 +62,7 @@ const App = () => {
         >
 
             {pathname !== '/' && pathname !== '/cadastro' 
-                && <><Footer/><NavBar image={storedImage ? storedImage : image}/></>
+                && <><Footer/><NavBar image={!storedImage ? image : storedImage}/></>
             }
             
             <Routes>
