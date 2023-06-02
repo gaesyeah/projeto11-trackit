@@ -16,22 +16,17 @@ const TodayPage = ({hojeData}) => {
 
     const navigate = useNavigate();
 
-    const [reRender, setReRender] = useState(false);
     useEffect(() => {
 
         axios.get(`${URL}/habits/today`, config)
-        .then(({data}) => {
-            setHojeData(data);
-
-            setReRender(true);
-        })
+        .then(({data}) => setHojeData(data))
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
 
             navigate('/');
         });
-    }, [reRender]);
+    }, []);
 
     if (hojeData === null){
         return (

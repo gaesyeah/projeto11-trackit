@@ -69,21 +69,16 @@ const HabitsPage = ({habitosData}) => {
         }
     }
 
-    const [reRender, setReRender] = useState(false);
     useEffect(() => {
         axios.get(`${URL}/habits`, config)
-        .then(({data}) => {
-            setHabitosData(data);
-
-            setReRender(true);
-        })
+        .then(({data}) => setHabitosData(data))
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
 
             navigate('/');
         });
-    }, [reRender]);
+    }, []);
 
     if (habitosData === null){
         return (

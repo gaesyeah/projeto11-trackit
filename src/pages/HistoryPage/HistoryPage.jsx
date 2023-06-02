@@ -21,21 +21,16 @@ const HistoryPage = () => {
 
     const [clickedHabits, setClickedHabits] = useState([]);
 
-    const [reRender, setReRender] = useState(false);
     useEffect(() => {
         axios.get(`${URL}/habits/history/daily`, config)
-        .then(({data}) => {
-            setHistoricoData(data);
-
-            setReRender(true);
-        })
+        .then(({data}) => setHistoricoData(data))
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
 
             navigate('/');
         });
-    }, [reRender]);
+    }, []);
 
     if (historicoData === null) {
         return (
