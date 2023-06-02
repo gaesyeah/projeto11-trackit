@@ -59,5 +59,24 @@ const GlobalStyle = createGlobalStyle`
             opacity: 0.5;
         }
     }
+    //-------------
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1); /* Cor da tonalidade escura */
+        pointer-events: none;
+        z-index: 9999;
+        display: none; /* Inicialmente oculto */
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body::before {
+            display: block; /* Exibir apenas quando o tema escuro estiver ativado */
+        }
+    }
 `;
 export default GlobalStyle;
