@@ -42,7 +42,7 @@ export const Habit = styled.div`
             margin: -15px;
             position: absolute;
             width: 100px;
-            opacity: 0.8;
+            opacity: 0.65;
         }
     }
 

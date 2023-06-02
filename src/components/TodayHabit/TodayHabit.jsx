@@ -50,11 +50,11 @@ const TodayHabit = ({habit}) => {
             <h3 data-test="today-habit-name">{name}</h3>
             <p data-test="today-habit-sequence">
                 Sequência atual: 
-                <span>{currentSequence} dia{currentSequence !== 1 && 's'}</span>
+                <span> {currentSequence} dia{currentSequence !== 1 && 's'}</span>
             </p>
             <p data-test="today-habit-record">
-                Seu recorde: 
-                <span>{highestSequence} dia{highestSequence !== 1 && 's'}</span>
+                Seu recorde:  
+                <span> {highestSequence} dia{highestSequence !== 1 && 's'}</span>
             </p>
             <div
                 data-test="today-habit-check-btn"

@@ -1,25 +1,37 @@
 import { useNavigate } from "react-router-dom";
+import logOutIcon from "./../../assets/logOutIcon.png";
 import { NavContainer } from "./style";
 
-const NavBar = ({image}) => {
+const NavBar = ({image, name}) => {
 
     const navigate = useNavigate();
 
     const logOut = () => {
-        localStorage.removeItem('config');
-        localStorage.removeItem('image');
-
-        navigate('/');
+        if(confirm('Você realmente deseja sair?')){
+            localStorage.removeItem('config');
+    
+            navigate('/');
+        }
     }
 
     return (
         <NavContainer data-test="header">
-            <h3 onClick={logOut}>TrackIt</h3>
-            <img 
-                src={image} 
-                alt='userImg'
-                data-test="avatar"
-            />
+            <div>
+                <img 
+                    onClick={logOut} 
+                    src={logOutIcon} 
+                    alt='logOut'
+                />
+                <h3>TrackIt</h3>
+            </div>
+            <div>
+                <p>{name}</p>
+                <img 
+                    src={image} 
+                    alt='userImg'
+                    data-test="avatar"
+                />
+            </div>
         </NavContainer>
     );
 };

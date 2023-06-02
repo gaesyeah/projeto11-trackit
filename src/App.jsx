@@ -16,7 +16,7 @@ const App = () => {
     const navigate = useNavigate();
 
     const [loginData, setLoginData] = useState({});
-    const {token, image} = loginData;
+    const {token, image, name} = loginData;
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -37,6 +37,7 @@ const App = () => {
         if (Object.keys(loginData).length > 0) {
             localStorage.setItem('config', JSON.stringify(config));
             localStorage.setItem('image', image);
+            localStorage.setItem('name', name);
         };
     }, [loginData]);
 
@@ -50,6 +51,7 @@ const App = () => {
 
     const storedConfig = localStorage.getItem('config');
     const storedImage = localStorage.getItem('image');
+    const storedName = localStorage.getItem('name');
     return (
         <DataContext.Provider 
             value={{
@@ -62,7 +64,14 @@ const App = () => {
         >
 
             {pathname !== '/' && pathname !== '/cadastro' 
-                && <><Footer/><NavBar image={!storedImage ? image : storedImage}/></>
+                && 
+                <>
+                    <Footer/>
+                    <NavBar
+                        image={!storedImage ? image : storedImage}
+                        name={!storedName ? name : storedName}
+                    />
+                </>
             }
             
             <Routes>

@@ -12,18 +12,39 @@ export const NavContainer = styled.footer`
     height: 70px;
     background: #126BA5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    h3{
-        cursor: pointer;
-        margin-left: 18px;
-        font-family: 'Playball', cursive;
-        font-size: 38.982px;
-        line-height: 49px;
-        color: #FFFFFF;
+    div:first-child{
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        img{
+            cursor: pointer;
+            border-radius: unset;
+            height: 27px;
+            width: 27px;
+            transform: rotate(180deg);
+        }
+        h3{
+            margin-left: 12px;
+            font-family: 'Playball', cursive;
+            font-size: 38.982px;
+            line-height: 49px;
+            color: #FFFFFF;
+        }
     }
-    img{
+    div{
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        p{
+            margin-right: 8px;
+            color: #FFFFFF;
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 20px;
+        }
+        img{
         width: 51px;
         height: 51px;
         border-radius: 100%;
-        margin-right: 10px;
+        }
     }
 `;
