@@ -1,7 +1,7 @@
 import { MyHabitDay } from "../../pages/HabitsPage/styled";
 
-const WeekDay = ({days, habitDays, setHabitDays, loading}) => {
-    const {id, day} = days;
+const WeekDayComponent = ({weekDay, habitDays, setHabitDays, loading}) => {
+    const {id, day} = weekDay;
 
     const chooseDays = (id) => {
         if (!habitDays.includes(id)) {
@@ -20,4 +20,4 @@ const WeekDay = ({days, habitDays, setHabitDays, loading}) => {
     );
 }
 
-export default WeekDay;
+export default WeekDayComponent;

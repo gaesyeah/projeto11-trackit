@@ -4,7 +4,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
-import WeekDay from "../../components/WeekDay/Weekday";
+import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
 import { URL, weekDays } from "../../constants";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
@@ -110,10 +110,10 @@ const HabitsPage = ({habitosData}) => {
                         required 
                     />
                     <WeekDayButtons>
-                        {weekDays.map((days) => 
-                            <WeekDay
-                                key={days.id} 
-                                days={days} 
+                        {weekDays.map((weekDay) => 
+                            <WeekDayComponent
+                                key={weekDay.id} 
+                                weekDay={weekDay} 
                                 habitDays={habitDays} 
                                 setHabitDays={setHabitDays}
                                 loading={loading}

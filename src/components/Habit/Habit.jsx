@@ -51,8 +51,8 @@ const Habit = ({createdHabit}) => {
             <h3>{name}</h3>
             <TrashIcon onClick={() => deleteHabit(id)} />
             <MyHabitDays>
-                {weekDays.map(wk =>
-                    <MyHabitDayComponent key={wk.id} days={days} wk={wk}/>
+                {weekDays.map(weekDay =>
+                    <MyHabitDayComponent key={weekDay.id} days={days} weekDay={weekDay}/>
                 )}
             </MyHabitDays>
         </MyHabit>
