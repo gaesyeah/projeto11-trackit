@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
@@ -17,7 +17,6 @@ const TodayPage = ({hojeData}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-
         axios.get(`${URL}/habits/today`, config)
         .then(({data}) => setHojeData(data))
         .catch(({response}) => {

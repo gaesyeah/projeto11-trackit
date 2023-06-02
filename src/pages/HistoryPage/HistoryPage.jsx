@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
 import 'react-calendar/dist/Calendar.css';
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { DataContext } from "../../App";
 import CalendarComponent from "../../components/HistoryComponents/CalendarComponent/CalendarComponent";
 import HabitsComponent from "../../components/HistoryComponents/HabitsComponent/HabitsComponent";
