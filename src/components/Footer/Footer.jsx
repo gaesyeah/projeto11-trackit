@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import { FooterContainer } from "./style";
 
@@ -13,7 +13,7 @@ const Footer = () => {
 
     return (
         <FooterContainer>
-            <p onClick={() => navigate('/habitos')}>Hábitos</p>
+            <Link to='/habitos' >Hábitos</Link>
             <div onClick={() => navigate('/hoje')}>
                 <CircularProgressbar
                     value={isNaN(todayProgress()) ? 0 : todayProgress()}
@@ -28,7 +28,7 @@ const Footer = () => {
                     })}
                 />
             </div>
-            <p onClick={() => navigate('/historico')}>Histórico</p>
+            <Link to='/historico'>Histórico</Link>
         </FooterContainer>
     );
 };

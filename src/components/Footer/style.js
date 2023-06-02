@@ -15,9 +15,9 @@ export const FooterContainer = styled.header`
     font-family: 'Lexend Deca', sans-serif;
     font-size: 18px;
     line-height: 22px;
-    p {
-        cursor: pointer;
+    a {
         color: #52B6FF;
+        text-decoration-line: none;
     }
     div {
         cursor: pointer;
