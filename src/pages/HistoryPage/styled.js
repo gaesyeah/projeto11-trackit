@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledP = styled.p`
+    width: 340px;
     text-align: center;
     padding-left: 3px;
     font-size: 18px;
