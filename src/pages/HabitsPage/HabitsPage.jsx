@@ -12,7 +12,7 @@ import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, Week
 
 const HabitsPage = ({habitosData}) => {
 
-    const {config, setHabitosData, setHojeData} = useContext(DataContext);
+    const {config, setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -51,6 +51,14 @@ const HabitsPage = ({habitosData}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);
                 });
+                //---------------
+                axios.get(`${URL}/habits/history/daily`, config)
+                .then(({data}) => setHistoricoData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                })
+                //---------------
             })
             .catch(({response}) => {
                 const {details, message} = response.data;

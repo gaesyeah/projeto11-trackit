@@ -7,7 +7,7 @@ import { MyHabit, MyHabitDay, MyHabitDays, TrashIcon } from "../../pages/HabitsP
 const Habit = ({createdHabit}) => {
     const {id, name, days} = createdHabit;
 
-    const {config, setHabitosData, setHojeData} = useContext(DataContext);
+    const {config, setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
 
     const deleteHabit = (idHabit) => {
         if (confirm('Você realmente deseja apagar esse hábito?')){
@@ -15,19 +15,28 @@ const Habit = ({createdHabit}) => {
             axios.delete(`${URL}/habits/${idHabit}`, config)
             .then(() => {
 
+                //---------------
                 axios.get(`${URL}/habits`, config)
                 .then(({data}) => setHabitosData(data))
                 .catch(({response}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);
                 });
-
+                //---------------
                 axios.get(`${URL}/habits/today`, config)
                 .then(({data}) => setHojeData(data))
                 .catch(({response}) => {
                     const {details, message} = response.data;
                     console.log(`${!details ? '' : details}\n${message}`);
                 });
+                //---------------
+                axios.get(`${URL}/habits/history/daily`, config)
+                .then(({data}) => setHistoricoData(data))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    console.log(`${!details ? '' : details}\n${message}`);
+                })
+                //---------------
             })
             .catch(({response}) => {
                 const {details, message} = response.data;

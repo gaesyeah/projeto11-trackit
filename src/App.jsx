@@ -22,9 +22,6 @@ const App = () => {
             Authorization: `Bearer ${token}`
         }
     }
-    //variavel de estado para renderizar os habitos no onClickDay (o calendario esta no componente CalendarComponent)
-    //criei no app para os habitos se manterem renderizados ao trocar de rota
-    const [clickedHabits, setClickedHabits] = useState([]);
     //criei como null para utilizar os loadings de maneira correta, para caso as requisições retornem um array vazio
     //criei no App para a página não ficar recarregando sempre que o usuario trocar a rota
     const [hojeData, setHojeData] = useState(null);
@@ -57,7 +54,6 @@ const App = () => {
         <DataContext.Provider 
             value={{
                 config: !storedConfig ? config : JSON.parse(storedConfig),
-                clickedHabits, setClickedHabits, 
                 setHojeData, setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData,

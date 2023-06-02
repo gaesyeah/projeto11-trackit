@@ -5,7 +5,7 @@ const HabitsComponent = ({habit}) => {
     const {name, done} = habit;
 
     return (
-        <Habit>
+        <Habit done={done}>
             <h3>{name}</h3>
             <h2>
                 {!done 

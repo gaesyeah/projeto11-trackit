@@ -4,9 +4,9 @@ import Calendar from "react-calendar";
 import styled from "styled-components";
 import { DataContext } from "../../../App";
 
-const CalendarComponent = () => {
+const CalendarComponent = ({setClickedHabits}) => {
 
-    const {historicoData, setClickedHabits} = useContext(DataContext);
+    const {historicoData} = useContext(DataContext);
 
     //criação dos dias usando o daysjs para personalizar o calendario
     //----------------------------------------------------------------
@@ -42,7 +42,6 @@ const CalendarComponent = () => {
 
     return (
         <StyledCalendar 
-            locale="pt-BR"
             
             tileClassName={({ date, view }) => {
                 if (view === 'month'){
@@ -68,7 +67,7 @@ const CalendarComponent = () => {
                 const selectedHabits = [];
                 //constantes para guardar o dia clicado e o dia atual, respectivamente
                 const clickedDate = dayjs(value).format('DD/MM/YYYY');
-                const currendDate = dayjs().format('DD/MM/YYYY')
+                const currendDate = dayjs().format('DD/MM/YYYY');
                 //entra no if somente se o dia clicado e o dia atual forem diferentes
                 if (clickedDate !== currendDate) {
                     //acha dentro do array do historico o dia igual ao dia clicado
