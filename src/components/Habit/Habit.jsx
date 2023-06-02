@@ -2,7 +2,8 @@ import axios from "axios";
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import { URL, weekDays } from "../../constants";
-import { MyHabit, MyHabitDay, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
+import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
+import MyHabitDayComponent from "./MyHabitDayComponent/MyHabitDayComponent";
 
 const Habit = ({createdHabit}) => {
     const {id, name, days} = createdHabit;
@@ -46,17 +47,12 @@ const Habit = ({createdHabit}) => {
     };
 
     return (
-        <MyHabit key={id}>
+        <MyHabit >
             <h3>{name}</h3>
             <TrashIcon onClick={() => deleteHabit(id)} />
             <MyHabitDays>
-                {weekDays.map(({ id, day }) =>
-                    <MyHabitDay
-                        disabled
-                        days={days}
-                        day={id}
-                        key={id}>{day}
-                    </MyHabitDay>
+                {weekDays.map(wk =>
+                    <MyHabitDayComponent key={wk.id} days={days} wk={wk}/>
                 )}
             </MyHabitDays>
         </MyHabit>
