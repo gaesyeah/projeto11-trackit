@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { CheckSquareFill, XSquareFill } from "styled-icons/bootstrap";
+import { CheckCircle, XCircle } from "styled-icons/bootstrap";
 
-export const HabitChecked = styled(CheckSquareFill)`
+export const HabitChecked = styled(CheckCircle)`
     margin: 11px;
     right: 0;
     top: 0;
@@ -9,7 +9,7 @@ export const HabitChecked = styled(CheckSquareFill)`
     color: #5cba5c;
     width: 69px;
 `
-export const HabitNotChecked = styled(XSquareFill)`
+export const HabitNotChecked = styled(XCircle)`
     margin: 11px;
     right: 0;
     top: 0;
