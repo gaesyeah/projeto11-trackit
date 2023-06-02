@@ -6,9 +6,13 @@ const NavBar = ({image}) => {
     const navigate = useNavigate();
 
     return (
-        <NavContainer>
+        <NavContainer data-test="header">
             <h3 onClick={() => navigate('/')}>TrackIt</h3>
-            <img src={image} alt='userImg' />
+            <img 
+                src={image} 
+                alt='userImg'
+                data-test="avatar"
+            />
         </NavContainer>
     );
 };

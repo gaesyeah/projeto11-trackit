@@ -91,18 +91,25 @@ const HabitsPage = ({habitosData}) => {
         <PageBody>
             <TopBar>
                 <h2>Meus Hábitos</h2>
-                <PlusIcon onClick={() => setShowCreation(true)}/>
+                <PlusIcon 
+                    onClick={() => setShowCreation(true)}
+                    data-test="habit-create-btn"
+                />
             </TopBar>
             {showCreation 
                 &&
-                <AddHabitBox onSubmit={createHabit}>
+                <AddHabitBox 
+                    onSubmit={createHabit} 
+                    data-test="habit-create-container"
+                >
                     <input
                         disabled={loading}
                         onChange={e => setHabitInput(e.target.value)}
                         value={habitInput}
                         type="text" 
                         placeholder="nome do hábito" 
-                        required 
+                        required
+                        data-test="habit-name-input" 
                     />
                     <WeekDayButtons>
                         {weekDays.map((weekDay) => 
@@ -120,10 +127,12 @@ const HabitsPage = ({habitosData}) => {
                             disabled={loading}
                             onClick={() => setShowCreation(false)}
                             type="button"
+                            data-test="habit-create-cancel-btn"
                         >Cancelar</button>
                         <button
                             disabled={loading}
                             type="submit"
+                            data-test="habit-create-save-btn"
                         >{!loading && 'Salvar'}
                         <ThreeDots 
                             height="45" 

@@ -5,11 +5,9 @@ const MyHabitComponent = ({weekDay, days}) => {
     const {id, day} = weekDay;
 
     return (
-        <MyHabitDay
-            falsebutton={true}
+        <MyHabitDay days={days} day={id} falsebutton={true} 
             disabled
-            days={days}
-            day={id}
+            data-test="habit-day"
         >{day}
         </MyHabitDay>
     );

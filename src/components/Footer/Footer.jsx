@@ -12,9 +12,16 @@ const Footer = () => {
     const {todayProgress} = useContext(DataContext);
 
     return (
-        <FooterContainer>
-            <Link to='/habitos'>Hábitos</Link>
-            <div onClick={() => navigate('/hoje')}>
+        <FooterContainer data-test="menu">
+            <Link 
+                to='/habitos'
+                data-test="habit-link"
+            >Hábitos
+            </Link>
+            <div 
+                onClick={() => navigate('/hoje')}
+                data-test="today-link"
+            >
                 <CircularProgressbar
                     value={isNaN(todayProgress()) ? 0 : todayProgress()}
                     text='Hoje'
@@ -28,7 +35,11 @@ const Footer = () => {
                     })}
                 />
             </div>
-            <Link to='/historico'>Histórico</Link>
+            <Link 
+                to='/historico'
+                data-test="history-link"
+            >Histórico
+            </Link>
         </FooterContainer>
     );
 };

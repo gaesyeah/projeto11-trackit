@@ -44,17 +44,24 @@ const TodayHabit = ({habit}) => {
     }
 
     return ( 
-        <Habit done={done} current={currentSequence} highest={highestSequence}>
-            <h3>{name}</h3>
-            <p>Sequência atual: <span>{currentSequence} dia{currentSequence !== 1 && 's'}</span></p>
-            <p>Seu recorde: <span>{highestSequence} dia{highestSequence !== 1 && 's'}</span></p>
-            <div>
+        <Habit done={done} current={currentSequence} highest={highestSequence}
+            data-test="today-habit-container"
+        >
+            <h3 data-test="today-habit-name">{name}</h3>
+            <p data-test="today-habit-sequence">
+                Sequência atual: 
+                <span>{currentSequence} dia{currentSequence !== 1 && 's'}</span>
+            </p>
+            <p data-test="today-habit-record">
+                Seu recorde: 
+                <span>{highestSequence} dia{highestSequence !== 1 && 's'}</span>
+            </p>
+            <div
+                data-test="today-habit-check-btn"
+                onClick={() => {!loading && reCheckHabit(id, done)}}
+            >
                 {loading && <img src={reCheckGif} alt="loading"/>}
-                <TodayCheck
-                    loading={loading}
-                    done={done}
-                    onClick={() => {!loading && reCheckHabit(id, done)}}
-                />
+                <TodayCheck loading={loading} done={done}/>
             </div>
         </Habit>
     );

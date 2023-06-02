@@ -42,6 +42,7 @@ const LoginPage = ({setLoginData}) => {
                     required
                     value={loginInputs.email}
                     onChange={(e) => setLoginInputs(previous => ({...previous, ['email']: e.target.value}))}
+                    data-test="email-input"
                 ></input>
                 <input
                     disabled={loading}
@@ -50,10 +51,12 @@ const LoginPage = ({setLoginData}) => {
                     required
                     value={loginInputs.password}
                     onChange={(e) => setLoginInputs(previous => ({...previous, ['password']: e.target.value}))}
+                    data-test="password-input"
                 ></input>
                 <button
                     disabled={loading} 
                     type="submit"
+                    data-test="login-btn"
                 >{!loading && 'Entrar'}
                 <ThreeDots 
                     height="60" 
@@ -66,7 +69,11 @@ const LoginPage = ({setLoginData}) => {
                     visible={loading}
                 /></button>
             </form>
-            <Link to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
+            <Link 
+                to='/cadastro' 
+                data-test="signup-link"
+            >Não tem uma conta? Cadastre-se!
+            </Link>
         </SignBody>
     );
 };

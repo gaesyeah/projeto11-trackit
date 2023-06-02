@@ -41,6 +41,7 @@ const RegisterPage = () => {
                     required
                     value={registerInputs.email}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['email']: e.target.value}))}
+                    data-test="email-input"
                 >
                 </input>
                 <input
@@ -50,6 +51,7 @@ const RegisterPage = () => {
                     required
                     value={registerInputs.password}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['password']: e.target.value}))}
+                    data-test="password-input"
                 >
                 </input>
                 <input
@@ -59,6 +61,7 @@ const RegisterPage = () => {
                     required
                     value={registerInputs.name}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['name']: e.target.value}))}
+                    data-test="user-name-input"
                 >
                 </input>
                 <input
@@ -68,11 +71,13 @@ const RegisterPage = () => {
                     required
                     value={registerInputs.image}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['image']: e.target.value}))}
+                    data-test="user-image-input"
                 >
                 </input>
                 <button
                     disabled={loading} 
-                    type="submit" 
+                    type="submit"
+                    data-test="signup-btn" 
                 >{!loading && 'Cadastrar'}
                 <ThreeDots 
                     height="60" 
@@ -85,7 +90,11 @@ const RegisterPage = () => {
                     visible={loading}
                 /></button>
             </form>
-            <Link to='/'>Já tem uma conta? Faça login!</Link>
+            <Link 
+                to='/'
+                data-test="login-link"
+            >Já tem uma conta? Faça login!
+            </Link>
         </SignBody>
     );
 };

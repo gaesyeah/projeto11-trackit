@@ -41,7 +41,7 @@ const CalendarComponent = ({setClickedHabits}) => {
     //---------------------------------------------------------------
 
     return (
-        <StyledCalendar 
+        <StyledCalendar data-test="calendar"
             
             tileClassName={({ date, view }) => {
                 if (view === 'month'){

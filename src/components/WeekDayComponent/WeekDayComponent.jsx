@@ -12,11 +12,11 @@ const WeekDayComponent = ({weekDay, habitDays, setHabitDays, loading}) => {
     }
 
     return (
-        <MyHabitDay day={id} days={habitDays}
-            falsebutton={false}
+        <MyHabitDay day={id} days={habitDays} falsebutton={false}
             disabled={loading}
             onClick={() => chooseDays(id)}
             type="button"
+            data-test="habit-day"
         >{day}</MyHabitDay>
     );
 }
