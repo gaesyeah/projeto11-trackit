@@ -20,7 +20,7 @@ export const PageBody = styled.div`
         line-height: 22px;
         color: #666666;
     }
-    padding-bottom: 70px;
+    padding-bottom: 100px;
 `;
 
 export const NullLoading = styled.div`
