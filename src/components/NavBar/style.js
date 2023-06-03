@@ -18,15 +18,15 @@ export const NavContainer = styled.footer`
         margin-left: 10px;
         img{
             cursor: pointer;
-            border-radius: unset;
             height: 27px;
             width: 27px;
             transform: rotate(180deg);
+            border-radius: unset;
         }
         h3{
             margin-left: 12px;
             font-family: 'Playball', cursive;
-            font-size: 38.982px;
+            font-size: 39px;
             line-height: 49px;
             color: #FFFFFF;
         }
