@@ -3,6 +3,7 @@ import { List, ListCheck } from "styled-icons/fa-solid";
 import { History } from "styled-icons/material-rounded";
 
 export const StyledSideBar = styled.aside`
+    transition: 400ms;
     z-index: 2;
     position: fixed;
     right: ${({showSideBar}) => !showSideBar ? '-45%' : '0'};
