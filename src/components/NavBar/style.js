@@ -6,7 +6,7 @@ export const NavContainer = styled.header`
     justify-content: space-between;
     z-index: 1;
     position: fixed;
-    transition-duration: 250ms;
+    transition-duration: 400ms;
     top: ${({showSideBar}) => !showSideBar ? '0' : '-74px'};
     left: 0;
     width: 100%;

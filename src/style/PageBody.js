@@ -6,7 +6,7 @@ export const PageBody = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: #E5E5E5;
     padding-top: 70px;
     font-family: 'Lexend Deca', sans-serif;
@@ -20,6 +20,7 @@ export const PageBody = styled.div`
         line-height: 22px;
         color: #666666;
     }
+    padding-bottom: 70px;
 `;
 
 export const NullLoading = styled.div`

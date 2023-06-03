@@ -4,16 +4,16 @@ import { History } from "styled-icons/material-rounded";
 
 export const StyledSideBar = styled.aside`
     *{
-        transition-duration: 500ms;
+        transition-duration: 400ms;
     }
     z-index: 2;
     position: fixed;
     left: ${({showSideBar}) => !showSideBar ? '-45%' : '0'};
-    transition-duration: 400ms;
     width: 45%;
     height: 100%;
     background: #126BA5;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.25);
+    transition-duration: 400ms;
     display: flex;
     flex-direction: column;
     div:nth-child(1){
