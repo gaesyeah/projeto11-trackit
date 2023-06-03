@@ -61,8 +61,9 @@ const CalendarComponent = ({setClickedHabits}) => {
                 const currendDate = dayjs().format('DD/MM/YYYY');
                 //entra no if somente se o dia clicado e o dia atual forem diferentes
                 if (clickedDate !== currendDate) {
-                    //guarda o dia clicado caso ele esteja contido no array historicoData(por consequencia, é um dia "pintado")
+                    //procura um dia no historicoData igual ao dia clicado(por consequencia, é um dia "pintado")
                     const selectedDate = historicoData.find(({ day }) => day === clickedDate)
+                    //só entra no if se ele tiver sido encontrado
                     if (selectedDate !== undefined) {
                         const {habits} = selectedDate;
                         /*itera o array habits para popular o array selectedHabits com o 
