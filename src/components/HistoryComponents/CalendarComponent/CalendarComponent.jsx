@@ -20,7 +20,7 @@ const CalendarComponent = ({setClickedHabits}) => {
     return (
         <StyledCalendar data-test="calendar"
             //----
-            tileClassName={({ date, view }) => {
+            tileClassName={({ date }) => {
                 //-------------------
                 const allDone = [];
                 const notAllDone = [];
@@ -37,16 +37,14 @@ const CalendarComponent = ({setClickedHabits}) => {
                     }
                 })
                 //-------------------
-                if (view === 'month'){
-                    //esse if não permite que classes sejam aplicadas para o dia atual
-                    if (!(date.toDateString() === new Date().toDateString())) {
-                    //aqui é onde é retornado as classes especificas para os dias criados pelo daysjs
-                        if (allDone.some(d => d.isSame(date, 'day'))){
-                            return 'classAllDone';
-                        }
-                        if (notAllDone.some(d => d.isSame(date, 'day'))){
-                            return 'classNotAllDone';
-                        }
+                //OBS: É aqui onde as classes personalizadas serão aplicadas para cada dia
+                //esse if não permite que classes sejam aplicadas para o dia atual
+                if (!(date.toDateString() === new Date().toDateString())) {
+                    if (allDone.some(d => d.isSame(date, 'day'))){
+                        return 'classAllDone';
+                    }
+                    if (notAllDone.some(d => d.isSame(date, 'day'))){
+                        return 'classNotAllDone';
                     }
                 }
             }}
@@ -63,9 +61,8 @@ const CalendarComponent = ({setClickedHabits}) => {
                 const currendDate = dayjs().format('DD/MM/YYYY');
                 //entra no if somente se o dia clicado e o dia atual forem diferentes
                 if (clickedDate !== currendDate) {
-                    //acha dentro do array do historico o dia igual ao dia clicado
-                    const selectedDate = historicoData.find(({ day }) => day === clickedDate);
-                    //entra no if somente se o dia clicado for verde ou vermelho(está no historicoData)
+                    //guarda o dia clicado caso ele esteja contido no array historicoData(por consequencia, é um dia "pintado")
+                    const selectedDate = historicoData.find(({ day }) => day === clickedDate)
                     if (selectedDate !== undefined) {
                         const {habits} = selectedDate;
                         /*itera o array habits para popular o array selectedHabits com o 
