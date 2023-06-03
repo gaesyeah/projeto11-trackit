@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import menuIcon from "./../../assets/menuIcon.png";
-import { NavContainer } from "./style";
+import { NavContainer, StyledArrow } from "./style";
 
 const NavBar = () => {
 
@@ -9,14 +9,7 @@ const NavBar = () => {
 
     return (
         <NavContainer showSideBar={showSideBar} data-test="header">
-            <div>
-                <img 
-                    onClick={() => setShowSideBar(true)} 
-                    src={menuIcon} 
-                    alt='logOut'
-                />
-                <h3>TrackIt</h3>
-            </div>
+            <h3>TrackIt</h3>
             <div>
                 <p>{name}</p>
                 <img 
@@ -24,6 +17,7 @@ const NavBar = () => {
                     alt='userImg'
                     data-test="avatar"
                 />
+                <StyledArrow onClick={() => setShowSideBar(true)}/>
             </div>
         </NavContainer>
     );

@@ -8,7 +8,7 @@ export const StyledSideBar = styled.aside`
     }
     z-index: 2;
     position: fixed;
-    left: ${({showSideBar}) => !showSideBar ? '-45%' : '0'};
+    right: ${({showSideBar}) => !showSideBar ? '-45%' : '0'};
     width: 45%;
     height: 100%;
     background: #126BA5;

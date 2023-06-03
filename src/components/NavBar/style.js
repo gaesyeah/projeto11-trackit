@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ChevronDownCircle } from "styled-icons/boxicons-solid";
 
 export const NavContainer = styled.header`
     display: flex;
@@ -13,32 +14,23 @@ export const NavContainer = styled.header`
     height: 70px;
     background: #126BA5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    div:first-child{
-        display: flex;
-        align-items: center;
-        margin-left: 10px;
-        img{
-            cursor: pointer;
-            height: 32px;
-            width: 32px;
-            border-radius: unset;
-        }
-        h3{
-            margin-left: 12px;
-            font-family: 'Playball', cursive;
-            font-size: 39px;
-            line-height: 49px;
-            color: #FFFFFF;
-        }
+    h3{
+        margin-left: 12px;
+        font-family: 'Playball', cursive;
+        font-size: 39px;
+        line-height: 49px;
+        color: #FFFFFF;
     }
     div{
         margin-right: 10px;
         display: flex;
         align-items: center;
         img{
+            position: relative;
             width: 51px;
             height: 51px;
             border-radius: 100%;
+            margin-left: 10px;
         }
         p{
             margin-right: 8px;
@@ -52,4 +44,18 @@ export const NavContainer = styled.header`
             }
         }
     }
+`;
+
+export const StyledArrow = styled(ChevronDownCircle)`
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    height: 21px;
+    width: 21px;
+    border-radius: unset;
+    right: 0;
+    bottom: 0;
+    margin: 6px;
+    background-color: #126BA5;
+    border-radius: 100%;
 `;
