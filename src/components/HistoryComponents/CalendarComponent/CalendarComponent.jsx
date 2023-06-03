@@ -69,7 +69,7 @@ const CalendarComponent = ({setClickedHabits}) => {
                         const {habits} = selectedDate;
                         //a array habits é mapeada para popular e setar a variavel de estado responsavel por renderizar os habitos na tela
                         //o map esta retornando objetos com duas propriedades de dentro do habits: name e done
-                        setClickedHabits(previous => [...previous,...habits.map(({name, done}) => ({name,done}))]);
+                        setClickedHabits(previous => [...previous,...habits.map(({name, done}) => ({name, done}))]);
                     }
                 }
             }}
