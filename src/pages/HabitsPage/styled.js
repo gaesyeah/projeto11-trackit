@@ -58,7 +58,8 @@ export const WeekDayButtons = styled.div`
     column-gap: 4px;
 `;
 export const MyHabits = styled.div`
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: ${({small}) => !small ? '504px' : '192px'};
     margin-top: 20px;
     display: flex;

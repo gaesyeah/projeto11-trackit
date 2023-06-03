@@ -14,10 +14,10 @@ export const Progress = styled.div`
 `;
 export const TodayHabitsBox = styled.div`
     overflow-y: auto;
+    overflow-x: hidden;
     height: 498px;
     margin-top: 26px;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    padding-bottom: 34px;
 `;
