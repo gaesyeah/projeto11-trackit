@@ -50,8 +50,8 @@ export const StyledArrow = styled(ChevronDownCircle)`
     position: absolute;
     color: white;
     cursor: pointer;
-    height: 21px;
-    width: 21px;
+    height: 23px;
+    width: 23px;
     border-radius: unset;
     right: 0;
     bottom: 0;
