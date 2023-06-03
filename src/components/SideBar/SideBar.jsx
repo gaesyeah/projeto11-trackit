@@ -12,7 +12,7 @@ const SideBar = () => {
     const {pathname} = useLocation();
 
     const logOut = () => {
-        if(confirm('Vocẽ realmente deseja fazer logOut?')){
+        if(confirm('Vocẽ realmente deseja sair?')){
             localStorage.removeItem('config');
             localStorage.removeItem('name');
             localStorage.removeItem('image');
