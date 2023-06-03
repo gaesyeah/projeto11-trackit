@@ -4,15 +4,12 @@ import { NavContainer } from "./style";
 
 const NavBar = ({image, name}) => {
 
-    const navigate = useNavigate();
-
     const logOut = () => {
         if(confirm('Você realmente deseja sair?')){
             localStorage.removeItem('config');
             localStorage.removeItem('image');
             localStorage.removeItem('name');
     
-            navigate('/');
             window.location.reload();
         }
     }

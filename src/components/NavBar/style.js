@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavContainer = styled.footer`
+export const NavContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
