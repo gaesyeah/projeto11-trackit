@@ -51,8 +51,10 @@ const App = () => {
     return (
         <DataContext.Provider 
             value={{
-                showSideBar,
+                showSideBar, setShowSideBar,
                 config: !storedConfig.current ? config : storedConfig.current,
+                image: !storedImage.current ? image : storedImage.current,
+                name: !storedName.current ? name : storedName.current,
                 hojeData, setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData
@@ -64,11 +66,7 @@ const App = () => {
                 <>
                     <SideBar/>
                     <Footer/>
-                    <NavBar
-                        image={!storedImage.current ? image : storedImage.current}
-                        name={!storedName.current ? name : storedName.current}
-                        setShowSideBar={setShowSideBar}
-                    />
+                    <NavBar/>
                     {showSideBar 
                         && 
                         <StyledBackGround onClick={() => {setShowSideBar(false)}}/>

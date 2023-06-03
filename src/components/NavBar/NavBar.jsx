@@ -3,9 +3,9 @@ import { DataContext } from "../../App";
 import menuIcon from "./../../assets/menuIcon.png";
 import { NavContainer } from "./style";
 
-const NavBar = ({image, name, setShowSideBar}) => {
+const NavBar = () => {
 
-    const {showSideBar} = useContext(DataContext);
+    const {image, name, showSideBar, setShowSideBar} = useContext(DataContext);
 
     return (
         <NavContainer showSideBar={showSideBar} data-test="header">
