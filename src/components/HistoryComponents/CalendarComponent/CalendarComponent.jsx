@@ -55,8 +55,6 @@ const CalendarComponent = ({setClickedHabits}) => {
             }}
             //----
             onClickDay={(value) => {
-                //zera o array antes de qualquer coisa para prevenir qualquer tipo de bug
-                setClickedHabits([]);
                 //constantes para guardar o dia clicado e o dia atual, respectivamente
                 const clickedDate = dayjs(value).format('DD/MM/YYYY');
                 const currendDate = dayjs().format('DD/MM/YYYY');
@@ -69,8 +67,12 @@ const CalendarComponent = ({setClickedHabits}) => {
                         const {habits} = selectedDate;
                         //a array habits é mapeada para popular e setar a variavel de estado responsavel por renderizar os habitos na tela
                         //o map esta retornando objetos com duas propriedades de dentro do habits: name e done
-                        setClickedHabits(previous => [...previous,...habits.map(({name, done}) => ({name, done}))]);
+                        setClickedHabits(() => [...[],...habits.map(({name, done}) => ({name, done}))]);
+                    } else {
+                        setClickedHabits([]);
                     }
+                } else {
+                    setClickedHabits([]);
                 }
             }}
             //----
