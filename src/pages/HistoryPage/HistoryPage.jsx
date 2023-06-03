@@ -49,6 +49,7 @@ const HistoryPage = () => {
                         <HabitsComponent habit={habit} key={i} />
                     )}
                 <StyledP>
+                    {/*OBS: se o tamanho da array for 1, e o dia atual estiver contido(meu calendario ignora o dia atual, por isso essa verificação) */}
                     {(historicoData.length === 1 && historicoData.some(({day}) => day === dayjs().format("DD/MM/YYYY"))) || historicoData.length === 0
                         ?
                         <>Seu historico está atualmente vazio Crie hábitos e/ou aguarde um dia</>
