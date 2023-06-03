@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { DataContext } from "../../App";
-import { URL, weekDays } from "../../constants";
+import { URL, getAllData, weekDays } from "../../constants";
 import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 import MyHabitComponent from "./MyHabitComponent/MyHabitComponent";
 
@@ -14,31 +14,7 @@ const Habit = ({createdHabit}) => {
         if (confirm('Você realmente deseja apagar esse hábito?')){
             
             axios.delete(`${URL}/habits/${idHabit}`, config)
-            .then(() => {
-
-                //---------------
-                axios.get(`${URL}/habits`, config)
-                .then(({data}) => setHabitosData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                });
-                //---------------
-                axios.get(`${URL}/habits/today`, config)
-                .then(({data}) => setHojeData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                });
-                //---------------
-                axios.get(`${URL}/habits/history/daily`, config)
-                .then(({data}) => setHistoricoData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                })
-                //---------------
-            })
+            .then(() => getAllData(config, setHabitosData, setHojeData, setHistoricoData))
             .catch(({response}) => {
                 const {details, message} = response.data;
                 console.log(`${!details ? '' : details}\n${message}`);

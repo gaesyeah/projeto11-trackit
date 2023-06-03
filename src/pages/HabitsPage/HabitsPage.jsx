@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
-import { URL, weekDays } from "../../constants";
+import { URL, getAllData, weekDays } from "../../constants";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
@@ -38,26 +38,7 @@ const HabitsPage = ({habitosData}) => {
 
                 setLoading(false);
                 //----------------
-                axios.get(`${URL}/habits`, config)
-                .then(({data}) => setHabitosData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                });
-                //----------------
-                axios.get(`${URL}/habits/today`, config)
-                .then(({data}) => setHojeData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                });
-                //---------------
-                axios.get(`${URL}/habits/history/daily`, config)
-                .then(({data}) => setHistoricoData(data))
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    console.log(`${!details ? '' : details}\n${message}`);
-                })
+                getAllData(config, setHabitosData, setHojeData, setHistoricoData);
                 //---------------
             })
             .catch(({response}) => {
