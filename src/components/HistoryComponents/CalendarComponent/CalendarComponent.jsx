@@ -56,6 +56,7 @@ const CalendarComponent = ({setClickedHabits}) => {
             //----
             onClickDay={(value) => {
                 const selectedHabits = [];
+                
                 //constantes para guardar o dia clicado e o dia atual, respectivamente
                 const clickedDate = dayjs(value).format('DD/MM/YYYY');
                 const currendDate = dayjs().format('DD/MM/YYYY');
