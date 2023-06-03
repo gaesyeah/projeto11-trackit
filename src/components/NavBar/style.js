@@ -35,16 +35,21 @@ export const NavContainer = styled.footer`
         margin-right: 10px;
         display: flex;
         align-items: center;
-        p{
-            margin-right: 8px;
-            color: #FFFFFF;
-            font-family: 'Lexend Deca', sans-serif;
-            font-size: 20px;
-        }
         img{
         width: 51px;
         height: 51px;
         border-radius: 100%;
+        }
+        p{
+        margin-right: 8px;
+        color: #FFFFFF;
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 20px;
+        }
+        @media (max-width: 480px) {
+            p {
+                display: none;
+            }
         }
     }
 `;
