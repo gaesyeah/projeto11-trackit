@@ -39,7 +39,7 @@ const CalendarComponent = ({setClickedHabits}) => {
                 //-------------------
                 //OBS: É aqui onde as classes personalizadas serão aplicadas para cada dia
                 //esse if não permite que classes sejam aplicadas para o dia atual
-                if (!(date.toDateString() === new Date().toDateString())) {
+                if (date.toDateString() !== new Date().toDateString()) {
                     if (allDone.some(day => day.isSame(date))){
                         return 'classAllDone';
                     }
