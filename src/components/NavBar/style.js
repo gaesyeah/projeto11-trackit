@@ -6,7 +6,8 @@ export const NavContainer = styled.header`
     justify-content: space-between;
     z-index: 1;
     position: fixed;
-    top: 0;
+    transition-duration: 250ms;
+    top: ${({showSideBar}) => !showSideBar ? '0' : '-74px'};
     left: 0;
     width: 100%;
     height: 70px;
@@ -18,9 +19,8 @@ export const NavContainer = styled.header`
         margin-left: 10px;
         img{
             cursor: pointer;
-            height: 27px;
-            width: 27px;
-            transform: rotate(180deg);
+            height: 32px;
+            width: 32px;
             border-radius: unset;
         }
         h3{

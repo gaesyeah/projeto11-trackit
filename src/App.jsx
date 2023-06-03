@@ -2,6 +2,8 @@ import { createContext, useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
+import { StyledBackGround } from "./components/SideBar/BackGround/styled";
+import SideBar from "./components/SideBar/SideBar";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -44,9 +46,12 @@ const App = () => {
     const storedConfig = useRef(JSON.parse(localStorage.getItem('config')));
     const storedImage = useRef(localStorage.getItem('image'));
     const storedName = useRef(localStorage.getItem('name'));
+    //variavel que controla a sideBar
+    const [showSideBar, setShowSideBar] = useState(false);
     return (
         <DataContext.Provider 
             value={{
+                showSideBar,
                 config: !storedConfig.current ? config : storedConfig.current,
                 hojeData, setHojeData,
                 setHabitosData,
@@ -55,13 +60,19 @@ const App = () => {
         >
 
             {pathname !== '/' && pathname !== '/cadastro' 
-                && 
+                &&
                 <>
+                    <SideBar/>
                     <Footer/>
                     <NavBar
                         image={!storedImage.current ? image : storedImage.current}
                         name={!storedName.current ? name : storedName.current}
+                        setShowSideBar={setShowSideBar}
                     />
+                    {showSideBar 
+                        && 
+                        <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
+                    }
                 </>
             }
             

@@ -6,7 +6,8 @@ export const FooterContainer = styled.footer`
     justify-content: space-evenly;
     z-index: 1;
     position: fixed;
-    bottom: 0;
+    transition-duration: 250ms;
+    bottom: ${({showSideBar}) => !showSideBar ? '0' : '-100px'};
     left: 0;
     width: 100%;
     height: 70px;

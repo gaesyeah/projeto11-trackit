@@ -1,25 +1,18 @@
-import { useNavigate } from "react-router-dom";
-import logOutIcon from "./../../assets/logOutIcon.png";
+import { useContext } from "react";
+import { DataContext } from "../../App";
+import menuIcon from "./../../assets/menuIcon.png";
 import { NavContainer } from "./style";
 
-const NavBar = ({image, name}) => {
+const NavBar = ({image, name, setShowSideBar}) => {
 
-    const logOut = () => {
-        if(confirm('Você realmente deseja sair?')){
-            localStorage.removeItem('config');
-            localStorage.removeItem('image');
-            localStorage.removeItem('name');
-    
-            window.location.reload();
-        }
-    }
+    const {showSideBar} = useContext(DataContext);
 
     return (
-        <NavContainer data-test="header">
+        <NavContainer showSideBar={showSideBar} data-test="header">
             <div>
                 <img 
-                    onClick={logOut} 
-                    src={logOutIcon} 
+                    onClick={() => setShowSideBar(true)} 
+                    src={menuIcon} 
                     alt='logOut'
                 />
                 <h3>TrackIt</h3>

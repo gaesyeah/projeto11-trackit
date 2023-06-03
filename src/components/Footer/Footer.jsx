@@ -9,7 +9,7 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    const {hojeData} = useContext(DataContext);
+    const {showSideBar, hojeData} = useContext(DataContext);
 
     let todayProgress;
     if (hojeData === null || hojeData.length === 0){
@@ -19,7 +19,7 @@ const Footer = () => {
     } 
 
     return (
-        <FooterContainer data-test="menu">
+        <FooterContainer showSideBar={showSideBar} data-test="menu">
             <Link 
                 to='/habitos'
                 data-test="habit-link"
