@@ -10,9 +10,9 @@ import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { Progress, TodayHabitsBox } from "./styled";
 
-const TodayPage = ({hojeData}) => {
+const TodayPage = () => {
 
-    const {config, todayProgress, setHojeData} = useContext(DataContext);
+    const {config, hojeData, setHojeData} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -36,6 +36,8 @@ const TodayPage = ({hojeData}) => {
     } else {
         
         const date = dayjs().locale('pt-br').format('dddd, DD/MM');
+        
+        const todayProgress = Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
 
         return (
             <PageBody>
@@ -47,9 +49,9 @@ const TodayPage = ({hojeData}) => {
                             <p data-test="today-counter">Não há nenhum hábito para hoje</p>
                             :
                             <h1 data-test="today-counter">
-                                {todayProgress() > 0
+                                {todayProgress > 0
                                     ?
-                                    <span>{todayProgress()}% dos hábitos concluídos</span>
+                                    <span>{todayProgress}% dos hábitos concluídos</span>
                                     :
                                     'Nenhum hábito concluído ainda'
                                 }

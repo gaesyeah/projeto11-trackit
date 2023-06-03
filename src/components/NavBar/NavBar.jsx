@@ -9,6 +9,8 @@ const NavBar = ({image, name}) => {
     const logOut = () => {
         if(confirm('Você realmente deseja sair?')){
             localStorage.removeItem('config');
+            localStorage.removeItem('image');
+            localStorage.removeItem('name');
     
             navigate('/');
         }

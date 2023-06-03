@@ -36,15 +36,15 @@ export const NavContainer = styled.footer`
         display: flex;
         align-items: center;
         img{
-        width: 51px;
-        height: 51px;
-        border-radius: 100%;
+            width: 51px;
+            height: 51px;
+            border-radius: 100%;
         }
         p{
-        margin-right: 8px;
-        color: #FFFFFF;
-        font-family: 'Lexend Deca', sans-serif;
-        font-size: 20px;
+            margin-right: 8px;
+            color: #FFFFFF;
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 20px;
         }
         @media (max-width: 480px) {
             p {

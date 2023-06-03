@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
@@ -41,25 +41,16 @@ const App = () => {
         };
     }, [loginData]);
 
-    const todayProgress = () => {
-        if (hojeData !== null){
-            return Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
-        } else {
-            return;
-        }
-    }
-
-    const storedConfig = localStorage.getItem('config');
-    const storedImage = localStorage.getItem('image');
-    const storedName = localStorage.getItem('name');
+    const storedConfig = useRef(localStorage.getItem('config'));
+    const storedImage = useRef(localStorage.getItem('image'));
+    const storedName = useRef(localStorage.getItem('name'));
     return (
         <DataContext.Provider 
             value={{
-                config: !storedConfig ? config : JSON.parse(storedConfig),
-                setHojeData,
+                config: !storedConfig.current ? config : JSON.parse(storedConfig.current),
+                hojeData, setHojeData,
                 setHabitosData,
-                historicoData, setHistoricoData,
-                todayProgress
+                historicoData, setHistoricoData
             }}
         >
 
@@ -68,8 +59,8 @@ const App = () => {
                 <>
                     <Footer/>
                     <NavBar
-                        image={!storedImage ? image : storedImage}
-                        name={!storedName ? name : storedName}
+                        image={!storedImage.current ? image : storedImage.current}
+                        name={!storedName.current ? name : storedName.current}
                     />
                 </>
             }
@@ -78,7 +69,7 @@ const App = () => {
                 <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
                 <Route path='/cadastro' element={<RegisterPage />} />
                 <Route path='/habitos' element={<HabitsPage habitosData={habitosData} />} />
-                <Route path='/hoje' element={<TodayPage hojeData={hojeData}/>} />
+                <Route path='/hoje' element={<TodayPage />} />
                 <Route path='/historico' element={<HistoryPage />} />
             </Routes>
             

@@ -9,7 +9,14 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    const {todayProgress} = useContext(DataContext);
+    const {hojeData} = useContext(DataContext);
+
+    let todayProgress;
+    if (hojeData === null){
+        todayProgress = 0;
+    } else {
+        todayProgress = Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
+    } 
 
     return (
         <FooterContainer data-test="menu">
@@ -23,7 +30,7 @@ const Footer = () => {
                 data-test="today-link"
             >
                 <CircularProgressbar
-                    value={isNaN(todayProgress()) ? 0 : todayProgress()}
+                    value={todayProgress}
                     text='Hoje'
                     background
                     backgroundPadding={6}
