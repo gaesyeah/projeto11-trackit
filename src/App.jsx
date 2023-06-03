@@ -41,13 +41,13 @@ const App = () => {
         };
     }, [loginData]);
 
-    const storedConfig = useRef(localStorage.getItem('config'));
+    const storedConfig = useRef(JSON.parse(localStorage.getItem('config')));
     const storedImage = useRef(localStorage.getItem('image'));
     const storedName = useRef(localStorage.getItem('name'));
     return (
         <DataContext.Provider 
             value={{
-                config: !storedConfig.current ? config : JSON.parse(storedConfig.current),
+                config: !storedConfig.current ? config : storedConfig.current,
                 hojeData, setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData
