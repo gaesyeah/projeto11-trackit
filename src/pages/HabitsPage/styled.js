@@ -111,4 +111,8 @@ export const TrashIcon = styled(Trash3)`
     right: 0;
     margin: 8px;
     width: 20px;
+    &:hover{
+        color: red;
+        transition-duration: 300ms;
+    }
 `;

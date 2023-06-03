@@ -57,6 +57,10 @@ const GlobalStyle = createGlobalStyle`
             cursor: default;
             opacity: 0.5;
         }
+        &:hover{
+            opacity: 0.9;
+            transition-duration: 200ms;
+        }
     }
     
     /* body::before {

@@ -42,7 +42,7 @@ export const Habit = styled.div`
             margin: -15px;
             position: absolute;
             width: 100px;
-            opacity: 0.65;
+            opacity: 0.5;
         }
     }
 
@@ -58,4 +58,5 @@ export const TodayCheck = styled(CheckSquareFill)`
     opacity: ${({loading}) => loading ? '0.7' : '1'};
     color: ${({done}) => !done ? '#EBEBEB' : '#8FC549'};
     width: 69px;
+    transition-duration: 500ms;
 `
