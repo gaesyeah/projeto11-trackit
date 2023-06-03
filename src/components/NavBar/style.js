@@ -32,17 +32,6 @@ export const NavContainer = styled.header`
             border-radius: 100%;
             margin-left: 10px;
         }
-        p{
-            margin-right: 8px;
-            color: #FFFFFF;
-            font-family: 'Lexend Deca', sans-serif;
-            font-size: 20px;
-        }
-        @media (max-width: 480px) {
-            p {
-                display: none;
-            }
-        }
     }
 `;
 
@@ -58,4 +47,8 @@ export const StyledArrow = styled(ChevronDownCircle)`
     margin: 6px;
     background-color: #126BA5;
     border-radius: 100%;
+    transition: 500ms;
+    &:hover{
+        color: #52B6FF;
+    }
 `;

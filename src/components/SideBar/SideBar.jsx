@@ -4,9 +4,9 @@ import { DataContext } from "../../App";
 import logOutIcon from "./../../assets/logOutIcon.png";
 import { StyledHistory, StyledList, StyledListCheck, StyledSideBar } from "./styled";
 
-const SideBar = () => {
+const SideBar = ({name}) => {
 
-    const {image, name, showSideBar, setShowSideBar} = useContext(DataContext);
+    const {image, showSideBar, setShowSideBar} = useContext(DataContext);
 
     const navigate = useNavigate();
     const {pathname} = useLocation();
@@ -29,32 +29,32 @@ const SideBar = () => {
     return (
         <StyledSideBar showSideBar={showSideBar}>
             <div>
-                <img src={image} alt='userImg'/>
                 <p>{name}</p>
+                <img src={image} alt='userImg'/>
             </div>
             <div onClick={logOut}>
-                <img src={logOutIcon} alt='logOut'/>
                 <p>LogOut</p>
+                <img src={logOutIcon} alt='logOut'/>
             </div>
             {pathname !== '/habitos'
                 &&
                 <div onClick={() => changeRoute('/habitos')}>
-                    <StyledList />
                     <p>Hábitos</p>
+                    <StyledList />
                 </div>
             }
             {pathname !== '/hoje'
                 &&
                 <div onClick={() => changeRoute('/hoje')}>
-                    <StyledListCheck />
                     <p>Hoje</p>
+                    <StyledListCheck />
                 </div>
             }
             {pathname !== '/historico'
                 &&
                 <div onClick={() => changeRoute('/historico')}>
-                    <StyledHistory />
                     <p>Histórico</p>
+                    <StyledHistory />
                 </div>
             }
         </StyledSideBar>

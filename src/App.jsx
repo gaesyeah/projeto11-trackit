@@ -54,7 +54,6 @@ const App = () => {
                 showSideBar, setShowSideBar,
                 config: !storedConfig.current ? config : storedConfig.current,
                 image: !storedImage.current ? image : storedImage.current,
-                name: !storedName.current ? name : storedName.current,
                 hojeData, setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData
@@ -64,7 +63,7 @@ const App = () => {
             {pathname !== '/' && pathname !== '/cadastro' 
                 &&
                 <>
-                    <SideBar/>
+                    <SideBar name={!storedName.current ? name : storedName.current}/>
                     <Footer/>
                     <NavBar/>
                     {showSideBar 
