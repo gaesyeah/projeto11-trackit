@@ -43,7 +43,7 @@ export const StyledSideBar = styled.aside`
         border-bottom: 2px solid ;
         border-image: linear-gradient(to right, #FFFFFF, transparent) 1;
         :hover{
-            background: #52B6FF;
+            background: linear-gradient(to right, #52B6FF, #126BA5);
             cursor: pointer;
         }
         img{
