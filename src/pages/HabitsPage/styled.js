@@ -58,16 +58,17 @@ export const WeekDayButtons = styled.div`
     column-gap: 4px;
 `;
 export const MyHabits = styled.div`
+    overflow: auto;
+    height: ${({small}) => !small ? '504px' : '192px'};
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    padding-bottom: 34px;
 `;
 export const MyHabit = styled.div`
     position: relative;
     width: 340px;
-    height: 91px;
+    min-height: 91px;
     background: #FFFFFF;
     border-radius: 5px;
     h3{

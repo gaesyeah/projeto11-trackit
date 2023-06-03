@@ -44,7 +44,7 @@ const HistoryPage = () => {
                     <h2>Histórico</h2>
                 </H2Formater>
                 <CalendarComponent setClickedHabits={setClickedHabits}/>
-                <MyHabits>
+                <MyHabits small={true}>
                     {clickedHabits.map((habit) => 
                         <HabitsComponent habit={habit} key={habit.name} />
                     )}

@@ -13,6 +13,8 @@ export const Progress = styled.div`
     }
 `;
 export const TodayHabitsBox = styled.div`
+    overflow-y: auto;
+    height: 498px;
     margin-top: 26px;
     display: flex;
     flex-direction: column;

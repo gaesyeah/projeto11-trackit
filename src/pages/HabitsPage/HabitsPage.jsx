@@ -151,7 +151,7 @@ const HabitsPage = ({habitosData}) => {
                 ?
                 <NoHabits>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</NoHabits>
                 :
-                <MyHabits>
+                <MyHabits small={false}>
                     {habitosData.map((createdHabit) => 
                         <Habit 
                             key={createdHabit.id} 

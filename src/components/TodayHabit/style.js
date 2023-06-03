@@ -4,7 +4,7 @@ import { CheckSquareFill } from "styled-icons/bootstrap";
 export const Habit = styled.div`
     position: relative;
     width: 340px;
-    height: 91px;
+    min-height: 91px;
     background: #FFFFFF;
     border-radius: 5px;
     h3{
