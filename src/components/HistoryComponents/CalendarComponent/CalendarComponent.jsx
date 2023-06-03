@@ -18,7 +18,7 @@ const CalendarComponent = ({setClickedHabits}) => {
     }
 
     return (
-        <StyledCalendar data-test="calendar"
+        <StyledCalendar
             //----
             tileClassName={({ date }) => {
                 //-------------------
