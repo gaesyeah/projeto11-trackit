@@ -6,8 +6,7 @@ export const StyledSideBar = styled.aside`
     transition: 400ms;
     z-index: 2;
     position: fixed;
-    right: ${({showSideBar}) => !showSideBar ? '-45%' : '0'};
-    width: 45%;
+    right: ${({showSideBar}) => !showSideBar ? '-100%' : '0'};
     height: 100%;
     background: #126BA5;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.25);
@@ -20,18 +19,16 @@ export const StyledSideBar = styled.aside`
             cursor: default;
             background: linear-gradient(to left, #0b4c78, #126BA5);
         }
-        p{
-            right: 0;
-            margin-right: 48px;
-            position: absolute;
+        h1{
+            color: #FFFFFF;
+            padding-right: 48px;
+            margin-left: 4px; 
             font-size: 26px;
             margin-bottom: 3px;
         }
         img{
             transform: rotate(360deg);
-            right: 0;
             margin-right: 4px;
-            position: absolute;
             width: 40px;
             height: 40px;
             border-radius: 100%;

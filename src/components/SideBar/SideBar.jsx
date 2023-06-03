@@ -29,7 +29,7 @@ const SideBar = ({name}) => {
     return (
         <StyledSideBar showSideBar={showSideBar}>
             <div>
-                <p>{name}</p>
+                <h1>{name}</h1>
                 <img src={image} alt='userImg'/>
             </div>
             <div onClick={logOut}>
