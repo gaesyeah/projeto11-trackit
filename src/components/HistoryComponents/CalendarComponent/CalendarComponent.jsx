@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import { DataContext } from "../../../App";
@@ -8,25 +8,7 @@ const CalendarComponent = ({setClickedHabits}) => {
 
     const {historicoData} = useContext(DataContext);
 
-    //criação dos dias usando o daysjs para personalizar o calendario
-    //----------------------------------------------------------------
-    const [allDone, setAllDone] = useState([]);
-    const [notAllDone, setNotAllDone] = useState([]);
-    //faz push nos arrays vazios acima dos dias em que todos os habitos do dia foram/não foram concluidos, respectivamente
-    useEffect(() => {
-        //vai iterar uma vez para cada dia
-        historicoData.forEach(({day, habits}) => {
-            //vai iterar uma vez para cada habito desse dia
-            //e será verificado se o tamanho do array filtrado com done=true, é igual ao do array inteiro
-            if ((habits.filter(({done}) => done).length) === habits.map(({done}) => done).length) {
-                setAllDone([...allDone, day]);
-            } else {
-                setNotAllDone([...notAllDone, day]);
-            }
-        })
-    }, [])
-
-    //função para converter os dias para o formato americano
+    //função para converter dias do formato brasileiro para o formato americano
     const enDayConvert = (date) => {
         const dateSplited = date.split('/');
         const day = dateSplited[0];
@@ -35,34 +17,45 @@ const CalendarComponent = ({setClickedHabits}) => {
         return ([month, day, year]).join('/');
     }
 
-    //uso do daysjs para criar os dias
-    const allDoneDaysjs = allDone.map(day => dayjs(enDayConvert(day)));
-    const notAllDoneDaysjs = notAllDone.map(day => dayjs(enDayConvert(day)));
-    //---------------------------------------------------------------
-
     return (
         <StyledCalendar data-test="calendar"
-            
+            //----
             tileClassName={({ date, view }) => {
+                //-------------------
+                const allDone = [];
+                const notAllDone = [];
+        
+                //vai iterar uma vez para cada dia
+                historicoData.forEach(({day, habits}) => {
+                    //será verificado se o tamanho do array de habitos filtrado com done=true é igual ao original
+                    //se SIM, esse dia será inserido numa array, se NÃO, numa outra array
+                    //OBS: o daysjs e a função enDayConvert são responsaveis por converter cada dia num formato "válido"
+                    if ((habits.filter(({done}) => done).length) === habits.length) {
+                        allDone.push(dayjs(enDayConvert(day)));
+                    } else {
+                        notAllDone.push(dayjs(enDayConvert(day)));
+                    }
+                })
+                //-------------------
                 if (view === 'month'){
                     //esse if não permite que classes sejam aplicadas para o dia atual
                     if (!(date.toDateString() === new Date().toDateString())) {
                     //aqui é onde é retornado as classes especificas para os dias criados pelo daysjs
-                        if (allDoneDaysjs.some(d => d.isSame(date, 'day'))){
+                        if (allDone.some(d => d.isSame(date, 'day'))){
                             return 'classAllDone';
                         }
-                        if (notAllDoneDaysjs.some(d => d.isSame(date, 'day'))){
+                        if (notAllDone.some(d => d.isSame(date, 'day'))){
                             return 'classNotAllDone';
                         }
                     }
                 }
             }}
-
+            //----
             formatDay={(locale, date) => {
                 //aqui é retornado o dia com 2 digitos(com 0 na frente) caso ele tenha 1 digito
                 return date.toLocaleString(locale, { day: '2-digit' });
             }}
-
+            //----
             onClickDay={(value) => {
                 const selectedHabits = [];
                 //constantes para guardar o dia clicado e o dia atual, respectivamente
@@ -89,6 +82,7 @@ const CalendarComponent = ({setClickedHabits}) => {
                     setClickedHabits([]);
                 }
             }}
+            //----
         />
     );
 }

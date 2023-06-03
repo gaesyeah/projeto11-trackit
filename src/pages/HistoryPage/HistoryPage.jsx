@@ -45,8 +45,8 @@ const HistoryPage = () => {
                 </H2Formater>
                 <CalendarComponent setClickedHabits={setClickedHabits}/>
                 <MyHabits small={true}>
-                    {clickedHabits.map((habit) => 
-                        <HabitsComponent habit={habit} key={habit.name} />
+                    {clickedHabits.map((habit, i) => 
+                        <HabitsComponent habit={habit} key={i} />
                     )}
                 <StyledP>
                     {(historicoData.length === 1 && historicoData.some(({day}) => day === dayjs().format("DD/MM/YYYY"))) || historicoData.length === 0
