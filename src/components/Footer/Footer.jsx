@@ -12,7 +12,7 @@ const Footer = () => {
     const {hojeData} = useContext(DataContext);
 
     let todayProgress;
-    if (hojeData === null){
+    if (hojeData === null || hojeData.length === 0){
         todayProgress = 0;
     } else {
         todayProgress = Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
