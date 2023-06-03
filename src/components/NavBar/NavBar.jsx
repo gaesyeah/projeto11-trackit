@@ -13,6 +13,7 @@ const NavBar = ({image, name}) => {
             localStorage.removeItem('name');
     
             navigate('/');
+            window.location.reload();
         }
     }
 
