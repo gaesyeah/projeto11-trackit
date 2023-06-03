@@ -64,10 +64,7 @@ const CalendarComponent = ({setClickedHabits}) => {
                     const selectedDate = historicoData.find(({ day }) => day === clickedDate)
                     //só entra no if se ele tiver sido encontrado
                     if (selectedDate !== undefined) {
-                        const {habits} = selectedDate;
-                        //a array habits é mapeada para popular e setar a variavel de estado responsavel por renderizar os habitos na tela
-                        //o map esta retornando objetos com duas propriedades de dentro do habits: name e done
-                        setClickedHabits([...[],...habits.map(({name, done}) => ({name, done}))]);
+                        setClickedHabits(selectedDate.habits);
                     } else {
                         setClickedHabits([]);
                     }
