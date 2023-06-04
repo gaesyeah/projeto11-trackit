@@ -40,13 +40,13 @@ export const customAlertSwal = {
     icon: 'error',
     width: 320,
     confirmButtonText: 'Ok',
-    confirmButtonColor: '#52B6FF'
+    confirmButtonColor: '#126BA5'
 };
 
 export const customConfirmSwal = {
     width: 320,
     confirmButtonText: 'Sim',
-    confirmButtonColor: '#52B6FF',
+    confirmButtonColor: '#126BA5',
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
     cancelButtonColor: '#CFCFCF',
