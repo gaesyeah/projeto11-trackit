@@ -73,6 +73,7 @@ export const MyHabit = styled.div`
     background: #FFFFFF;
     border-radius: 5px;
     h3{
+        border-radius: 16px;
         max-width: 288px;
         white-space: pre;
         overflow-y: auto;
