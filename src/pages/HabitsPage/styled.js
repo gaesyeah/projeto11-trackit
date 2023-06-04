@@ -17,9 +17,9 @@ export const NoHabits = styled.h1`
     width: 338px;
 `;
 export const AddHabitBox = styled.form`
-    transition: 500ms;
+    transition: top 500ms ease-in, margin-bottom 500ms ease-in, z-index 1s ease-out;
     top: ${({showCreation}) => !showCreation ? '-200px' : '0'};
-    z-index: ${({showCreation}) => !showCreation ? '-0.5' : '1'};
+    z-index: ${({showCreation}) => !showCreation ? '-1' : '1'};
     position: relative;
     display: flex;
     flex-direction: column;
@@ -126,6 +126,6 @@ export const TrashIcon = styled(Trash3)`
     width: 20px;
     &:hover{
         color: red;
-        transition-duration: 300ms;
+        transition: 300ms;
     }
 `;

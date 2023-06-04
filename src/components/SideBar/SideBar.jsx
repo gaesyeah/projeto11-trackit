@@ -28,12 +28,12 @@ const SideBar = ({name}) => {
                 window.location.reload();
             }
         })
-    }
+    };
 
     const changeRoute = (pathname) => {
         setShowSideBar(false);
-        navigate(pathname);
-    }
+        setTimeout(() => navigate(pathname), 400);
+    };
 
     return (
         <StyledSideBar showSideBar={showSideBar}>

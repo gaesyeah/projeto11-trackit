@@ -10,7 +10,7 @@ export const PageBody = styled.div`
     min-width: 100vw;
     min-height: 100vh;
     background: #E5E5E5;
-    transition: 400ms;
+    transition: 300ms ease-out;
     padding-top: ${({showSideBar}) => !showSideBar ? '70px' : '0px'};
     h2{
         font-size: 23px;
