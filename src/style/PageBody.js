@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PageBody = styled.div`
+    overflow: ${({showSideBar}) => !showSideBar ? 'unsed' : 'hidden'};
     width: 340px;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,8 @@ export const PageBody = styled.div`
     min-width: 100vw;
     min-height: 100vh;
     background: #E5E5E5;
-    padding-top: 70px;
+    transition: 400ms;
+    padding-top: ${({showSideBar}) => !showSideBar ? '70px' : '0px'};
     font-family: 'Lexend Deca', sans-serif;
     h2{
         font-size: 23px;

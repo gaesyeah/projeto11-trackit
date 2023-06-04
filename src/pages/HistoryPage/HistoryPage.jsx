@@ -14,7 +14,7 @@ import { StyledP } from "./styled";
 
 const HistoryPage = () => {
 
-    const {config, historicoData, setHistoricoData} = useContext(DataContext);
+    const {config, historicoData, setHistoricoData, showSideBar} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const HistoryPage = () => {
         );
     } else {
         return (
-            <PageBody>
+            <PageBody showSideBar={showSideBar}>
                 <H2Formater>
                     <h2>Histórico</h2>
                 </H2Formater>

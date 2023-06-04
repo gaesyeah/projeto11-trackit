@@ -12,7 +12,7 @@ import { Progress, TodayHabitsBox } from "./styled";
 
 const TodayPage = () => {
 
-    const {config, hojeData, setHojeData} = useContext(DataContext);
+    const {config, hojeData, setHojeData, showSideBar} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const TodayPage = () => {
         const todayProgress = Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
 
         return (
-            <PageBody>
+            <PageBody showSideBar={showSideBar}>
                 <Progress>
                     <H2Formater>
                         <h2 data-test="today">{date.charAt(0).toUpperCase() + date.slice(1)}</h2>

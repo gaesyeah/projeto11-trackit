@@ -27,7 +27,7 @@ export const StyledSideBar = styled.aside`
             color: #FFFFFF;
             white-space: pre;
             font-size: 26px;
-            margin: 0 6px 3px 8px;
+            margin: 0 52px 3px 8px;
             padding-bottom: 1px;
         }
         img{
@@ -35,7 +35,6 @@ export const StyledSideBar = styled.aside`
             width: 40px;
             height: 40px;
             border-radius: 100%;
-            position: unset;
             margin-right: 8px;
         }
     }

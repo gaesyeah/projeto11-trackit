@@ -8,6 +8,10 @@ export const Habit = styled.div`
     background: #FFFFFF;
     border-radius: 5px;
     h3{
+        max-width: 232px;
+        white-space: pre;
+        overflow-y: auto;
+        white-space: pre;
         font-size: 20px;
         line-height: 25px;
         color: #666666;

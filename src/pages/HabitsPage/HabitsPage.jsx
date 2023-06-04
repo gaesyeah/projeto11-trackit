@@ -12,7 +12,7 @@ import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, Week
 
 const HabitsPage = ({habitosData}) => {
 
-    const {config, setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
+    const {config, setHabitosData, setHojeData, setHistoricoData, showSideBar} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -69,7 +69,7 @@ const HabitsPage = ({habitosData}) => {
         );
     }
     return (
-        <PageBody>
+        <PageBody showSideBar={showSideBar}>
             <TopBar>
                 <h2>Meus Hábitos</h2>
                 <PlusIcon 
