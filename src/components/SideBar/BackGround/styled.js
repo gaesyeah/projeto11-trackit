@@ -5,7 +5,7 @@ export const StyledBackGround = styled.div`
     height: 100%;
     position: fixed;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     z-index: 1;
     cursor: pointer;
 `;

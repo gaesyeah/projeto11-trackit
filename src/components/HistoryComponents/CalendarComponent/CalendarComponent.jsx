@@ -86,6 +86,9 @@ const StyledCalendar = styled(Calendar)`
         line-height: 19px;
         color: #126BA5;
     }
+    .react-calendar__tile {
+        height: 47px;
+    }
     box-sizing: content-box;
     width: 335px;
     margin-top: 11px;

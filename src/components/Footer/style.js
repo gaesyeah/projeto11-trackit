@@ -13,7 +13,6 @@ export const FooterContainer = styled.footer`
     height: 70px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    font-family: 'Lexend Deca', sans-serif;
     font-size: 18px;
     line-height: 22px;
     a {

@@ -20,9 +20,12 @@ export const SignBody = styled.div`
     }
     a{
         margin-top: 25px;
-        font-family: 'Lexend Deca', sans-serif;
         font-size: 14px;
         line-height: 17px;
         color: #52B6FF;
+    }
+    button{
+        width: 303px;
+        height: 45px;
     }
 `;

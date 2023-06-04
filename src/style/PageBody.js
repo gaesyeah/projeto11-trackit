@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageBody = styled.div`
-    overflow: ${({showSideBar}) => !showSideBar ? 'unsed' : 'hidden'};
+    overflow: ${({showSideBar}) => !showSideBar ? 'unset' : 'hidden'};
     width: 340px;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,6 @@ export const PageBody = styled.div`
     background: #E5E5E5;
     transition: 400ms;
     padding-top: ${({showSideBar}) => !showSideBar ? '70px' : '0px'};
-    font-family: 'Lexend Deca', sans-serif;
     h2{
         font-size: 23px;
         line-height: 29px;
@@ -22,7 +21,7 @@ export const PageBody = styled.div`
         line-height: 22px;
         color: #666666;
     }
-    padding-bottom: 102px;
+    padding-bottom: ${({showSideBar}) => !showSideBar ? '102px' : '0px'};
 `;
 
 export const NullLoading = styled.div`

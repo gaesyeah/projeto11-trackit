@@ -27,8 +27,8 @@ export const StyledSideBar = styled.aside`
             color: #FFFFFF;
             white-space: pre;
             font-size: 26px;
+            line-height: 32px;
             margin: 0 52px 3px 8px;
-            padding-bottom: 1px;
         }
         img{
             transform: rotate(360deg);
@@ -68,7 +68,6 @@ export const StyledSideBar = styled.aside`
             margin-right: 32px;
             color: #FFFFFF;
             margin-left: 4px;
-            font-family: 'Lexend Deca', sans-serif;
             font-size: 18px;
             line-height: 22px;
         }

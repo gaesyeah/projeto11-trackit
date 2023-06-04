@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { DataContext } from "../../App";
+import { customConfirmSwal } from "../../constants";
 import logOutIcon from "./../../assets/logOutIcon.png";
 import { StyledHistory, StyledList, StyledListCheck, StyledSideBar } from "./styled";
 
@@ -12,13 +14,19 @@ const SideBar = ({name}) => {
     const {pathname} = useLocation();
 
     const logOut = () => {
-        if(confirm('Vocẽ realmente deseja sair?')){
-            localStorage.removeItem('config');
-            localStorage.removeItem('name');
-            localStorage.removeItem('image');
-    
-            window.location.reload();
-        }
+
+        customConfirmSwal.title = '<span style=";font-size: 18px">Você realmente deseja sair?</span>';
+        Swal.fire(customConfirmSwal)
+        .then((result) => {
+            
+            if(result.isConfirmed){
+                localStorage.removeItem('config');
+                localStorage.removeItem('name');
+                localStorage.removeItem('image');
+        
+                window.location.reload();
+            }
+        })
     }
 
     const changeRoute = (pathname) => {

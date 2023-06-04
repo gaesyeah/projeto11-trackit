@@ -5,11 +5,13 @@ const GlobalStyle = createGlobalStyle`
         color-scheme: light only;
     }
     body{
+        font-family: 'Lexend Deca', sans-serif;
         display: flex;
         justify-content: center;
         overflow-x: hidden;
     }
     *{
+        font-family: 'Lexend Deca', sans-serif;
         overflow-x: 0;
         box-sizing: border-box;
         user-select: none;
@@ -27,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
         background: #FFFFFF;
         border: 1px solid #D5D5D5;
         border-radius: 5px;
-        font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
         color: #666666;
@@ -45,12 +46,9 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 303px;
-        height: 45px;
         border-radius: 5px;
         border: none;
         background: #52B6FF;
-        font-family: 'Lexend Deca', sans-serif;
         font-size: 21px;
         line-height: 26px;
         color: #FFFFFF;

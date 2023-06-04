@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
-import { URL } from "../../constants";
+import { URL, customAlertSwal } from "../../constants";
 import { SignBody } from "../../style/SignBody";
 
 const RegisterPage = () => {
@@ -24,7 +25,9 @@ const RegisterPage = () => {
         .then(() => navigate('/'))
         .catch(({response}) => {
             const {details, message} = response.data;
-            alert(`${!details ? '' : details}\n${message}`);
+
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+            Swal.fire(customAlertSwal);
             
             setLoading(false);
         });

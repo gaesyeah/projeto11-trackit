@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { DataContext } from "../../App";
-import { URL, getAllData, weekDays } from "../../constants";
+import { URL, customAlertSwal, customConfirmSwal, getAllData, weekDays } from "../../constants";
 import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 import MyHabitComponent from "./MyHabitComponent/MyHabitComponent";
 
@@ -11,15 +12,22 @@ const Habit = ({createdHabit}) => {
     const {config, setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
 
     const deleteHabit = (idHabit) => {
-        if (confirm('Você realmente deseja apagar esse hábito?')){
-            
-            axios.delete(`${URL}/habits/${idHabit}`, config)
-            .then(() => getAllData(config, setHabitosData, setHojeData, setHistoricoData))
-            .catch(({response}) => {
-                const {details, message} = response.data;
-                console.log(`${!details ? '' : details}\n${message}`);
-            });
-        };
+        
+        customConfirmSwal.title = '<span style=";font-size: 18px">Você realmente deseja apagar esse hábito?</span>';
+        Swal.fire(customConfirmSwal)
+        .then((result) => {
+            if (result.isConfirmed) {
+                
+                axios.delete(`${URL}/habits/${idHabit}`, config)
+                .then(() => getAllData(config, setHabitosData, setHojeData, setHistoricoData))
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+
+                    customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                    Swal.fire(customAlertSwal);
+                });
+            }
+        })
     };
 
     return (

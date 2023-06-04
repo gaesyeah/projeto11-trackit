@@ -36,3 +36,18 @@ export const getAllData = (config, setHabitosData, setHojeData, setHistoricoData
     });
 
 }
+
+export const customAlertSwal = {
+    width: 320,
+    confirmButtonText: 'Ok',
+    confirmButtonColor: '#52B6FF'
+}
+
+export const customConfirmSwal = {
+    width: 320,
+    confirmButtonText: 'Sim',
+    confirmButtonColor: '#52B6FF',
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#CFCFCF',
+}

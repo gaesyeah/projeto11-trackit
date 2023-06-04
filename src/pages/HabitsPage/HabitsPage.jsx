@@ -2,10 +2,12 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Swal from 'sweetalert2';
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
-import { URL, getAllData, weekDays } from "../../constants";
+import { URL, customAlertSwal, getAllData, weekDays } from "../../constants";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import loadingGif from "./../../assets/loadingGif.gif";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
@@ -25,7 +27,9 @@ const HabitsPage = ({habitosData}) => {
         e.preventDefault();
 
         if (habitDays.length === 0){
-            alert('Você precisa selecionar pelo menos um dia da semana!');
+            
+            customAlertSwal.title = '<span style="color: #f24d4d;font-size: 18px">Você precisa selecionar pelo menos um dia da semana</span>';
+            Swal.fire(customAlertSwal);
         } else {
 
             setLoading(true);
@@ -43,7 +47,9 @@ const HabitsPage = ({habitosData}) => {
             })
             .catch(({response}) => {
                 const {details, message} = response.data;
-                alert(`${!details ? '' : details}\n${message}`);
+                
+                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                Swal.fire(customAlertSwal);
 
                 setLoading(false);
             });
@@ -146,3 +152,7 @@ const HabitsPage = ({habitosData}) => {
 };
 
 export default HabitsPage;
+
+const StyledSwal = styled.button`
+    width: auto;
+`;
