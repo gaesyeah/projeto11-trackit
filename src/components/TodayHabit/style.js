@@ -24,6 +24,7 @@ export const Habit = styled.div`
         line-height: 16px;
         color: #666666;
         span{
+            transition: 500ms;
             color:${({done, current, highest}) => 
                 (current === highest && current > 0) 
                 ? 
@@ -59,9 +60,9 @@ export const Habit = styled.div`
     }
 `;
 export const TodayCheck = styled(CheckSquareFill)`
+    transition-duration: 500ms;
     cursor: ${({loading}) => loading ? 'default' : 'pointer'};
     opacity: ${({loading}) => loading ? '0.7' : '1'};
     color: ${({done}) => !done ? '#EBEBEB' : '#8FC549'};
     width: 69px;
-    transition-duration: 500ms;
 `

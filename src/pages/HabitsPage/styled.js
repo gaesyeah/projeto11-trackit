@@ -97,6 +97,7 @@ export const MyHabitDays = styled.div`
     column-gap: 4px;
 `;
 export const MyHabitDay = styled.button`
+    transition: 500ms;
     text-align: center;
     width: 30px;
     height: 30px;
