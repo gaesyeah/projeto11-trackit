@@ -7,12 +7,14 @@ export const StyledSideBar = styled.aside`
     z-index: 2;
     position: fixed;
     right: ${({showSideBar}) => !showSideBar ? '-100%' : '0'};
+    max-width: 60%;
     height: 100%;
     background: #126BA5;
-    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 60px 60px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
     div:nth-child(1){
+        min-width: 114px;
         height: 52px;
         background: linear-gradient(to left, #0b4c78, #126BA5);
         &:hover{
@@ -20,18 +22,21 @@ export const StyledSideBar = styled.aside`
             background: linear-gradient(to left, #0b4c78, #126BA5);
         }
         h1{
+            overflow-x: auto;
+            overflow-y: hidden;
             color: #FFFFFF;
-            padding-right: 48px;
-            margin-left: 4px; 
+            white-space: pre;
             font-size: 26px;
-            margin-bottom: 3px;
+            margin: 0 6px 3px 8px;
+            padding-bottom: 1px;
         }
         img{
             transform: rotate(360deg);
-            margin-right: 4px;
             width: 40px;
             height: 40px;
             border-radius: 100%;
+            position: unset;
+            margin-right: 8px;
         }
     }
     div:nth-child(2){

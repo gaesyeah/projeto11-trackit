@@ -37,7 +37,7 @@ export const NavContainer = styled.header`
 
 export const StyledArrow = styled(ChevronDownCircle)`
     position: absolute;
-    color: white;
+    color: #FFFFFF;
     cursor: pointer;
     height: 23px;
     width: 23px;
