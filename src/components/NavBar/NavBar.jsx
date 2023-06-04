@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { DataContext } from "../../App";
-import menuIcon from "./../../assets/menuIcon.png";
 import { NavContainer, StyledArrow } from "./style";
 
 const NavBar = () => {
