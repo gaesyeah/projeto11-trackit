@@ -26,7 +26,9 @@ export const PageBody = styled.div`
 `;
 
 export const NullLoading = styled.div`
-    height: 100vh;
+    background-color: #FFFFFF;
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
