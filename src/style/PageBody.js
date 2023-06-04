@@ -5,7 +5,7 @@ export const PageBody = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    min-width: 100vw;
     min-height: 100vh;
     background: #E5E5E5;
     padding-top: 70px;

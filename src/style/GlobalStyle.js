@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     body{
         display: flex;
         justify-content: center;
+        overflow-x: hidden;
     }
     *{
         overflow-x: 0;
