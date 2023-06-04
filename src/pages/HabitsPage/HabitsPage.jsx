@@ -26,11 +26,18 @@ const HabitsPage = ({habitosData}) => {
     const createHabit = (e) => {
         e.preventDefault();
 
-        if (habitDays.length === 0){
-            
-            customAlertSwal.title = '<span style="color: #f24d4d;font-size: 18px">Você precisa selecionar pelo menos um dia da semana</span>';
+        let alertTitle = undefined;
+        if (habitInput.length === 0){
+        alertTitle = 'O hábito precisa de um nome'
+        } else if (habitDays.length === 0){
+            alertTitle = 'Você precisa selecionar pelo menos um dia da semana';
+        } 
+        
+        if (alertTitle !== undefined) {
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${alertTitle}</span>`;
             Swal.fire(customAlertSwal);
-        } else {
+        }
+        else {
 
             setLoading(true);
 
@@ -93,7 +100,6 @@ const HabitsPage = ({habitosData}) => {
                     value={habitInput}
                     type="text" 
                     placeholder="nome do hábito" 
-                    required
                     data-test="habit-name-input" 
                 />
                 <WeekDayButtons>
