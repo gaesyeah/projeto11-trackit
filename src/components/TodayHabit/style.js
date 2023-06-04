@@ -23,11 +23,12 @@ export const Habit = styled.div`
         font-size: 13px;
         line-height: 16px;
         color: #666666;
-        transition: 500ms;
+            span{
+                transition: 500ms;
+            }
     }
     p:nth-child(2){
         span{
-            transition: 500ms;
             color:${({done, current, highest}) => 
                 (current === highest && current > 0) 
                 ? 
@@ -39,8 +40,13 @@ export const Habit = styled.div`
     }
     p:nth-child(3){
         span{
-                transition: 500ms;
-                color:${({highest, current}) => highest === current ? '#8FC549' : '#666666'};
+            color:${({highest, current}) => 
+                highest === 0 
+                ? 
+                '#666666' 
+                : 
+                (highest === current) ? '#8FC549' : '#666666'
+            };
         }
     }
     div{

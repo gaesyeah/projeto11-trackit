@@ -13,6 +13,33 @@ export const StyledSideBar = styled.aside`
     box-shadow: 0px 60px 60px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
+    div{
+        height: 34px;
+        color: #E5E5E5;
+        display: flex;
+        padding: 5px 0 5px 0;
+        align-items: center;
+        border-bottom: 2px solid ;
+        border-image: linear-gradient(to left, #FFFFFF, transparent) 1;
+        &:hover{
+            background: linear-gradient(to left, #52B6FF, #126BA5);
+            cursor: pointer;
+        }
+        p{
+            position: absolute;
+            right: 0;
+            margin-right: 32px;
+            color: #FFFFFF;
+            margin-left: 4px;
+            font-size: 18px;
+            line-height: 22px;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+        img{
+            right: 0;
+            position: absolute;
+        }
+    }
     div:nth-child(1){
         min-width: 114px;
         height: 52px;
@@ -31,7 +58,6 @@ export const StyledSideBar = styled.aside`
             margin: 0 52px 3px 8px;
         }
         img{
-            transform: rotate(360deg);
             width: 40px;
             height: 40px;
             border-radius: 100%;
@@ -41,36 +67,14 @@ export const StyledSideBar = styled.aside`
     div:nth-child(2){
         height: 34px;
         background: linear-gradient(to left, #0b4c78, #126BA5);
-    }
-    div{
-        height: 34px;
-        color: #E5E5E5;
-        display: flex;
-        padding: 5px 0 5px 0;
-        align-items: center;
-        border-bottom: 2px solid ;
-        border-image: linear-gradient(to left, #FFFFFF, transparent) 1;
         &:hover{
             background: linear-gradient(to left, #52B6FF, #126BA5);
-            cursor: pointer;
         }
         img{
             transform: rotate(180deg);
             width: 21px;
             height: 21px;
-            right: 0;
-            position: absolute;
             margin-right: 4px;
-        }
-        p{
-            position: absolute;
-            right: 0;
-            margin-right: 32px;
-            color: #FFFFFF;
-            margin-left: 4px;
-            font-size: 18px;
-            line-height: 22px;
-            font-family: 'Lexend Deca', sans-serif;
         }
     }
 `;
