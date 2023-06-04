@@ -13,6 +13,7 @@ const Habit = ({createdHabit}) => {
 
     const deleteHabit = (idHabit) => {
         
+        customConfirmSwal.icon = 'warning';
         customConfirmSwal.title = '<span style=";font-size: 18px">Você realmente deseja apagar esse hábito?</span>';
         Swal.fire(customConfirmSwal)
         .then((result) => {

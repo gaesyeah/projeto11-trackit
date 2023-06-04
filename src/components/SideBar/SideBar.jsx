@@ -15,6 +15,7 @@ const SideBar = ({name}) => {
 
     const logOut = () => {
 
+        customConfirmSwal.icon = 'question';
         customConfirmSwal.title = '<span style=";font-size: 18px">Você realmente deseja sair?</span>';
         Swal.fire(customConfirmSwal)
         .then((result) => {

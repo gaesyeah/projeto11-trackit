@@ -34,14 +34,14 @@ export const getAllData = (config, setHabitosData, setHojeData, setHistoricoData
         const {details, message} = response.data;
         console.log(`${!details ? '' : details}\n${message}`);
     });
-
-}
+};
 
 export const customAlertSwal = {
+    icon: 'error',
     width: 320,
     confirmButtonText: 'Ok',
     confirmButtonColor: '#52B6FF'
-}
+};
 
 export const customConfirmSwal = {
     width: 320,
@@ -50,4 +50,4 @@ export const customConfirmSwal = {
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
     cancelButtonColor: '#CFCFCF',
-}
+};
