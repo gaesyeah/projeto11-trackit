@@ -6,7 +6,7 @@ export const StyledSideBar = styled.aside`
     transition: 400ms;
     z-index: 2;
     position: fixed;
-    right: ${({showSideBar}) => !showSideBar ? '-100%' : '0'};
+    right: ${({showSideBar}) => !showSideBar ? '-60%' : '0'};
     max-width: 60%;
     height: 100%;
     background: #126BA5;
