@@ -23,6 +23,7 @@ export const Habit = styled.div`
         font-size: 13px;
         line-height: 16px;
         color: #666666;
+        transition: 500ms;
         span{
             transition: 500ms;
             color:${({done, current, highest}) => 
@@ -34,6 +35,7 @@ export const Habit = styled.div`
             };
             &:last-child{
                 span{
+                    transition: 500ms;
                     color:${({highest, current}) => highest === current ? '#8FC549' : '#666666'};
                 }
             }
