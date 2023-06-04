@@ -70,6 +70,7 @@ export const StyledSideBar = styled.aside`
             margin-left: 4px;
             font-size: 18px;
             line-height: 22px;
+            font-family: 'Lexend Deca', sans-serif;
         }
     }
 `;

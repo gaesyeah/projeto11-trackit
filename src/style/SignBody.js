@@ -19,6 +19,7 @@ export const SignBody = styled.div`
         width: 155px;
     }
     a{
+        font-family: 'Lexend Deca', sans-serif;
         margin-top: 25px;
         font-size: 14px;
         line-height: 17px;

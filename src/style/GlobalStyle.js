@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         row-gap: 6px;
     }
     input{
+        font-family: 'Lexend Deca', sans-serif;
         padding-left: 11px;
         user-select: text;
         width: 303px;
@@ -42,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
             }
     }
     button{
+        font-family: 'Lexend Deca', sans-serif;
         cursor: pointer;
         display: flex;
         align-items: center;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PageBody = styled.div`
+    font-family: 'Lexend Deca', sans-serif;
     overflow: ${({showSideBar}) => !showSideBar ? 'unset' : 'hidden'};
     width: 340px;
     display: flex;
