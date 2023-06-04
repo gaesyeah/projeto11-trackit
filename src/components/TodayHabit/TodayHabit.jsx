@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { DataContext } from "../../App";
-import { URL } from "../../constants";
+import { URL, customAlertSwal } from "../../constants";
 import reCheckGif from "./../../assets/reCheckGif.gif";
 import { Habit, TodayCheck } from "./style";
 
@@ -37,7 +38,9 @@ const TodayHabit = ({habit}) => {
         })
         .catch(({response}) => {
             const {details, message} = response.data;
-            console.log(`${!details ? '' : details}\n${message}`);
+
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+            Swal.fire(customAlertSwal);
 
             setLoading(false);
         });

@@ -24,7 +24,7 @@ export const Habit = styled.div`
         line-height: 16px;
         color: #666666;
             span{
-                transition: 500ms;
+                transition: 500ms ease-out;
             }
     }
     p:nth-child(2){
