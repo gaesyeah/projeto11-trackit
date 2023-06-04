@@ -5,7 +5,7 @@ export const NavContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;
+    z-index: 3;
     position: fixed;
     transition-duration: 400ms;
     top: ${({showSideBar}) => !showSideBar ? '0' : '-74px'};

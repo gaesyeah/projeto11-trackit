@@ -3,23 +3,30 @@ import { Trash3 } from "styled-icons/bootstrap";
 import { PlusSquare } from "styled-icons/evaicons-solid";
 
 export const TopBar = styled.div`
+    z-index: 2;
     width: 340px;
+    background: #E5E5E5;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 17px 0px -10px 0px;
+    margin-bottom: -10px;
+    padding-top: 17px;
 `;
 export const NoHabits = styled.h1`
     margin-top: 27px;
     width: 338px;
 `;
 export const AddHabitBox = styled.form`
+    transition: 500ms;
+    top: ${({showCreation}) => !showCreation ? '-200px' : '0'};
+    z-index: ${({showCreation}) => !showCreation ? '-0.5' : '1'};
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 22px;
     width: 340px;
+    margin-bottom: ${({showCreation}) => !showCreation ? '-200px' : '0'};
     min-height: 180px;
     background: #FFFFFF;
     border-radius: 5px;

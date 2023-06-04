@@ -83,56 +83,54 @@ const HabitsPage = ({habitosData}) => {
                     data-test="habit-create-btn"
                 />
             </TopBar>
-            {showCreation 
-                &&
-                <AddHabitBox 
-                    onSubmit={createHabit} 
-                    data-test="habit-create-container"
-                >
-                    <input
+            <AddHabitBox showCreation={showCreation}
+                onSubmit={createHabit} 
+                data-test="habit-create-container"
+            >
+                <input
+                    disabled={loading}
+                    onChange={e => setHabitInput(e.target.value)}
+                    value={habitInput}
+                    type="text" 
+                    placeholder="nome do hábito" 
+                    required
+                    data-test="habit-name-input" 
+                />
+                <WeekDayButtons>
+                    {weekDays.map((weekDay) => 
+                        <WeekDayComponent
+                            key={weekDay.id} 
+                            weekDay={weekDay} 
+                            habitDays={habitDays} 
+                            setHabitDays={setHabitDays}
+                            loading={loading}
+                        />
+                    )}
+                </WeekDayButtons>
+                <ConfirmButtons>
+                    <button
                         disabled={loading}
-                        onChange={e => setHabitInput(e.target.value)}
-                        value={habitInput}
-                        type="text" 
-                        placeholder="nome do hábito" 
-                        required
-                        data-test="habit-name-input" 
-                    />
-                    <WeekDayButtons>
-                        {weekDays.map((weekDay) => 
-                            <WeekDayComponent
-                                key={weekDay.id} 
-                                weekDay={weekDay} 
-                                habitDays={habitDays} 
-                                setHabitDays={setHabitDays}
-                                loading={loading}
-                            />
-                        )}
-                    </WeekDayButtons>
-                    <ConfirmButtons>
-                        <button
-                            disabled={loading}
-                            onClick={() => setShowCreation(false)}
-                            type="button"
-                            data-test="habit-create-cancel-btn"
-                        >Cancelar</button>
-                        <button
-                            disabled={loading}
-                            type="submit"
-                            data-test="habit-create-save-btn"
-                        >{!loading && 'Salvar'}
-                        <ThreeDots 
-                            height="45" 
-                            width="45" 
-                            radius="9"
-                            color="#FFFFFF" 
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle={{}}
-                            wrapperClassName=""
-                            visible={loading}
-                        /></button>
-                    </ConfirmButtons>
-                </AddHabitBox>}
+                        onClick={() => setShowCreation(false)}
+                        type="button"
+                        data-test="habit-create-cancel-btn"
+                    >Cancelar</button>
+                    <button
+                        disabled={loading}
+                        type="submit"
+                        data-test="habit-create-save-btn"
+                    >{!loading && 'Salvar'}
+                    <ThreeDots 
+                        height="45" 
+                        width="45" 
+                        radius="9"
+                        color="#FFFFFF" 
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={loading}
+                    /></button>
+                </ConfirmButtons>
+                </AddHabitBox>
 
             {habitosData.length === 0
                 ?

@@ -6,6 +6,6 @@ export const StyledBackGround = styled.div`
     position: fixed;
     right: 0;
     background-color: rgba(0, 0, 0, 0.25);
-    z-index: 1;
+    z-index: 3;
     cursor: pointer;
 `;

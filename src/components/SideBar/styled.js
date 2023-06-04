@@ -4,7 +4,7 @@ import { History } from "styled-icons/material-rounded";
 
 export const StyledSideBar = styled.aside`
     transition: 400ms;
-    z-index: 2;
+    z-index: 4;
     position: fixed;
     right: ${({showSideBar}) => !showSideBar ? '-60%' : '0'};
     max-width: 60%;
