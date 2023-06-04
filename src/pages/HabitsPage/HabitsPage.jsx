@@ -28,7 +28,7 @@ const HabitsPage = ({habitosData}) => {
 
         let alertTitle = undefined;
         if (habitInput.length === 0){
-        alertTitle = 'O hábito precisa de um nome'
+            alertTitle = 'O hábito precisa de um nome';
         } else if (habitDays.length === 0){
             alertTitle = 'Você precisa selecionar pelo menos um dia da semana';
         } 
