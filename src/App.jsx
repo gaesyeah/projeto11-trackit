@@ -1,15 +1,15 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { StyledBackGround } from "./components/SideBar/BackGround/styled";
 import SideBar from "./components/SideBar/SideBar";
+import { DataContext } from "./contexts/DataContext";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
-export const DataContext = createContext();
 
 const App = () => {
 

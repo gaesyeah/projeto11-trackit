@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { useContext } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import { DataContext } from "../../../App";
+import { DataContext } from "../../../contexts/DataContext";
 
 const CalendarComponent = ({setClickedHabits}) => {
 

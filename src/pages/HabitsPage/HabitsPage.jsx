@@ -4,10 +4,10 @@ import { Blocks, ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Swal from 'sweetalert2';
-import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
 import { URL, customAlertSwal, customReloginSwal, getAllData, weekDays } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 

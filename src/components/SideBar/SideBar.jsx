@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { DataContext } from "../../App";
 import { customConfirmSwal } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import logOutIcon from "./../../assets/logOutIcon.png";
 import { StyledHistory, StyledList, StyledListCheck, StyledSideBar } from "./styled";
 

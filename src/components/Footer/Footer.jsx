@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link, useNavigate } from "react-router-dom";
-import { DataContext } from "../../App";
+import { DataContext } from "../../contexts/DataContext";
 import { FooterContainer } from "./style";
 
 const Footer = () => {

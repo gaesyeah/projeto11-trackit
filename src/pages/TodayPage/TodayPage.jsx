@@ -5,9 +5,9 @@ import { useContext, useEffect } from "react";
 import { Blocks } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL, customReloginSwal } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { Progress, TodayHabitsBox } from "./styled";
 

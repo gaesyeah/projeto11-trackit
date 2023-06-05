@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { DataContext } from "../../App";
 import { URL, customAlertSwal } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import reCheckGif from "./../../assets/reCheckGif.gif";
 import { Habit, TodayCheck } from "./style";
 

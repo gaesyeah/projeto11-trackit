@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "../../App";
+import { DataContext } from "../../contexts/DataContext";
 import { NavContainer, StyledArrow } from "./style";
 
 const NavBar = () => {

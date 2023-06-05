@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useContext } from "react";
 import Swal from "sweetalert2";
-import { DataContext } from "../../App";
 import { URL, customAlertSwal, customConfirmSwal, getAllData, weekDays } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 import MyHabitComponent from "./MyHabitComponent/MyHabitComponent";
 
