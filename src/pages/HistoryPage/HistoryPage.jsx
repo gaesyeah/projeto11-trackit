@@ -2,6 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
 import 'react-calendar/dist/Calendar.css';
+import { Blocks } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import CalendarComponent from "../../components/HistoryComponents/CalendarComponent/CalendarComponent";
@@ -9,7 +10,6 @@ import HabitsComponent from "../../components/HistoryComponents/HabitsComponent/
 import { URL } from "../../constants";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { MyHabits } from "../HabitsPage/styled";
-import loadingGif from "./../../assets/loadingGif.gif";
 import { StyledP } from "./styled";
 
 const HistoryPage = () => {
@@ -34,7 +34,7 @@ const HistoryPage = () => {
     if (historicoData === null) {
         return (
             <NullLoading>
-                <img src={loadingGif} alt='reloading'/>
+                <Blocks visible={historicoData === null} height="100" width="100"/>
             </NullLoading>
         );
     } else {

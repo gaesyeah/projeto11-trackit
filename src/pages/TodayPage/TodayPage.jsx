@@ -2,12 +2,12 @@ import axios from "axios";
 import dayjs from "dayjs";
 import 'dayjs/locale/pt-br';
 import { useContext, useEffect } from "react";
+import { Blocks } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL } from "../../constants";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
-import loadingGif from "./../../assets/loadingGif.gif";
 import { Progress, TodayHabitsBox } from "./styled";
 
 const TodayPage = () => {
@@ -30,7 +30,7 @@ const TodayPage = () => {
     if (hojeData === null){
         return (
             <NullLoading>
-                <img src={loadingGif} alt='reloading'/>
+                <Blocks visible={hojeData === null} height="100" width="100"/>
             </NullLoading>
         );
     } else {
