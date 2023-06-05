@@ -38,7 +38,7 @@ const TodayPage = () => {
         );
     } else {
         
-        const date = dayjs().locale('pt-br').format('dddd, DD/MM');
+        const date = dayjs().locale('pt-br').format('dddd, DD/MM').replace('-feira', '');
         
         const todayProgress = Math.trunc((hojeData.filter(({done}) => done).length / hojeData.length) * 100);
 
@@ -46,7 +46,7 @@ const TodayPage = () => {
             <PageBody showSideBar={showSideBar}>
                 <Progress>
                     <H2Formater>
-                        <h2 data-test="today">{date.charAt(0).toUpperCase() + date.slice(1)}</h2>
+                        <h2 data-test="today">{date}</h2>
                         {hojeData.length === 0 
                             ?
                             <p data-test="today-counter">Não há nenhum hábito para hoje</p>

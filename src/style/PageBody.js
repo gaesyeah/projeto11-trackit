@@ -39,6 +39,9 @@ export const NullLoading = styled.div`
 `;
 
 export const H2Formater = styled.div`
+    h2{
+        text-transform: capitalize;
+    }
     margin-top: 30px;
     width: 340px;
     text-align: start;

@@ -23,6 +23,7 @@ const CalendarComponent = ({setClickedHabits}) => {
             tileClassName={({ date }) => {
                 //-------------------
                 const allDone = [];
+                const halfDone = [];
                 const notAllDone = [];
         
                 //vai iterar uma vez para cada dia
@@ -32,9 +33,12 @@ const CalendarComponent = ({setClickedHabits}) => {
                     //OBS: o daysjs e a função enDayConvert são responsaveis por converter cada dia num formato "válido"
                     if ((habits.filter(({done}) => done).length) === habits.length) {
                         allDone.push(dayjs(enDayConvert(day)));
+                    } else if((((habits.filter(({done}) => done).length) / habits.length)*100 >= 50)){
+                        halfDone.push(dayjs(enDayConvert(day)));
                     } else {
                         notAllDone.push(dayjs(enDayConvert(day)));
                     }
+                    
                 })
                 //-------------------
                 //OBS: É aqui onde as classes personalizadas serão aplicadas para cada dia
@@ -42,6 +46,9 @@ const CalendarComponent = ({setClickedHabits}) => {
                 if (date.toDateString() !== new Date().toDateString()) {
                     if (allDone.some(day => day.isSame(date))){
                         return 'classAllDone';
+                    }
+                    if (halfDone.some(day => day.isSame(date))){
+                        return 'classHalfDone';
                     }
                     if (notAllDone.some(day => day.isSame(date))){
                         return 'classNotAllDone';
@@ -89,6 +96,16 @@ const StyledCalendar = styled(Calendar)`
     .react-calendar__tile {
         height: 47px;
     }
+    .react-calendar__tile--now {
+        background-color: #52B6FF;
+        color: #FFFFFF;
+        &:hover{
+            background-color: #126BA5;
+        }
+    }
+    .react-calendar__tile--active {
+        border: 2px solid #52B6FF;
+    }
     box-sizing: content-box;
     width: 335px;
     margin-top: 11px;
@@ -107,6 +124,11 @@ const StyledCalendar = styled(Calendar)`
     .classNotAllDone{
         border-radius: 100%;
         background-color: #f24d4d;
+        color: #126BA5;
+    }
+    .classHalfDone{
+        border-radius: 100%;
+        background-color: #eba32f;
         color: #126BA5;
     }
 `;

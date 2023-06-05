@@ -61,7 +61,7 @@ const HistoryPage = () => {
                         :
                         clickedHabits.length === 0 
                         &&
-                        <>Clique em um dos dias marcados em <span>vermelho</span> ou <span>verde</span> para ver os habitos concluidos do mesmo</>
+                        <>Clique em um dos dias marcados em <span>vermelho</span>, <span>verde</span> ou <span>laranja</span> para ver os habitos concluidos do mesmo</>
                     }
                 </StyledP>
                 </MyHabits>

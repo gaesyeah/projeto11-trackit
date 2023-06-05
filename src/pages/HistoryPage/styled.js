@@ -9,8 +9,11 @@ export const StyledP = styled.p`
     color: #666666;
     span{
         color: #f24d4d;
-        &:last-child{
+        &:nth-child(2){
             color: #5cba5c;
+        }
+        &:last-child{
+            color: #eba32f;
         }
     }
 `;
