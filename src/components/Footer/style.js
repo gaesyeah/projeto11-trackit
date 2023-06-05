@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
     z-index: 1;
     position: fixed;
     transition: 300ms ease-out;
-    bottom: ${({showSideBar}) => !showSideBar ? '0' : '-100px'};
+    bottom: ${({showSideBar, not}) => !not ? '-100px' : !showSideBar ? '0' : '-100px'};
     left: 0;
     width: 100%;
     height: 70px;

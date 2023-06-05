@@ -8,7 +8,7 @@ export const NavContainer = styled.header`
     z-index: 3;
     position: fixed;
     transition: 300ms ease-out;
-    top: ${({showSideBar}) => !showSideBar ? '0' : '-74px'};
+    top: ${({showSideBar, not}) => !not ? '-74px' : (!showSideBar) ? '0' : '-74px'};
     left: 0;
     width: 100%;
     height: 70px;

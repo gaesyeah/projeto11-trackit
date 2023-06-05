@@ -4,10 +4,10 @@ import { NavContainer, StyledArrow } from "./style";
 
 const NavBar = () => {
 
-    const {image, showSideBar, setShowSideBar} = useContext(DataContext);
+    const {image, showSideBar, setShowSideBar, notLogged} = useContext(DataContext);
 
     return (
-        <NavContainer showSideBar={showSideBar} data-test="header">
+        <NavContainer not={notLogged} showSideBar={showSideBar} data-test="header">
             <h3>TrackIt</h3>
             <div>
                 <img 

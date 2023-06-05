@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
@@ -56,23 +56,22 @@ const App = () => {
                 image: !storedImage.current ? image : storedImage.current,
                 hojeData, setHojeData,
                 setHabitosData,
-                historicoData, setHistoricoData
+                historicoData, setHistoricoData,
+                notLogged: !(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
             }}
         >
 
-            {pathname !== '/' && pathname !== '/cadastro' 
+            <Footer/>
+            <NavBar/>
+            {!(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
                 &&
-                !(Object.keys(loginData).length === 0 && !localStorage.getItem('config'))
-                    &&
-                    <>
-                        <SideBar name={!storedName.current ? name : storedName.current}/>
-                        <Footer/>
-                        <NavBar/>
-                        {showSideBar 
-                            && 
-                            <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
-                        }
-                    </>
+                <>
+                    <SideBar name={!storedName.current ? name : storedName.current}/>
+                    {showSideBar 
+                        && 
+                        <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
+                    }
+                </>
             }
             
             <Routes>
