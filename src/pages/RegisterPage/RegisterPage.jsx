@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
 import { URL, customAlertSwal } from "../../constants";
@@ -11,6 +11,11 @@ import { SignBody } from "../../style/SignBody";
 const RegisterPage = () => {
 
     const navigate = useNavigate();
+
+    let googleRedirect = undefined;
+    if (useLocation().state){
+        googleRedirect = useLocation().state.googleRedirect;
+    }
 
     const [loading, setLoading] = useState(false);
     const [registerInputs, setRegisterInputs] = useState({
@@ -64,7 +69,13 @@ const RegisterPage = () => {
         google.accounts.id.renderButton(
             signGoogleDiv.current,
             { locale: 'PT-br', text: 'continue_with', theme: 'filled_blue', size:'large', width: '303px'}
-        );        
+        );
+        
+        if (googleRedirect){
+            customAlertSwal.icon = 'info';
+            customAlertSwal.title = `<span style="font-size: 18px">Ainda não há um cadastro no TrackIt com essa conta Google</span>`;
+            Swal.fire(customAlertSwal);
+        }
     },[]);
 
     return (

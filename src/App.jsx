@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { createContext, useEffect, useRef, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { StyledBackGround } from "./components/SideBar/BackGround/styled";
@@ -12,8 +12,6 @@ import TodayPage from "./pages/TodayPage/TodayPage";
 export const DataContext = createContext();
 
 const App = () => {
-
-    const { pathname } = useLocation();
 
     const navigate = useNavigate();
 
@@ -51,13 +49,14 @@ const App = () => {
     return (
         <DataContext.Provider 
             value={{
-                showSideBar, setShowSideBar,
                 config: !storedConfig.current ? config : storedConfig.current,
                 image: !storedImage.current ? image : storedImage.current,
+                name: !storedName.current ? name : storedName.current,
                 hojeData, setHojeData,
                 setHabitosData,
                 historicoData, setHistoricoData,
-                notLogged: !(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
+                notLogged: !(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null),
+                showSideBar, setShowSideBar
             }}
         >
 
@@ -66,7 +65,7 @@ const App = () => {
             {!(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
                 &&
                 <>
-                    <SideBar name={!storedName.current ? name : storedName.current}/>
+                    <SideBar/>
                     {showSideBar 
                         && 
                         <StyledBackGround onClick={() => {setShowSideBar(false)}}/>

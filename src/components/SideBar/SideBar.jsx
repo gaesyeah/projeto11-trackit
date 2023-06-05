@@ -6,9 +6,9 @@ import { customConfirmSwal } from "../../constants";
 import logOutIcon from "./../../assets/logOutIcon.png";
 import { StyledHistory, StyledList, StyledListCheck, StyledSideBar } from "./styled";
 
-const SideBar = ({name}) => {
+const SideBar = () => {
 
-    const {image, showSideBar, setShowSideBar} = useContext(DataContext);
+    const {name, image, showSideBar, setShowSideBar} = useContext(DataContext);
 
     const navigate = useNavigate();
     const {pathname} = useLocation();
@@ -40,7 +40,7 @@ const SideBar = ({name}) => {
         <StyledSideBar showSideBar={showSideBar}>
             <div>
                 <h1>{name}</h1>
-                <img src={image} alt='userImg'/>
+                <img src={image} alt={name}/>
             </div>
             <div onClick={logOut}>
                 <p>LogOut</p>

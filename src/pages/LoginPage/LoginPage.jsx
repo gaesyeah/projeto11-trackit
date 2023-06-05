@@ -35,10 +35,16 @@ const LoginPage = ({setLoginData}) => {
         .catch(({response}) => {
             const {details, message} = response.data;
             
-            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-            Swal.fire(customAlertSwal);
-
             setLoading(false);
+            //-------------
+            if(googleData && message === "Usuário e/ou senha inválidos!"){
+                let googleRedirect = true;
+                navigate('/cadastro', {state: {googleRedirect}});
+            } else {
+                customAlertSwal.icon = 'error',
+                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                Swal.fire(customAlertSwal);
+            }
         })
     }
 
