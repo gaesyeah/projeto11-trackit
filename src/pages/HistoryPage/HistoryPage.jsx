@@ -8,14 +8,18 @@ import Swal from "sweetalert2";
 import CalendarComponent from "../../components/HistoryComponents/CalendarComponent/CalendarComponent";
 import HabitsComponent from "../../components/HistoryComponents/HabitsComponent/HabitsComponent";
 import { URL, customReloginSwal } from "../../constants";
+import { BooleanContext } from "../../contexts/BooleanContext";
 import { DataContext } from "../../contexts/DataContext";
+import { UserContext } from "../../contexts/UserContext";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { MyHabits } from "../HabitsPage/styled";
 import { StyledP } from "./styled";
 
 const HistoryPage = () => {
 
-    const {config, historicoData, setHistoricoData, showSideBar} = useContext(DataContext);
+    const {historicoData, setHistoricoData} = useContext(DataContext);
+    const {config} = useContext(UserContext);
+    const {showSideBar} = useContext(BooleanContext);
 
     const navigate = useNavigate();
 

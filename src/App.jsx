@@ -4,7 +4,9 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { StyledBackGround } from "./components/SideBar/BackGround/styled";
 import SideBar from "./components/SideBar/SideBar";
+import { BooleanContext } from "./contexts/BooleanContext";
 import { DataContext } from "./contexts/DataContext";
+import { UserContext } from "./contexts/UserContext";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -48,39 +50,42 @@ const App = () => {
     const [showSideBar, setShowSideBar] = useState(false);
     return (
         <DataContext.Provider 
-            value={{
-                config: !storedConfig.current ? config : storedConfig.current,
-                image: !storedImage.current ? image : storedImage.current,
-                name: !storedName.current ? name : storedName.current,
-                hojeData, setHojeData,
-                setHabitosData,
-                historicoData, setHistoricoData,
-                notLogged: !(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null),
-                showSideBar, setShowSideBar
-            }}
-        >
+            value={{hojeData, setHojeData, setHabitosData, historicoData, setHistoricoData
+        }}>
+            <UserContext.Provider 
+                value={{                
+                    config: !storedConfig.current ? config : storedConfig.current,
+                    image: !storedImage.current ? image : storedImage.current,
+                    name: !storedName.current ? name : storedName.current,
+            }}>
+                <BooleanContext.Provider 
+                    value={{
+                        notLogged: !(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null),
+                        showSideBar, setShowSideBar
+                }}>
 
-            <Footer/>
-            <NavBar/>
-            {!(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
-                &&
-                <>
-                    <SideBar/>
-                    {showSideBar 
-                        && 
-                        <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
+                    <Footer/>
+                    <NavBar/>
+                    {!(Object.keys(loginData).length === 0 && !localStorage.getItem('config') && hojeData === null)
+                        &&
+                        <>
+                            <SideBar/>
+                            {showSideBar 
+                                && 
+                                <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
+                            }
+                        </>
                     }
-                </>
-            }
-            
-            <Routes>
-                <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
-                <Route path='/cadastro' element={<RegisterPage />} />
-                <Route path='/habitos' element={<HabitsPage habitosData={habitosData} />} />
-                <Route path='/hoje' element={<TodayPage />} />
-                <Route path='/historico' element={<HistoryPage />} />
-            </Routes>
-            
+                    
+                    <Routes>
+                        <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
+                        <Route path='/cadastro' element={<RegisterPage />} />
+                        <Route path='/habitos' element={<HabitsPage habitosData={habitosData} />} />
+                        <Route path='/hoje' element={<TodayPage />} />
+                        <Route path='/historico' element={<HistoryPage />} />
+                    </Routes>
+                </BooleanContext.Provider>
+            </UserContext.Provider>    
         </DataContext.Provider>
     );
 };

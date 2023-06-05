@@ -38,8 +38,7 @@ const LoginPage = ({setLoginData}) => {
             setLoading(false);
             //-------------
             if(googleData && message === "Usuário e/ou senha inválidos!"){
-                let googleRedirect = true;
-                navigate('/cadastro', {state: {googleRedirect}});
+                navigate('/cadastro', {state: {googleRedirect: true}});
             } else {
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;

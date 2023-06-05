@@ -3,13 +3,15 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { URL, customAlertSwal, customConfirmSwal, getAllData, weekDays } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
+import { UserContext } from "../../contexts/UserContext";
 import { MyHabit, MyHabitDays, TrashIcon } from "../../pages/HabitsPage/styled";
 import MyHabitComponent from "./MyHabitComponent/MyHabitComponent";
 
 const Habit = ({createdHabit}) => {
     const {id, name, days} = createdHabit;
 
-    const {config, setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
+    const {setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
+    const {config} = useContext(UserContext);
 
     const deleteHabit = (idHabit) => {
         

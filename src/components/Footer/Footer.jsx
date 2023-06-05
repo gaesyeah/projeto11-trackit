@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link, useNavigate } from "react-router-dom";
+import { BooleanContext } from "../../contexts/BooleanContext";
 import { DataContext } from "../../contexts/DataContext";
 import { FooterContainer } from "./style";
 
@@ -9,7 +10,8 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    const {showSideBar, hojeData, notLogged} = useContext(DataContext);
+    const {hojeData} = useContext(DataContext);
+    const {showSideBar, notLogged} = useContext(BooleanContext);
 
     let todayProgress;
     if (hojeData === null || hojeData.length === 0){

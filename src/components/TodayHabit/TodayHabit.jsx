@@ -3,13 +3,15 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { URL, customAlertSwal } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
+import { UserContext } from "../../contexts/UserContext";
 import reCheckGif from "./../../assets/reCheckGif.gif";
 import { Habit, TodayCheck } from "./style";
 
 const TodayHabit = ({habit}) => {
     const { id, name, done, currentSequence, highestSequence } = habit;
 
-    const {config, setHojeData} = useContext(DataContext);
+    const {setHojeData} = useContext(DataContext);
+    const {config} = useContext(UserContext);
 
     const [loading, setLoading] = useState(false);
 

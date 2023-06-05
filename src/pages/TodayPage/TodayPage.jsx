@@ -7,13 +7,17 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
 import { URL, customReloginSwal } from "../../constants";
+import { BooleanContext } from "../../contexts/BooleanContext";
 import { DataContext } from "../../contexts/DataContext";
+import { UserContext } from "../../contexts/UserContext";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { Progress, TodayHabitsBox } from "./styled";
 
 const TodayPage = () => {
 
-    const {config, hojeData, setHojeData, showSideBar} = useContext(DataContext);
+    const {hojeData, setHojeData} = useContext(DataContext);
+    const {config} = useContext(UserContext);
+    const {showSideBar} = useContext(BooleanContext);
 
     const navigate = useNavigate();
 

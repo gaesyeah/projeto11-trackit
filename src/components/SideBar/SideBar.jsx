@@ -2,13 +2,15 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { customConfirmSwal } from "../../constants";
-import { DataContext } from "../../contexts/DataContext";
+import { BooleanContext } from "../../contexts/BooleanContext";
+import { UserContext } from "../../contexts/UserContext";
 import logOutIcon from "./../../assets/logOutIcon.png";
 import { StyledHistory, StyledList, StyledListCheck, StyledSideBar } from "./styled";
 
 const SideBar = () => {
 
-    const {name, image, showSideBar, setShowSideBar} = useContext(DataContext);
+    const {showSideBar, setShowSideBar} = useContext(BooleanContext);
+    const {name, image} = useContext(UserContext);
 
     const navigate = useNavigate();
     const {pathname} = useLocation();

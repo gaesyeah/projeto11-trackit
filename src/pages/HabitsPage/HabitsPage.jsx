@@ -7,13 +7,17 @@ import Swal from 'sweetalert2';
 import Habit from "../../components/Habit/Habit";
 import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
 import { URL, customAlertSwal, customReloginSwal, getAllData, weekDays } from "../../constants";
+import { BooleanContext } from "../../contexts/BooleanContext";
 import { DataContext } from "../../contexts/DataContext";
+import { UserContext } from "../../contexts/UserContext";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
 const HabitsPage = ({habitosData}) => {
 
-    const {config, setHabitosData, setHojeData, setHistoricoData, showSideBar} = useContext(DataContext);
+    const {setHabitosData, setHojeData, setHistoricoData} = useContext(DataContext);
+    const {config} = useContext(UserContext);
+    const {showSideBar} = useContext(BooleanContext);
 
     const navigate = useNavigate();
 
