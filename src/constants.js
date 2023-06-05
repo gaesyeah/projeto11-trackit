@@ -51,3 +51,11 @@ export const customConfirmSwal = {
     cancelButtonText: 'Cancelar',
     cancelButtonColor: '#CFCFCF',
 };
+
+export const customReloginSwal = {
+    icon: 'info',
+    title: '<span style=";font-size: 18px">Você não está conectado, faça login</span>',
+    width: 320,
+    confirmButtonText: 'Ok',
+    confirmButtonColor: '#126BA5'
+}

@@ -4,9 +4,10 @@ import 'dayjs/locale/pt-br';
 import { useContext, useEffect } from "react";
 import { Blocks } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { DataContext } from "../../App";
 import TodayHabit from "../../components/TodayHabit/TodayHabit";
-import { URL } from "../../constants";
+import { URL, customReloginSwal } from "../../constants";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { Progress, TodayHabitsBox } from "./styled";
 
@@ -22,6 +23,8 @@ const TodayPage = () => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            Swal.fire(customReloginSwal);
 
             navigate('/');
         });

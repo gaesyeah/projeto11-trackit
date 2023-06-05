@@ -4,10 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import 'react-calendar/dist/Calendar.css';
 import { Blocks } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { DataContext } from "../../App";
 import CalendarComponent from "../../components/HistoryComponents/CalendarComponent/CalendarComponent";
 import HabitsComponent from "../../components/HistoryComponents/HabitsComponent/HabitsComponent";
-import { URL } from "../../constants";
+import { URL, customReloginSwal } from "../../constants";
 import { H2Formater, NullLoading, PageBody } from "../../style/PageBody";
 import { MyHabits } from "../HabitsPage/styled";
 import { StyledP } from "./styled";
@@ -26,6 +27,8 @@ const HistoryPage = () => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            Swal.fire(customReloginSwal);
 
             navigate('/');
         });

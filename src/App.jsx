@@ -62,15 +62,17 @@ const App = () => {
 
             {pathname !== '/' && pathname !== '/cadastro' 
                 &&
-                <>
-                    <SideBar name={!storedName.current ? name : storedName.current}/>
-                    <Footer/>
-                    <NavBar/>
-                    {showSideBar 
-                        && 
-                        <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
-                    }
-                </>
+                !(Object.keys(loginData).length === 0 && !localStorage.getItem('config'))
+                    &&
+                    <>
+                        <SideBar name={!storedName.current ? name : storedName.current}/>
+                        <Footer/>
+                        <NavBar/>
+                        {showSideBar 
+                            && 
+                            <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
+                        }
+                    </>
             }
             
             <Routes>

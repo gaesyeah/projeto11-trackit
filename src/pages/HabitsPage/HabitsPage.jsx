@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { DataContext } from "../../App";
 import Habit from "../../components/Habit/Habit";
 import WeekDayComponent from "../../components/WeekDayComponent/WeekDayComponent";
-import { URL, customAlertSwal, getAllData, weekDays } from "../../constants";
+import { URL, customAlertSwal, customReloginSwal, getAllData, weekDays } from "../../constants";
 import { NullLoading, PageBody } from "../../style/PageBody";
 import { AddHabitBox, ConfirmButtons, MyHabits, NoHabits, PlusIcon, TopBar, WeekDayButtons } from "./styled";
 
@@ -68,6 +68,8 @@ const HabitsPage = ({habitosData}) => {
         .catch(({response}) => {
             const {details, message} = response.data;
             console.log(`${!details ? '' : details}\n${message}`);
+
+            Swal.fire(customReloginSwal);
 
             navigate('/');
         });
