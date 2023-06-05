@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import jwtDecode from "jwt-decode";
+import { useEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -16,22 +17,55 @@ const RegisterPage = () => {
         email: '', name: '', image: '', password: ''
     });
 
-    const register = (e) => {
-        e.preventDefault();
+    const register = (e, googleData) => {
+        //verifica se o registro foi feito ou não pela Google
+        let registerInfos;
+        if(!googleData){
+            e.preventDefault();
+            registerInfos = registerInputs;
+        } else {
+            registerInfos = googleData;
+        }
 
         setLoading(true);
         
-        axios.post(`${URL}/auth/sign-up`, registerInputs)
-        .then(() => navigate('/'))
+        axios.post(`${URL}/auth/sign-up`, registerInfos)
+        .then(() => {
+            customAlertSwal.icon = 'success';
+            customAlertSwal.title = `<span style="color: #5cba5c;font-size: 18px">Conta criada com sucesso!</span>`;
+            Swal.fire(customAlertSwal);
+            navigate('/');
+        })
         .catch(({response}) => {
             const {details, message} = response.data;
 
+            customAlertSwal.icon = 'error';
             customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
             Swal.fire(customAlertSwal);
             
             setLoading(false);
         });
     }
+
+    const googleCallBack = ({credential}) => {
+        const decodedCredential = jwtDecode(credential);
+        const {name, picture, email, sub} = decodedCredential;
+        const data = {email, name, image: picture, password: sub};
+
+        register(undefined, data);
+    }
+    const signGoogleDiv = useRef(null);
+    useEffect(()=> {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: '45868346241-lmib1jv8800e6mg6trsnrde05kok28en.apps.googleusercontent.com',
+            callback: googleCallBack
+        });
+        google.accounts.id.renderButton(
+            signGoogleDiv.current,
+            { theme:'outline', size:'large', width: '303px'}
+        );
+    },[]);
 
     return (
         <SignBody>
@@ -93,6 +127,7 @@ const RegisterPage = () => {
                     visible={loading}
                 /></button>
             </form>
+            <div ref={signGoogleDiv}/>
             <Link 
                 to='/'
                 data-test="login-link"

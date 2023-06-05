@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import jwtDecode from "jwt-decode";
+import { useEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -14,12 +15,19 @@ const LoginPage = ({setLoginData}) => {
     const [loading, setLoading] = useState(false);
     const [loginInputs, setLoginInputs] = useState({email: '', password: ''});
 
-    const login = (e) => {
-        e.preventDefault();
+    const login = (e, googleData) => {
+        //verifica se o registro foi feito ou não pela Google
+        let loginInfos;
+        if(!googleData){
+            e.preventDefault();
+            loginInfos = loginInputs;
+        } else {
+            loginInfos = googleData;
+        }
 
         setLoading(true);
 
-        axios.post(`${URL}/auth/login`, loginInputs)
+        axios.post(`${URL}/auth/login`, loginInfos)
         .then(({data}) => {
             setLoginData(data);
             navigate('/hoje');
@@ -33,6 +41,26 @@ const LoginPage = ({setLoginData}) => {
             setLoading(false);
         })
     }
+
+    const googleCallBack = ({credential}) => {
+        const decodedCredential = jwtDecode(credential);
+        const {email, sub} = decodedCredential;
+        const data = {email, password: sub};
+
+        login(undefined, data);
+    }
+    const signGoogleDiv = useRef(null);
+    useEffect(()=> {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: '45868346241-lmib1jv8800e6mg6trsnrde05kok28en.apps.googleusercontent.com',
+            callback: googleCallBack
+        });
+        google.accounts.id.renderButton(
+            signGoogleDiv.current,
+            { theme:'outline', size:'large', width: '303px'}
+        );
+    },[]);
 
     return (
         <SignBody>
@@ -72,6 +100,7 @@ const LoginPage = ({setLoginData}) => {
                     visible={loading}
                 /></button>
             </form>
+            <div ref={signGoogleDiv}/>
             <Link 
                 to='/cadastro' 
                 data-test="signup-link"

@@ -28,5 +28,6 @@ export const SignBody = styled.div`
     button{
         width: 303px;
         height: 45px;
+        margin-bottom: 8px;
     }
 `;
