@@ -58,7 +58,7 @@ const LoginPage = ({setLoginData}) => {
         });
         google.accounts.id.renderButton(
             signGoogleDiv.current,
-            { theme:'outline', size:'large', width: '303px'}
+            {locale: 'PT-br', theme:'outline', size:'large', width: '303px'}
         );
     },[]);
 

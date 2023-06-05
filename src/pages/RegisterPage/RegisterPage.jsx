@@ -63,8 +63,8 @@ const RegisterPage = () => {
         });
         google.accounts.id.renderButton(
             signGoogleDiv.current,
-            { theme:'outline', size:'large', width: '303px'}
-        );
+            { locale: 'PT-br', text: 'continue_with', theme: 'filled_blue', size:'large', width: '303px'}
+        );        
     },[]);
 
     return (
