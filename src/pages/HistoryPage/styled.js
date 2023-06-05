@@ -8,12 +8,12 @@ export const StyledP = styled.p`
     line-height: 22px;
     color: #666666;
     span{
-        color: #f24d4d;
+        color: #5cba5c;
         &:nth-child(2){
-            color: #5cba5c;
+            color: #eba32f;
         }
         &:last-child{
-            color: #eba32f;
+            color: #f24d4d;
         }
     }
 `;
