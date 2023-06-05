@@ -10,8 +10,9 @@ export const PageBody = styled.div`
     min-width: 100vw;
     min-height: 100vh;
     background: #E5E5E5;
-    transition: 300ms ease-out;
+    transition: padding-top 300ms ease-out, padding-bottom 300ms ease-out;
     padding-top: ${({showSideBar}) => !showSideBar ? '70px' : '0px'};
+    padding-bottom: ${({showSideBar}) => !showSideBar ? '102px' : '0px'};
     h2{
         font-size: 23px;
         line-height: 29px;
@@ -22,7 +23,7 @@ export const PageBody = styled.div`
         line-height: 22px;
         color: #666666;
     }
-    padding-bottom: ${({showSideBar}) => !showSideBar ? '102px' : '0px'};
+
 `;
 
 export const NullLoading = styled.div`
