@@ -19,7 +19,7 @@ const LoginPage = ({setLoginData}) => {
         
         let loginInfos = undefined;
         //verifica se o registro foi feito pelo Submit ou Google
-        if(e){
+        if(e !== undefined){
             e.preventDefault();
             loginInfos = loginInputs;
         } else {
@@ -29,6 +29,7 @@ const LoginPage = ({setLoginData}) => {
         setLoading(true);
 
         axios.post(`${URL}/auth/login`, loginInfos)
+        //sucesso no login
         .then(({data}) => {
             setLoginData(data);
             navigate('/hoje');
@@ -37,13 +38,9 @@ const LoginPage = ({setLoginData}) => {
             const {details, message} = response.data;
             
             setLoading(false);
-            //No else desse if será feito um cadastro ao invés de mostrar 
-            //a mensagem de erro do login(caso tenha sido com a Google)
-            if(loginInfos === undefined && message === "Usuário e/ou senha inválidos!"){
-                customAlertSwal.icon = 'error',
-                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-                Swal.fire(customAlertSwal);
-            } else {
+            //Caso o login tenha sido feito com o Google e a mensagem de erro
+            //for "Usuário e/ou senha inválidos!" será feita uma tentativa de cadastro
+            if(e === undefined && message === "Usuário e/ou senha inválidos!"){
                 setLoading(true);
                 
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
@@ -72,6 +69,11 @@ const LoginPage = ({setLoginData}) => {
                     
                     setLoading(false);
                 });
+            //Se não, será mostrada uma mensagem de erro no login
+            } else {
+                customAlertSwal.icon = 'error',
+                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                Swal.fire(customAlertSwal);
             }
         })
     }
