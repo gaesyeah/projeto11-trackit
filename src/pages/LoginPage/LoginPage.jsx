@@ -39,7 +39,7 @@ const LoginPage = ({setLoginData}) => {
             setLoading(false);
             //No else desse if será feito um cadastro ao invés de mostrar 
             //a mensagem de erro do login(caso tenha sido com a Google)
-            if(!(loginInfos === undefined && message === "Usuário e/ou senha inválidos!")){
+            if(loginInfos === undefined && message === "Usuário e/ou senha inválidos!"){
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                 Swal.fire(customAlertSwal);
