@@ -40,9 +40,12 @@ const RegisterPage = () => {
         })
         .catch(({response}) => {
             const {details, message} = response.data;
+            
+            customAlertSwal.icon = 'error';
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
 
-            //Caso o cadastro tenha sido feito com o Google e a mensagem de erro
-            //for "Usuário já cadastrado!" será feita uma tentativa de login
+            /*Caso o cadastro tenha sido feito com o Google e a mensagem de erro
+            for "Usuário já cadastrado!" será feita uma tentativa de login*/
             if (e === undefined && message === "Usuário já cadastrado!"){
                 
                 axios.post(`${URL}/auth/login`, {email, password: sub})
@@ -50,21 +53,15 @@ const RegisterPage = () => {
                     setLoginData(data);
                     navigate('/hoje');
                 })
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-                    
-                    customAlertSwal.icon = 'error',
-                    customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                .catch(() => {
+                    /*utilizo a response do primeiro catch de cadastro pq desse ter sido
+                    referente ao login, a requisição foi feita na tela de cadastro*/
                     Swal.fire(customAlertSwal);
-
                     setLoading(false);
                 })
             //Se não, será mostrada uma mensagem de erro no cadastro
             } else {
-                customAlertSwal.icon = 'error';
-                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                 Swal.fire(customAlertSwal);
-                
                 setLoading(false);
             }
         });

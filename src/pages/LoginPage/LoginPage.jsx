@@ -38,6 +38,9 @@ const LoginPage = () => {
         })
         .catch(({response}) => {
             const {details, message} = response.data;
+
+            customAlertSwal.icon = 'error';
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
             
             //Caso o login tenha sido feito com o Google e a mensagem de erro
             //for "Usuário e/ou senha inválidos!" será feita uma tentativa de cadastro
@@ -52,29 +55,21 @@ const LoginPage = () => {
                         setLoginData(data);
                         navigate('/hoje');
                     })
-                    .catch(({response}) => {
-                        const {details, message} = response.data;
-                        
-                        customAlertSwal.icon = 'error',
-                        customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                    .catch(() => {
+                        /*não preciso de parametros novos, é só reaproveitar os do primeiro catch
+                        , é o mesmo usuario, são os mesmos dados, e a mesma requisição*/
                         Swal.fire(customAlertSwal);
-
                         setLoading(false);
                     })
                 })
-                .catch(({response}) => {
-                    const {details, message} = response.data;
-        
-                    customAlertSwal.icon = 'error';
-                    customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                .catch(() => {
+                    /*utilizo a response do primeiro catch de login pq desse ter sido
+                    referente ao cadastro, a requisição foi feita na tela de login*/
                     Swal.fire(customAlertSwal);
-                    
                     setLoading(false);
                 });
             //Se não, será mostrada uma mensagem de erro no login
             } else {
-                customAlertSwal.icon = 'error',
-                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                 Swal.fire(customAlertSwal);
 
                 setLoading(false);
