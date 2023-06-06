@@ -20,6 +20,8 @@ const LoginPage = () => {
 
     const login = (e, name, picture, email, sub) => {
         
+        setLoading(true);
+        
         let loginInfos = undefined;
         //verifica se o registro foi feito pelo Submit ou Google
         if(e !== undefined){
@@ -28,9 +30,6 @@ const LoginPage = () => {
         } else {
             loginInfos = {email, password: sub};
         }
-
-        setLoading(true);
-
         axios.post(`${URL}/auth/login`, loginInfos)
         .then(({data}) => {
             setLoginData(data);
@@ -41,7 +40,6 @@ const LoginPage = () => {
 
             customAlertSwal.icon = 'error';
             customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-            
             //Caso o login tenha sido feito com o Google e a mensagem de erro
             //for "Usuário e/ou senha inválidos!" será feita uma tentativa de cadastro
             if(e === undefined && message === "Usuário e/ou senha inválidos!"){
@@ -71,7 +69,6 @@ const LoginPage = () => {
             //Se não, será mostrada uma mensagem de erro no login
             } else {
                 Swal.fire(customAlertSwal);
-
                 setLoading(false);
             }
         })

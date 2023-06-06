@@ -22,6 +22,8 @@ const RegisterPage = () => {
 
     const register = (e, email, name, picture, sub) => {
         
+        setLoading(true);
+        
         let registerInfos;
         //verifica se o registro foi feito pelo Submit ou Google
         if(e){
@@ -30,9 +32,6 @@ const RegisterPage = () => {
         } else {
             registerInfos = {email, name, image: picture, password: sub};
         }
-
-        setLoading(true);
-        
         axios.post(`${URL}/auth/sign-up`, registerInfos)
         .then(() => {
             Swal.fire(customCreatedAccSwal);
@@ -43,7 +42,6 @@ const RegisterPage = () => {
             
             customAlertSwal.icon = 'error';
             customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-
             /*Caso o cadastro tenha sido feito com o Google e a mensagem de erro
             for "Usuário já cadastrado!" será feita uma tentativa de login*/
             if (e === undefined && message === "Usuário já cadastrado!"){
