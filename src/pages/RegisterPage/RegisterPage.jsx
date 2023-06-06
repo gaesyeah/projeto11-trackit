@@ -1,6 +1,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useContext, useEffect, useRef, useState } from "react";
+import FileResizer from "react-image-file-resizer";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -86,14 +87,14 @@ const RegisterPage = () => {
 
     const [imageName, setImageName] = useState(false);
     const base64Converter = (e) => {
-        const reader = new FileReader();
         const file = e.target.files[0];
 
-        reader.onload = () => {
-            setRegisterInputs(previous => ({...previous, ['image']: reader.result}));
-            setImageName(file.name);
-        };
-        reader.readAsDataURL(e.target.files[0]);
+        FileResizer.imageFileResizer(file, 51, 51,'JPG', 10, 0,
+            (compressedImage) => {
+                setRegisterInputs(previous => ({...previous, ['image']: compressedImage}));
+                setImageName(file.name);
+            },'base64'
+        );
     }
 
     return (

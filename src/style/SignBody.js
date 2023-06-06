@@ -40,6 +40,7 @@ export const StyledInputFile = styled.div`
         cursor: pointer;
         transition: 500ms;
         overflow-y: auto;
+        white-space: pre;
         width: 303px;
         height: 45px;
         display: inline-block;
