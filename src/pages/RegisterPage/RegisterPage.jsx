@@ -6,7 +6,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
-import { URL, customAlertSwal, customCreatedAccSwal } from "../../constants";
+import { URL, customAlertSwal, customCreatedAccSwal, login2nd } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { SignBody, StyledInputFile } from "../../style/SignBody";
 
@@ -49,18 +49,7 @@ const RegisterPage = () => {
             /*Caso o cadastro tenha sido feito com o Google e a mensagem de erro
             for "Usuário já cadastrado!" será feita uma tentativa de login*/
             if (e === undefined && message === "Usuário já cadastrado!"){
-                
-                axios.post(`${URL}/auth/login`, {email, password: sub})
-                .then(({data}) => {
-                    setLoginData(data);
-                    navigate('/hoje');
-                })
-                .catch(() => {
-                    /*utilizo a response do primeiro catch de cadastro pq desse ter sido
-                    referente ao login, a requisição foi feita na tela de cadastro*/
-                    Swal.fire(customAlertSwal);
-                    setLoading(false);
-                })
+                login2nd(false, {email, password: sub}, setLoginData, navigate, setLoading);
             //Se não, será mostrada uma mensagem de erro no cadastro
             } else {
                 Swal.fire(customAlertSwal);

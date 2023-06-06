@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
 
@@ -67,3 +68,19 @@ export const customCreatedAccSwal = {
     confirmButtonText: 'Ok',
     confirmButtonColor: '#126BA5'
 }
+
+export const login2nd = (loginAfterRegister, infos, setLoginData, navigate, setLoading) => {
+    axios.post(`${URL}/auth/login`, infos)
+    .then(({data}) => {
+        if (loginAfterRegister){
+            Swal.fire(customCreatedAccSwal);
+        }
+        setLoginData(data);
+        navigate('/hoje');
+    })
+    .catch(() => {
+        Swal.fire(customAlertSwal);
+        setLoading(false);
+    })
+}
+

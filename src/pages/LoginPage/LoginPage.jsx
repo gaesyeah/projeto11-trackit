@@ -5,7 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
-import { URL, customAlertSwal, customCreatedAccSwal } from "../../constants";
+import { URL, customAlertSwal, login2nd } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { SignBody } from "../../style/SignBody";
 
@@ -48,18 +48,7 @@ const LoginPage = () => {
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
                 .then(() => {
                     //E em caso de sucesso, será feita uma requisição de login
-                    axios.post(`${URL}/auth/login`, loginInfos)
-                    .then(({data}) => {
-                        Swal.fire(customCreatedAccSwal);
-                        setLoginData(data);
-                        navigate('/hoje');
-                    })
-                    .catch(() => {
-                        /*não preciso de parametros novos, é só reaproveitar os do primeiro catch
-                        , é o mesmo usuario, são os mesmos dados, e a mesma requisição*/
-                        Swal.fire(customAlertSwal);
-                        setLoading(false);
-                    })
+                    login2nd(true, loginInfos, setLoginData, navigate, setLoading);
                 })
                 .catch(() => {
                     /*utilizo a response do primeiro catch de login pq apesar desse ter sido
