@@ -89,10 +89,12 @@ const RegisterPage = () => {
     const base64Converter = (e) => {
         const file = e.target.files[0];
 
+        setImageName(false);
+
         FileResizer.imageFileResizer(file, 85, 85,'JPG', 90, 0,
             (compressedImage) => {
                 setRegisterInputs(previous => ({...previous, ['image']: compressedImage}));
-                setImageName(file.name);
+                setTimeout(() => setImageName(file.name), 500);
             },'base64'
         );
     }

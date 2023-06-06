@@ -58,7 +58,7 @@ export const StyledInputFile = styled.div`
             line-height: -20px;
         }
         img{
-            transition: 400ms;
+            transition: 100ms;
             z-index: 2;
             height: 45px;
             width: 45px;
