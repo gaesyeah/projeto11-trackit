@@ -23,8 +23,9 @@ const RegisterPage = () => {
     });
 
     const register = (e, googleData) => {
-        //verifica se o registro foi feito pelo Submit ou Google
+        
         let registerInfos;
+        //verifica se o registro foi feito pelo Submit ou Google
         if(e){
             e.preventDefault();
             registerInfos = registerInputs;
