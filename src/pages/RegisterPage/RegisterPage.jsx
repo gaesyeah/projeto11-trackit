@@ -41,11 +41,9 @@ const RegisterPage = () => {
         .catch(({response}) => {
             const {details, message} = response.data;
 
-            setLoading(false);
             //Caso o cadastro tenha sido feito com o Google e a mensagem de erro
             //for "Usuário já cadastrado!" será feita uma tentativa de login
             if (e === undefined && message === "Usuário já cadastrado!"){
-                setLoading(true);
                 
                 axios.post(`${URL}/auth/login`, {email, password: sub})
                 .then(({data}) => {

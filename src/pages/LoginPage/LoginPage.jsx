@@ -39,14 +39,13 @@ const LoginPage = () => {
         .catch(({response}) => {
             const {details, message} = response.data;
             
-            setLoading(false);
             //Caso o login tenha sido feito com o Google e a mensagem de erro
             //for "Usuário e/ou senha inválidos!" será feita uma tentativa de cadastro
             if(e === undefined && message === "Usuário e/ou senha inválidos!"){
-                setLoading(true);
                 
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
                 .then(() => {
+                    //E em caso de sucesso, será feita uma requisição de login
                     axios.post(`${URL}/auth/login`, loginInfos)
                     .then(({data}) => {
                         Swal.fire(customCreatedAccSwal);
@@ -77,6 +76,8 @@ const LoginPage = () => {
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                 Swal.fire(customAlertSwal);
+
+                setLoading(false);
             }
         })
     }
