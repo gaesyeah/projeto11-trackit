@@ -52,7 +52,7 @@ export const StyledInputFile = styled.div`
         p{
             margin-top: 10px;
             margin-left: 10px;
-            color: ${({seted, loading}) => (loading && !seted) ? '#E6E6E6' : (loading && seted) ? '#E6E6E6' : loading ? '#666666' : seted ? '#FFFFFF' : '#E6E6E6'};
+            color: ${({seted, loading}) => (loading && !seted) ? '#E6E6E6' : (loading && seted) ? '#666666' : seted ? '#FFFFFF' : '#E6E6E6'};
             font-family: 'Lexend Deca', sans-serif;
             font-size: 20px;
             line-height: -20px;
