@@ -17,7 +17,7 @@ const LoginPage = ({setLoginData}) => {
 
     const login = (e, name, picture, email, sub) => {
         
-        let loginInfos;
+        let loginInfos = undefined;
         //verifica se o registro foi feito pelo Submit ou Google
         if(e){
             e.preventDefault();
@@ -38,7 +38,7 @@ const LoginPage = ({setLoginData}) => {
             
             setLoading(false);
             //Para NÃO cadastrar uma conta com o email Google caso a mesma ainda não exista
-            if(!(email && message === "Usuário e/ou senha inválidos!")){
+            if(!(loginInfos === undefined && message === "Usuário e/ou senha inválidos!")){
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                 Swal.fire(customAlertSwal);
