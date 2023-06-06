@@ -46,7 +46,22 @@ const LoginPage = ({setLoginData}) => {
                 setLoading(true);
                 
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
-                .then(() => navigate('/hoje'))
+                .then(() => {
+                    axios.post(`${URL}/auth/login`, loginInfos)
+                    .then(({data}) => {
+                        setLoginData(data);
+                        navigate('/hoje');
+                    })
+                    .catch(({response}) => {
+                        const {details, message} = response.data;
+                        
+                        customAlertSwal.icon = 'error',
+                        customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                        Swal.fire(customAlertSwal);
+
+                        setLoading(true);
+                    })
+                })
                 .catch(({response}) => {
                     const {details, message} = response.data;
         
