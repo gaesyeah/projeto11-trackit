@@ -15,14 +15,15 @@ const LoginPage = ({setLoginData}) => {
     const [loading, setLoading] = useState(false);
     const [loginInputs, setLoginInputs] = useState({email: '', password: ''});
 
-    const login = (e, googleData) => {
-        //verifica se o registro foi feito ou não pela Google
+    const login = (e, name, picture, email, sub) => {
+        
         let loginInfos;
-        if(!googleData){
+        //verifica se o registro foi feito pelo Submit ou Google
+        if(e){
             e.preventDefault();
             loginInfos = loginInputs;
         } else {
-            loginInfos = googleData;
+            loginInfos = {email, password: sub};
         }
 
         setLoading(true);
@@ -36,9 +37,30 @@ const LoginPage = ({setLoginData}) => {
             const {details, message} = response.data;
             
             setLoading(false);
-            //-------------
-            if(googleData && message === "Usuário e/ou senha inválidos!"){
-                navigate('/cadastro', {state: {googleRedirect: true}});
+            //Para cadastrar uma conta com o email Google caso a mesma ainda não exista
+            if(email && message === "Usuário e/ou senha inválidos!"){
+                
+                setLoading(true);
+                
+                axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
+                .then(() => {
+                    
+                    customAlertSwal.icon = 'success';
+                    customAlertSwal.title = `<span style="color: #5cba5c;font-size: 18px">Conta criada com sucesso!</span>`;
+                    Swal.fire(customAlertSwal);
+
+                    navigate('/hoje');
+                })
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+        
+                    customAlertSwal.icon = 'error';
+                    customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                    Swal.fire(customAlertSwal);
+                    
+                    setLoading(false);
+                });
+
             } else {
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
@@ -49,10 +71,9 @@ const LoginPage = ({setLoginData}) => {
 
     const googleCallBack = ({credential}) => {
         const decodedCredential = jwtDecode(credential);
-        const {email, sub} = decodedCredential;
-        const data = {email, password: sub};
+        const {name, picture, email, sub} = decodedCredential;
 
-        login(undefined, data);
+        login(undefined, name, picture, email, sub);
     }
     const signGoogleDiv = useRef(null);
     useEffect(()=> {

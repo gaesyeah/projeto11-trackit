@@ -12,10 +12,10 @@ const RegisterPage = () => {
 
     const navigate = useNavigate();
 
-    let googleRedirect = undefined;
+    /* let googleRedirect = undefined;
     if (useLocation().state){
         googleRedirect = useLocation().state.googleRedirect;
-    }
+    } */
 
     const [loading, setLoading] = useState(false);
     const [registerInputs, setRegisterInputs] = useState({
@@ -23,9 +23,9 @@ const RegisterPage = () => {
     });
 
     const register = (e, googleData) => {
-        //verifica se o registro foi feito ou não pela Google
+        //verifica se o registro foi feito pelo Submit ou Google
         let registerInfos;
-        if(!googleData){
+        if(e){
             e.preventDefault();
             registerInfos = registerInputs;
         } else {
@@ -70,12 +70,12 @@ const RegisterPage = () => {
             signGoogleDiv.current,
             { locale: 'PT-br', text: 'continue_with', theme: 'filled_blue', size:'large', width: '303px'}
         );
-        
+        /* 
         if (googleRedirect){
             customAlertSwal.icon = 'info';
             customAlertSwal.title = `<span style="font-size: 18px">Ainda não há um cadastro no TrackIt com essa conta Google</span>`;
             Swal.fire(customAlertSwal);
-        }
+        } */
     },[]);
 
     return (
