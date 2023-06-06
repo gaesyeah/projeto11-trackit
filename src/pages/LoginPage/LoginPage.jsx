@@ -1,14 +1,17 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
 import { URL, customAlertSwal } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import { SignBody } from "../../style/SignBody";
 
-const LoginPage = ({setLoginData}) => {
+const LoginPage = () => {
+
+    const {setLoginData} = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -29,7 +32,6 @@ const LoginPage = ({setLoginData}) => {
         setLoading(true);
 
         axios.post(`${URL}/auth/login`, loginInfos)
-        //sucesso no login
         .then(({data}) => {
             setLoginData(data);
             navigate('/hoje');

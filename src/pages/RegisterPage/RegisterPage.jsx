@@ -1,28 +1,26 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
 import { URL, customAlertSwal } from "../../constants";
+import { DataContext } from "../../contexts/DataContext";
 import { SignBody } from "../../style/SignBody";
 
 const RegisterPage = () => {
 
-    const navigate = useNavigate();
+    const {setLoginData} = useContext(DataContext);
 
-    /* let googleRedirect = undefined;
-    if (useLocation().state){
-        googleRedirect = useLocation().state.googleRedirect;
-    } */
+    const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
     const [registerInputs, setRegisterInputs] = useState({
         email: '', name: '', image: '', password: ''
     });
 
-    const register = (e, googleData) => {
+    const register = (e, email, name, picture, sub) => {
         
         let registerInfos;
         //verifica se o registro foi feito pelo Submit ou Google
@@ -30,7 +28,7 @@ const RegisterPage = () => {
             e.preventDefault();
             registerInfos = registerInputs;
         } else {
-            registerInfos = googleData;
+            registerInfos = {email, name, image: picture, password: sub};
         }
 
         setLoading(true);
@@ -45,20 +43,42 @@ const RegisterPage = () => {
         .catch(({response}) => {
             const {details, message} = response.data;
 
-            customAlertSwal.icon = 'error';
-            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-            Swal.fire(customAlertSwal);
-            
             setLoading(false);
+            //Caso o cadastro tenha sido feito com o Google e a mensagem de erro
+            //for "Usuário já cadastrado!" será feita uma tentativa de login
+            if (e === undefined && message === "Usuário já cadastrado!"){
+                setLoading(true);
+                
+                axios.post(`${URL}/auth/login`, {email, password: sub})
+                .then(({data}) => {
+                    setLoginData(data);
+                    navigate('/hoje');
+                })
+                .catch(({response}) => {
+                    const {details, message} = response.data;
+                    
+                    customAlertSwal.icon = 'error',
+                    customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                    Swal.fire(customAlertSwal);
+
+                    setLoading(false);
+                })
+            //Se não, será mostrada uma mensagem de erro no cadastro
+            } else {
+                customAlertSwal.icon = 'error';
+                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                Swal.fire(customAlertSwal);
+                
+                setLoading(false);
+            }
         });
     }
 
     const googleCallBack = ({credential}) => {
         const decodedCredential = jwtDecode(credential);
         const {name, picture, email, sub} = decodedCredential;
-        const data = {email, name, image: picture, password: sub};
 
-        register(undefined, data);
+        register(undefined, email, name, picture, sub);
     }
     const signGoogleDiv = useRef(null);
     useEffect(()=> {
@@ -71,12 +91,6 @@ const RegisterPage = () => {
             signGoogleDiv.current,
             { locale: 'PT-br', text: 'continue_with', theme: 'filled_blue', size:'large', width: '303px'}
         );
-        /* 
-        if (googleRedirect){
-            customAlertSwal.icon = 'info';
-            customAlertSwal.title = `<span style="font-size: 18px">Ainda não há um cadastro no TrackIt com essa conta Google</span>`;
-            Swal.fire(customAlertSwal);
-        } */
     },[]);
 
     return (

@@ -50,7 +50,7 @@ const App = () => {
     const [showSideBar, setShowSideBar] = useState(false);
     return (
         <DataContext.Provider 
-            value={{hojeData, setHojeData, setHabitosData, historicoData, setHistoricoData
+            value={{setLoginData, hojeData, setHojeData, setHabitosData, historicoData, setHistoricoData
         }}>
             <UserContext.Provider 
                 value={{                
@@ -78,7 +78,7 @@ const App = () => {
                     }
                     
                     <Routes>
-                        <Route path='/' element={<LoginPage setLoginData={setLoginData}/>} />
+                        <Route path='/' element={<LoginPage/>} />
                         <Route path='/cadastro' element={<RegisterPage />} />
                         <Route path='/habitos' element={<HabitsPage habitosData={habitosData} />} />
                         <Route path='/hoje' element={<TodayPage />} />
