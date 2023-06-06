@@ -43,14 +43,7 @@ const LoginPage = ({setLoginData}) => {
                 setLoading(true);
                 
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
-                .then(() => {
-                    
-                    customAlertSwal.icon = 'success';
-                    customAlertSwal.title = `<span style="color: #5cba5c;font-size: 18px">Conta criada com sucesso!</span>`;
-                    Swal.fire(customAlertSwal);
-
-                    navigate('/hoje');
-                })
+                .then(() => navigate('/hoje'))
                 .catch(({response}) => {
                     const {details, message} = response.data;
         
