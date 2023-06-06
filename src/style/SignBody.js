@@ -50,12 +50,10 @@ export const StyledInputFile = styled.div`
         background-color: ${({seted, loading}) => loading ? '#F2F2F2' : seted ? '#D5D5D5' : '#FFFFFF'};
         opacity: ${({loading}) => loading ? '0.5' : '1'};
         p{
-            margin-top: 10px;
-            margin-left: 10px;
+            margin: 10px;
             color: ${({seted, loading}) => (loading && !seted) ? '#E6E6E6' : (loading && seted) ? '#666666' : seted ? '#FFFFFF' : '#E6E6E6'};
             font-family: 'Lexend Deca', sans-serif;
             font-size: 20px;
-            line-height: -20px;
         }
         img{
             transition: 200ms ease-out;
