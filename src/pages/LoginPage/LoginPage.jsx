@@ -37,9 +37,12 @@ const LoginPage = ({setLoginData}) => {
             const {details, message} = response.data;
             
             setLoading(false);
-            //Para cadastrar uma conta com o email Google caso a mesma ainda não exista
-            if(email && message === "Usuário e/ou senha inválidos!"){
-                
+            //Para NÃO cadastrar uma conta com o email Google caso a mesma ainda não exista
+            if(!(email && message === "Usuário e/ou senha inválidos!")){
+                customAlertSwal.icon = 'error',
+                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+                Swal.fire(customAlertSwal);
+            } else {
                 setLoading(true);
                 
                 axios.post(`${URL}/auth/sign-up`, {email, name, image: picture, password: sub})
@@ -53,11 +56,6 @@ const LoginPage = ({setLoginData}) => {
                     
                     setLoading(false);
                 });
-
-            } else {
-                customAlertSwal.icon = 'error',
-                customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-                Swal.fire(customAlertSwal);
             }
         })
     }
