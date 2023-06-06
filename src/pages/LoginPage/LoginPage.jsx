@@ -29,6 +29,7 @@ const LoginPage = () => {
             loginInfos = loginInputs;
         } else {
             loginInfos = {email, password: sub};
+            setLoginInputs({['email']: '', ['password']: ''});
         }
         axios.post(`${URL}/auth/login`, loginInfos)
         .then(({data}) => {
