@@ -16,6 +16,7 @@ const RegisterPage = () => {
 
     const navigate = useNavigate();
 
+    const [imageName, setImageName] = useState(false);
     const [loading, setLoading] = useState(false);
     const [registerInputs, setRegisterInputs] = useState({
         email: '', name: '', image: '', password: ''
@@ -32,6 +33,8 @@ const RegisterPage = () => {
             registerInfos = registerInputs;
         } else {
             registerInfos = {email, name, image: picture, password: sub};
+            setImageName(false);
+            setRegisterInputs({['email']: '', ['name']: '', ['image']: '', ['password']: ''});
         }
         axios.post(`${URL}/auth/sign-up`, registerInfos)
         .then(() => {
@@ -85,7 +88,6 @@ const RegisterPage = () => {
         );
     },[]);
 
-    const [imageName, setImageName] = useState(false);
     const base64Converter = (e) => {
         const file = e.target.files[0];
 
