@@ -90,22 +90,17 @@ const HabitsPage = ({habitosData}) => {
         <PageBody showSideBar={showSideBar}>
             <TopBar>
                 <h2>Meus Hábitos</h2>
-                <PlusIcon 
+                <PlusIcon data-test="habit-create-btn"
                     onClick={() => setShowCreation(true)}
-                    data-test="habit-create-btn"
                 />
             </TopBar>
-            <AddHabitBox showCreation={showCreation}
+            <AddHabitBox showCreation={showCreation} data-test="habit-create-container"
                 onSubmit={createHabit} 
-                data-test="habit-create-container"
             >
-                <input
-                    disabled={loading}
+                <input type="text" placeholder="nome do hábito" data-test="habit-name-input" 
                     onChange={e => setHabitInput(e.target.value)}
                     value={habitInput}
-                    type="text" 
-                    placeholder="nome do hábito" 
-                    data-test="habit-name-input" 
+                    disabled={loading}
                 />
                 <WeekDayButtons>
                     {weekDays.map((weekDay) => 
@@ -119,27 +114,17 @@ const HabitsPage = ({habitosData}) => {
                     )}
                 </WeekDayButtons>
                 <ConfirmButtons>
-                    <button
+                    <button type="button" data-test="habit-create-cancel-btn"
                         disabled={loading}
                         onClick={() => setShowCreation(false)}
-                        type="button"
-                        data-test="habit-create-cancel-btn"
                     >Cancelar</button>
-                    <button
+                    <button type="submit" data-test="habit-create-save-btn"
                         disabled={loading}
-                        type="submit"
-                        data-test="habit-create-save-btn"
                     >{!loading && 'Salvar'}
-                    <ThreeDots 
-                        height="45" 
-                        width="45" 
-                        radius="9"
-                        color="#FFFFFF" 
-                        ariaLabel="three-dots-loading"
-                        wrapperStyle={{}}
-                        wrapperClassName=""
-                        visible={loading}
-                    /></button>
+                        <ThreeDots height="45" width="45" radius="9" color="#FFFFFF" ariaLabel="three-dots-loading"
+                            visible={loading}
+                        />
+                    </button>
                 </ConfirmButtons>
                 </AddHabitBox>
 

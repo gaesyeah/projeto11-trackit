@@ -38,6 +38,7 @@ export const StyledInputFile = styled.div`
     }
     label{
         cursor: pointer;
+        transition: 500ms;
         overflow-y: auto;
         width: 303px;
         height: 45px;
@@ -45,6 +46,9 @@ export const StyledInputFile = styled.div`
         border-radius: 5px;
         border: 1px solid #D5D5D5;
         background-color: ${({seted}) => seted ? '#D5D5D5' : '#FFFFFF'};
+        &:hover{
+            opacity: 0.7;
+        }
         p{
             margin-top: 10px;
             margin-left: 10px;

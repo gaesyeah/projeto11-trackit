@@ -8,19 +8,9 @@ const HabitsComponent = ({habit}) => {
         <Habit done={done}>
             <h3>{name}</h3>
             <h2>
-                {!done 
-                    ? 
-                    'Não foi concluído'
-                    :
-                    'Foi concluído'
-                }
+                {!done ? 'Não foi concluído' : 'Foi concluído' }
             </h2>
-            {!done 
-                ? 
-                <HabitNotChecked/> 
-                :
-                <HabitChecked/>
-            }
+            {!done ? <HabitNotChecked/> : <HabitChecked/> }
         </Habit>
     );
 }

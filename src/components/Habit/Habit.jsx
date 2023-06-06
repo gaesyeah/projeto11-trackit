@@ -36,9 +36,8 @@ const Habit = ({createdHabit}) => {
     return (
         <MyHabit data-test="habit-container">
             <h3 data-test="habit-name">{name}</h3>
-            <TrashIcon 
+            <TrashIcon data-test="habit-delete-btn" 
                 onClick={() => deleteHabit(id)}
-                data-test="habit-delete-btn" 
             />
             <MyHabitDays>
                 {weekDays.map(weekDay =>

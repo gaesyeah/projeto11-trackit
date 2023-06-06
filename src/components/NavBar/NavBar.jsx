@@ -12,10 +12,9 @@ const NavBar = () => {
         <NavContainer not={notLogged} showSideBar={showSideBar} data-test="header">
             <h3>TrackIt</h3>
             <div>
-                <img 
+                <img data-test="avatar"
                     src={image} 
                     alt={name}
-                    data-test="avatar"
                 />
                 <StyledArrow onClick={() => setShowSideBar(true)}/>
             </div>

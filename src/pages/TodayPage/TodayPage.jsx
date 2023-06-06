@@ -53,7 +53,7 @@ const TodayPage = () => {
                         <h2 data-test="today">{date}</h2>
                         {hojeData.length === 0 
                             ?
-                            <p data-test="today-counter">Não há nenhum hábito para hoje</p>
+                            <p>Não há nenhum hábito para hoje</p>
                             :
                             <h1 data-test="today-counter">
                                 {todayProgress > 0

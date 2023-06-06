@@ -61,7 +61,7 @@ const LoginPage = () => {
                     })
                 })
                 .catch(() => {
-                    /*utilizo a response do primeiro catch de login pq desse ter sido
+                    /*utilizo a response do primeiro catch de login pq apesar desse ter sido
                     referente ao cadastro, a requisição foi feita na tela de login*/
                     Swal.fire(customAlertSwal);
                     setLoading(false);
@@ -97,39 +97,23 @@ const LoginPage = () => {
         <SignBody>
             <Logo />
             <form onSubmit={login}>
-                <input
+                <input type="email" placeholder="email" required data-test="email-input"
                     disabled={loading}
-                    type="email" 
-                    placeholder="email" 
-                    required
                     value={loginInputs.email}
                     onChange={(e) => setLoginInputs(previous => ({...previous, ['email']: e.target.value}))}
-                    data-test="email-input"
                 ></input>
-                <input
+                <input type="password" placeholder="senha" required data-test="password-input" 
                     disabled={loading}
-                    type="password"
-                    placeholder="senha"
-                    required
                     value={loginInputs.password}
                     onChange={(e) => setLoginInputs(previous => ({...previous, ['password']: e.target.value}))}
-                    data-test="password-input"
                 ></input>
-                <button
+                <button type="submit" data-test="login-btn"
                     disabled={loading} 
-                    type="submit"
-                    data-test="login-btn"
                 >{!loading && 'Entrar'}
-                <ThreeDots 
-                    height="60" 
-                    width="60" 
-                    radius="9"
-                    color="#FFFFFF" 
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClassName=""
-                    visible={loading}
-                /></button>
+                    <ThreeDots height="60" width="60" radius="9" color="#FFFFFF" ariaLabel="three-dots-loading"
+                        visible={loading}
+                    />
+                </button>
             </form>
             <div ref={signGoogleDiv}/>
             <Link 

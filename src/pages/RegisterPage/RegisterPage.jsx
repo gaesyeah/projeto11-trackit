@@ -100,70 +100,44 @@ const RegisterPage = () => {
         <SignBody>
             <Logo />
             <form onSubmit={register}>
-                <input
-                    disabled={loading}
-                    type="email" 
-                    placeholder="email" 
-                    required
+                <input type="email" placeholder="email" required data-test="email-input"
                     value={registerInputs.email}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['email']: e.target.value}))}
-                    data-test="email-input"
+                    disabled={loading}
                 >
                 </input>
-                <input
-                    disabled={loading}
-                    type="password" 
-                    placeholder="senha" 
-                    required
-                    value={registerInputs.password}
+                <input type="password"  placeholder="senha" data-test="password-input"
+                    required value={registerInputs.password}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['password']: e.target.value}))}
-                    data-test="password-input"
+                    disabled={loading}
                 >
                 </input>
-                <input
-                    disabled={loading}
-                    type="text" 
-                    placeholder="nome" 
-                    required
+                <input type="text" placeholder="nome" required data-test="user-name-input"
                     value={registerInputs.name}
                     onChange={(e) => setRegisterInputs(previous => ({...previous, ['name']: e.target.value}))}
-                    data-test="user-name-input"
+                    disabled={loading}
                 >
                 </input>
                 <StyledInputFile seted={imageName}>
                     <label htmlFor="inputFile">
                         <p>{registerInputs.image === '' ? 'Imagem' : imageName}</p>
                     </label>
-                    <input
-                        id="inputFile"
-                        disabled={loading}
-                        type="file" 
-                        required
+                    <input id="inputFile" type="file" required data-test="user-image-input"
                         onChange={(e) => base64Converter(e)}
-                        data-test="user-image-input"
+                        disabled={loading}
                     >
                     </input>
                 </StyledInputFile>
-                <button
+                <button type="submit" data-test="signup-btn" 
                     disabled={loading} 
-                    type="submit"
-                    data-test="signup-btn" 
                 >{!loading && 'Cadastrar'}
-                <ThreeDots 
-                    height="60" 
-                    width="60" 
-                    radius="9"
-                    color="#FFFFFF" 
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClassName=""
-                    visible={loading}
-                /></button>
+                    <ThreeDots height="60" width="60" radius="9" color="#FFFFFF" ariaLabel="three-dots-loading"
+                        visible={loading}
+                    />
+                </button>
             </form>
             <div ref={signGoogleDiv}/>
-            <Link 
-                to='/'
-                data-test="login-link"
+            <Link to='/' data-test="login-link"
             >Já tem uma conta? Faça login!
             </Link>
         </SignBody>

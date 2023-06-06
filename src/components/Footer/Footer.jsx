@@ -22,31 +22,20 @@ const Footer = () => {
 
     return (
         <FooterContainer not={notLogged} showSideBar={showSideBar} data-test="menu">
-            <Link 
+            <Link data-test="habit-link"
                 to='/habitos'
-                data-test="habit-link"
             >Hábitos
             </Link>
-            <div 
+            <div data-test="today-link"
                 onClick={() => navigate('/hoje')}
-                data-test="today-link"
             >
-                <CircularProgressbar
+                <CircularProgressbar text='Hoje' background backgroundPadding={6} 
+                    styles={buildStyles({backgroundColor: "#52B6FF", textColor: "#FFFFFF", pathColor: "#FFFFFF", trailColor: "transparent"})}
                     value={todayProgress}
-                    text='Hoje'
-                    background
-                    backgroundPadding={6}
-                    styles={buildStyles({
-                        backgroundColor: "#52B6FF",
-                        textColor: "#FFFFFF",
-                        pathColor: "#FFFFFF",
-                        trailColor: "transparent"
-                    })}
                 />
             </div>
-            <Link 
+            <Link data-test="history-link"
                 to='/historico'
-                data-test="history-link"
             >Histórico
             </Link>
         </FooterContainer>

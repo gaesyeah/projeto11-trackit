@@ -70,10 +70,7 @@ const App = () => {
                         &&
                         <>
                             <SideBar/>
-                            {showSideBar 
-                                && 
-                                <StyledBackGround onClick={() => {setShowSideBar(false)}}/>
-                            }
+                            {showSideBar && <StyledBackGround onClick={() => {setShowSideBar(false)}}/>}
                         </>
                     }
                     
