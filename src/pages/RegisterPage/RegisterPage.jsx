@@ -5,7 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
-import { URL, customAlertSwal } from "../../constants";
+import { URL, customAlertSwal, customCreatedAccSwal } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { SignBody } from "../../style/SignBody";
 
@@ -35,9 +35,7 @@ const RegisterPage = () => {
         
         axios.post(`${URL}/auth/sign-up`, registerInfos)
         .then(() => {
-            customAlertSwal.icon = 'success';
-            customAlertSwal.title = `<span style="color: #5cba5c;font-size: 18px">Conta criada com sucesso!</span>`;
-            Swal.fire(customAlertSwal);
+            Swal.fire(customCreatedAccSwal);
             navigate('/');
         })
         .catch(({response}) => {

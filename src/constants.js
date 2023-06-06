@@ -59,3 +59,11 @@ export const customReloginSwal = {
     confirmButtonText: 'Ok',
     confirmButtonColor: '#126BA5'
 }
+
+export const customCreatedAccSwal = {
+    icon: 'success',
+    title: `<span style="color: #5cba5c;font-size: 18px">Conta criada com sucesso!</span>`,
+    width: 320,
+    confirmButtonText: 'Ok',
+    confirmButtonColor: '#126BA5'
+}

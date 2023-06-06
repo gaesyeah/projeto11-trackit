@@ -5,7 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
-import { URL, customAlertSwal } from "../../constants";
+import { URL, customAlertSwal, customCreatedAccSwal } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { SignBody } from "../../style/SignBody";
 
@@ -49,6 +49,7 @@ const LoginPage = () => {
                 .then(() => {
                     axios.post(`${URL}/auth/login`, loginInfos)
                     .then(({data}) => {
+                        Swal.fire(customCreatedAccSwal);
                         setLoginData(data);
                         navigate('/hoje');
                     })
