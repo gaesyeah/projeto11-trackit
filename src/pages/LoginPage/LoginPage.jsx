@@ -37,7 +37,7 @@ const LoginPage = ({setLoginData}) => {
             const {details, message} = response.data;
             
             setLoading(false);
-            //Para NÃO cadastrar uma conta com o email Google caso a mesma ainda não exista
+            //No else desse if será feito um cadastro, e não um login (caso tenha sido com a Google)
             if(!(loginInfos === undefined && message === "Usuário e/ou senha inválidos!")){
                 customAlertSwal.icon = 'error',
                 customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
@@ -59,7 +59,7 @@ const LoginPage = ({setLoginData}) => {
                         customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
                         Swal.fire(customAlertSwal);
 
-                        setLoading(true);
+                        setLoading(false);
                     })
                 })
                 .catch(({response}) => {
