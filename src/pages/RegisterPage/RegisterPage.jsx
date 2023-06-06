@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import Logo from "../../components/Logo/Logo";
 import { URL, customAlertSwal, customCreatedAccSwal } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
-import { SignBody } from "../../style/SignBody";
+import { SignBody, StyledInputFile } from "../../style/SignBody";
 
 const RegisterPage = () => {
 
@@ -84,6 +84,18 @@ const RegisterPage = () => {
         );
     },[]);
 
+    const [imageName, setImageName] = useState(false);
+    const base64Converter = (e) => {
+        const reader = new FileReader();
+        const file = e.target.files[0];
+
+        reader.onload = () => {
+            setRegisterInputs(previous => ({...previous, ['image']: reader.result}));
+            setImageName(file.name);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
     return (
         <SignBody>
             <Logo />
@@ -118,16 +130,20 @@ const RegisterPage = () => {
                     data-test="user-name-input"
                 >
                 </input>
-                <input
-                    disabled={loading}
-                    type="text" 
-                    placeholder="foto(link)" 
-                    required
-                    value={registerInputs.image}
-                    onChange={(e) => setRegisterInputs(previous => ({...previous, ['image']: e.target.value}))}
-                    data-test="user-image-input"
-                >
-                </input>
+                <StyledInputFile seted={imageName}>
+                    <label htmlFor="inputFile">
+                        <p>{registerInputs.image === '' ? 'Imagem' : imageName}</p>
+                    </label>
+                    <input
+                        id="inputFile"
+                        disabled={loading}
+                        type="file" 
+                        required
+                        onChange={(e) => base64Converter(e)}
+                        data-test="user-image-input"
+                    >
+                    </input>
+                </StyledInputFile>
                 <button
                     disabled={loading} 
                     type="submit"

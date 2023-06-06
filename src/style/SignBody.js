@@ -31,3 +31,27 @@ export const SignBody = styled.div`
         margin-bottom: 12px;
     }
 `;
+
+export const StyledInputFile = styled.div`
+    input{
+        display: none;
+    }
+    label{
+        cursor: pointer;
+        overflow-y: auto;
+        width: 303px;
+        height: 45px;
+        display: inline-block;
+        border-radius: 5px;
+        border: 1px solid #D5D5D5;
+        background-color: ${({seted}) => seted ? '#D5D5D5' : '#FFFFFF'};
+        p{
+            margin-top: 10px;
+            margin-left: 10px;
+            color: ${({seted}) => seted ? '#FFFFFF' : '#E6E6E6'};
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 20px;
+            line-height: -20px;
+        }
+    }
+`;
