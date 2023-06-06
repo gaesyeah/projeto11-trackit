@@ -119,9 +119,10 @@ const RegisterPage = () => {
                     disabled={loading}
                 >
                 </input>
-                <StyledInputFile seted={imageName}>
+                <StyledInputFile loading={loading} seted={imageName}>
                     <label htmlFor="inputFile">
-                        <p>{registerInputs.image === '' ? 'Imagem' : imageName}</p>
+                        <p>{registerInputs.image === '' ? 'foto' : imageName}</p>
+                        <img src={registerInputs.image} alt=''/>
                     </label>
                     <input id="inputFile" type="file" required data-test="user-image-input"
                         onChange={(e) => base64Converter(e)}

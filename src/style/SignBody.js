@@ -37,26 +37,34 @@ export const StyledInputFile = styled.div`
         display: none;
     }
     label{
-        cursor: pointer;
-        transition: 500ms;
-        overflow-y: auto;
+        cursor: ${({loading}) => loading ? 'default' : 'pointer'};
+        transition: ${({loading}) => loading ? '0ms' : '500ms'};
+        position: relative;
+        overflow: hidden;
         white-space: pre;
         width: 303px;
         height: 45px;
         display: inline-block;
         border-radius: 5px;
         border: 1px solid #D5D5D5;
-        background-color: ${({seted}) => seted ? '#D5D5D5' : '#FFFFFF'};
-        &:hover{
-            opacity: 0.7;
-        }
+        background-color: ${({seted, loading}) => loading ? '#F2F2F2' : seted ? '#D5D5D5' : '#FFFFFF'};
+        opacity: ${({loading}) => loading ? '0.5' : '1'};
         p{
             margin-top: 10px;
             margin-left: 10px;
-            color: ${({seted}) => seted ? '#FFFFFF' : '#E6E6E6'};
+            color: ${({seted, loading}) => (loading && !seted) ? '#E6E6E6' : (loading && seted) ? '#E6E6E6' : loading ? '#666666' : seted ? '#FFFFFF' : '#E6E6E6'};
             font-family: 'Lexend Deca', sans-serif;
             font-size: 20px;
             line-height: -20px;
+        }
+        img{
+            transition: 400ms;
+            z-index: 2;
+            height: 45px;
+            width: 45px;
+            position: absolute;
+            top: 0;
+            right: ${({seted, loading}) => loading ? '-50px' : seted ? '0' : '-50px'};
         }
     }
 `;
