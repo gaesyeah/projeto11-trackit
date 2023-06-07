@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useContext, useState } from "react";
-import { postGetReCheckedHabits } from "../../constants";
+import Swal from "sweetalert2";
+import { URL, customAlertSwal, getReCheckedHabits } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { UserContext } from "../../contexts/UserContext";
 import reCheckGif from "./../../assets/reCheckGif.gif";
@@ -23,7 +25,18 @@ const TodayHabit = ({habit}) => {
             pathname = 'uncheck';
         }
         
-        postGetReCheckedHabits(config, idHabit, pathname, setHojeData, setLoading);
+        axios.post(`${URL}/habits/${idHabit}/${pathname}`, [], config)
+        .then(() => {
+            getReCheckedHabits(config, setHojeData, setLoading);
+        })
+        .catch(({response}) => {
+            const {details, message} = response.data;
+
+            customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+            Swal.fire(customAlertSwal);
+
+            setLoading(false);
+        });
     }
 
     return ( 

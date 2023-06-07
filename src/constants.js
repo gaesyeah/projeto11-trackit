@@ -37,27 +37,16 @@ export const getAllData = (config, setHabitosData, setHojeData, setHistoricoData
     });
 };
 
-export const postGetReCheckedHabits = (config, idHabit, pathname, setHojeData, setLoading) => {
-    axios.post(`${URL}/habits/${idHabit}/${pathname}`, [], config)
-    .then(() => {
-        axios.get(`${URL}/habits/today`, config)
-        .then(({data}) => {
-            setHojeData(data);
+export const getReCheckedHabits = (config, setHojeData, setLoading) => {
+    axios.get(`${URL}/habits/today`, config)
+    .then(({data}) => {
+        setHojeData(data);
 
-            setLoading(false);
-        })
-        .catch(({response}) => {
-            const {details, message} = response.data;
-            console.log(`${!details ? '' : details}\n${message}`);
-        });
+        setLoading(false);
     })
     .catch(({response}) => {
         const {details, message} = response.data;
-
-        customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
-        Swal.fire(customAlertSwal);
-
-        setLoading(false);
+        console.log(`${!details ? '' : details}\n${message}`);
     });
 };
 
