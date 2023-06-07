@@ -28,7 +28,7 @@ const SideBar = () => {
                 localStorage.removeItem('image');
         
                 setShowSideBar(false);
-                setTimeout(() => window.location.reload(), 300);
+                setTimeout(() => window.location.reload(), 200);
             }
         })
     };
