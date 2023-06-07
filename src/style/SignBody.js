@@ -38,7 +38,7 @@ export const StyledInputFile = styled.div`
     }
     label{
         cursor: ${({loading}) => loading ? 'default' : 'pointer'};
-        transition: ${({loading}) => loading ? '0ms' : '500ms'};
+        transition: ${({loading}) => loading ? '0ms' : '400ms'};
         position: relative;
         overflow: hidden;
         white-space: pre;
@@ -58,8 +58,8 @@ export const StyledInputFile = styled.div`
         img{
             transition: 200ms ease-out;
             z-index: 2;
-            height: 45px;
-            width: 45px;
+            height: 44px;
+            width: 44px;
             position: absolute;
             top: 0;
             right: ${({seted, loading}) => loading ? '-50px' : seted ? '0' : '-50px'};

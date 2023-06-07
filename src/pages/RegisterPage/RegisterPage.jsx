@@ -85,7 +85,7 @@ const RegisterPage = () => {
         FileResizer.imageFileResizer(file, 85, 85,'JPG', 90, 0,
             (compressedImage) => {
                 setRegisterInputs(previous => ({...previous, ['image']: compressedImage}));
-                setTimeout(() => setImageName(file.name), 500);
+                setTimeout(() => setImageName(file.name), 400);
             },'base64'
         );
     }
