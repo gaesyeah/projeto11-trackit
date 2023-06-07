@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { URL, customAlertSwal, getReCheckedHabits } from "../../constants";
+import { URL, customAlertSwal } from "../../constants";
 import { DataContext } from "../../contexts/DataContext";
 import { UserContext } from "../../contexts/UserContext";
 import reCheckGif from "./../../assets/reCheckGif.gif";
@@ -15,6 +15,19 @@ const TodayHabit = ({habit}) => {
 
     const [loading, setLoading] = useState(false);
 
+    const getReCheckedHabits = () => {
+        axios.get(`${URL}/habits/today`, config)
+        .then(({data}) => {
+            setHojeData(data);
+    
+            setLoading(false);
+        })
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
+    };
+
     const reCheckHabit = (idHabit, isChecked) => {
         setLoading(true);
         
@@ -27,7 +40,7 @@ const TodayHabit = ({habit}) => {
         
         axios.post(`${URL}/habits/${idHabit}/${pathname}`, [], config)
         .then(() => {
-            getReCheckedHabits(config, setHojeData, setLoading);
+            getReCheckedHabits();
         })
         .catch(({response}) => {
             const {details, message} = response.data;

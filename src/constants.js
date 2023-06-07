@@ -37,19 +37,6 @@ export const getAllData = (config, setHabitosData, setHojeData, setHistoricoData
     });
 };
 
-export const getReCheckedHabits = (config, setHojeData, setLoading) => {
-    axios.get(`${URL}/habits/today`, config)
-    .then(({data}) => {
-        setHojeData(data);
-
-        setLoading(false);
-    })
-    .catch(({response}) => {
-        const {details, message} = response.data;
-        console.log(`${!details ? '' : details}\n${message}`);
-    });
-};
-
 export const customAlertSwal = {
     icon: 'error',
     width: 320,
