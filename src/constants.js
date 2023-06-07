@@ -37,6 +37,30 @@ export const getAllData = (config, setHabitosData, setHojeData, setHistoricoData
     });
 };
 
+export const postGetReCheckedHabits = (config, idHabit, pathname, setHojeData, setLoading) => {
+    axios.post(`${URL}/habits/${idHabit}/${pathname}`, [], config)
+    .then(() => {
+        axios.get(`${URL}/habits/today`, config)
+        .then(({data}) => {
+            setHojeData(data);
+
+            setLoading(false);
+        })
+        .catch(({response}) => {
+            const {details, message} = response.data;
+            console.log(`${!details ? '' : details}\n${message}`);
+        });
+    })
+    .catch(({response}) => {
+        const {details, message} = response.data;
+
+        customAlertSwal.title = `<span style="color: #f24d4d;font-size: 18px">${!details ? '' : details+'\n'}${message}</span>`;
+        Swal.fire(customAlertSwal);
+
+        setLoading(false);
+    });
+};
+
 export const customAlertSwal = {
     icon: 'error',
     width: 320,
@@ -59,7 +83,7 @@ export const customReloginSwal = {
     width: 320,
     confirmButtonText: 'Ok',
     confirmButtonColor: '#126BA5'
-}
+};
 
 export const customCreatedAccSwal = {
     icon: 'success',
@@ -67,7 +91,7 @@ export const customCreatedAccSwal = {
     width: 320,
     confirmButtonText: 'Ok',
     confirmButtonColor: '#126BA5'
-}
+};
 
 export const login2nd = (loginAfterRegister, infos, setLoginData, navigate, setLoading) => {
     axios.post(`${URL}/auth/login`, infos)
@@ -82,5 +106,5 @@ export const login2nd = (loginAfterRegister, infos, setLoginData, navigate, setL
         Swal.fire(customAlertSwal);
         setLoading(false);
     })
-}
+};
 
