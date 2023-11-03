@@ -105,7 +105,7 @@ const LoginPage = () => {
                     />
                 </button>
             </form>
-            <div ref={signGoogleDiv}/>
+            {/* <div ref={signGoogleDiv}/> */}
             <Link 
                 to='/cadastro' 
                 data-test="signup-link"

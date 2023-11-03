@@ -131,7 +131,7 @@ const RegisterPage = () => {
                     />
                 </button>
             </form>
-            <div ref={signGoogleDiv}/>
+            {/* <div ref={signGoogleDiv}/> */}
             <Link to='/' data-test="login-link"
             >Já tem uma conta? Faça login!
             </Link>
