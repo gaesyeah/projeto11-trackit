@@ -58,7 +58,7 @@ const RegisterPage = () => {
         });
     }
 
-    const googleCallBack = ({credential}) => {
+    /* const googleCallBack = ({credential}) => {
         const decodedCredential = jwtDecode(credential);
         const {name, picture, email, sub} = decodedCredential;
 
@@ -66,7 +66,6 @@ const RegisterPage = () => {
     }
     const signGoogleDiv = useRef(null);
     useEffect(()=> {
-        /* global google */
         google.accounts.id.initialize({
             client_id: '45868346241-lmib1jv8800e6mg6trsnrde05kok28en.apps.googleusercontent.com',
             callback: googleCallBack
@@ -75,7 +74,7 @@ const RegisterPage = () => {
             signGoogleDiv.current,
             { locale: 'PT-br', text: 'signup_with', theme:'outline', size:'large', width: '303px'}
         );
-    },[]);
+    },[]); */
 
     const base64Converter = (e) => {
         const file = e.target.files[0];
